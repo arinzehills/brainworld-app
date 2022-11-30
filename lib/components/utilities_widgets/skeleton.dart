@@ -9,12 +9,12 @@ class Skeleton extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 8, 0, 0),
         child: Container(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           height: height,
           width: width,
           decoration: BoxDecoration(
             color: Colors.black.withOpacity(0.04),
-            borderRadius: BorderRadius.all(Radius.circular(16)),
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
           ),
         ),
       );

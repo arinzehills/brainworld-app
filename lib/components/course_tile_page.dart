@@ -1,6 +1,6 @@
 // import 'package:brainworld/models/Course_tile.dart';
 
-import 'package:brainworld/components/utilities_widgets/radial-gradient.dart';
+import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/pages/upload/course/model/course.dart';
 import 'package:brainworld/pages/upload/course/model/course_tile.dart';
 import 'package:flutter/material.dart';

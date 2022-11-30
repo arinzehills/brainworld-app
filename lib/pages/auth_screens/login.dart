@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:brainworld/components/bottomnavigation.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/my_text_field.dart';
@@ -9,12 +7,13 @@ import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/auth_screens/register.dart';
 import 'package:brainworld/pages/getstarted_page.dart';
 import 'package:brainworld/services/auth_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 class Login extends StatefulWidget {
-  Login({
+ const Login({
     Key? key,
   }) : super(key: key);
 
@@ -46,7 +45,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return loading
-        ? Loading()
+        ? const Loading()
         : Scaffold(
             body: SingleChildScrollView(
               child: Stack(
@@ -73,9 +72,9 @@ class _LoginState extends State<Login> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Padding(
+                       const Padding(
                             padding:
-                                const EdgeInsets.only(top: 139.0, left: 11),
+                                 EdgeInsets.only(top: 139.0, left: 11),
                             child: Text(
                               'LOGIN',
                               style: TextStyle(
@@ -92,7 +91,7 @@ class _LoginState extends State<Login> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 buildText(text: 'Email'),
-                                SizedBox(
+                            const    SizedBox(
                                   height: 10,
                                 ),
                                 MyTextField(
@@ -121,7 +120,7 @@ class _LoginState extends State<Login> {
                                         errorText: "Enter a Valid Email")
                                   ]),
                                 ),
-                                SizedBox(
+                              const  SizedBox(
                                   height: 20,
                                 ),
                                 buildText(text: 'Password'),
@@ -154,7 +153,7 @@ class _LoginState extends State<Login> {
                                   ]),
                                   suffixIconButton: IconButton(
                                     icon: const Icon(Icons.visibility),
-                                    color: myhomepageBlue,
+                                    color: BrainWorldColors.myhomepageBlue,
                                     onPressed: () {
                                       if (obscureText == true) {
                                         setState(() {
@@ -170,9 +169,9 @@ class _LoginState extends State<Login> {
                                 ),
                                 Text(
                                   error,
-                                  style: TextStyle(color: Colors.red),
+                                  style: const TextStyle(color: Colors.red),
                                 ),
-                                SizedBox(
+                               const SizedBox(
                                   height: 20,
                                 ),
                                 Align(
@@ -191,7 +190,7 @@ class _LoginState extends State<Login> {
                                         // print(response['success']);
                                         if (response['success'] == true) {
                                           setState(() => {});
-                                          snackBar(BottomNavigation(), context,
+                                          snackBar(const BottomNavigation(), context,
                                               'Logged in successfully');
                                         } else {
                                           setState(() => loading = false);
@@ -202,7 +201,7 @@ class _LoginState extends State<Login> {
                                     },
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 NoAccount(
@@ -228,8 +227,8 @@ class _LoginState extends State<Login> {
 
   Text buildText({text}) => Text(
         text,
-        style: TextStyle(
-          color: myhomepageBlue,
+        style: const TextStyle(
+          color: BrainWorldColors.myhomepageBlue,
           fontSize: 15,
           fontWeight: FontWeight.bold,
         ),

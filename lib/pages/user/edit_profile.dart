@@ -7,7 +7,7 @@ import 'package:brainworld/components/my_networkimage.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
-import 'package:brainworld/components/utilities_widgets/radial-gradient.dart';
+import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/fullresourcepage/full_photo_page.dart';
 import 'package:brainworld/pages/user/profile.dart';

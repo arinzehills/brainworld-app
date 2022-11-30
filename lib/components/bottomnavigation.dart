@@ -1,5 +1,5 @@
 import 'package:brainworld/components/bottomnavcomponents/bottomnavcomponents.dart';
-import 'package:brainworld/components/utilities_widgets/radial-gradient.dart';
+import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
 import 'package:brainworld/pages/books_library/books_library.dart';

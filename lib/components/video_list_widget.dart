@@ -12,9 +12,9 @@ class VideoListWidget extends StatelessWidget {
       this.subscribers})
       : super(key: key);
   final PostsModel course;
-  final video;
-  int? subscribers;
-  int? index;
+  final String? video;
+  final int? subscribers;
+  final int? index;
   @override
   Widget build(BuildContext context) {
     print('video');
@@ -36,28 +36,28 @@ class VideoListWidget extends StatelessWidget {
               spreadRadius: 2.0,
             ),
           ],
-          borderRadius: BorderRadius.all(Radius.circular(16)),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
         ),
-        margin: EdgeInsets.only(top: 0, bottom: 14),
+        margin: const EdgeInsets.only(top: 0, bottom: 14),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               width: size(context).width * 0.36,
               height: 70,
-              margin: EdgeInsets.only(right: 10),
+              margin: const EdgeInsets.only(right: 10),
               child: Image.asset('assets/images/womanwithlaptop.jpeg'),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   width: size(context).width * 0.55,
                   // color: Colors.red,
                   child: Text(
                     course.subTitles[index!],
-                    style: TextStyle(fontWeight: FontWeight.w600),
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                 ),
                 ProfileUserWidget(

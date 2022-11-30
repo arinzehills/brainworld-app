@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
+import '../themes/themes.dart';
+
 class MyCachedNetworkImage extends StatefulWidget {
   final String? imgUrl;
   final double? height;
@@ -42,7 +44,7 @@ class _MyCachedNetworkImageState extends State<MyCachedNetworkImage> {
           height: 10,
           child: CircularProgressIndicator(
               strokeWidth: 5,
-              color: myhomepageBlue,
+              color: BrainWorldColors.myhomepageBlue,
               value: downloadProgress.progress),
         ),
         errorWidget: (context, url, error) => Container(
@@ -50,7 +52,7 @@ class _MyCachedNetworkImageState extends State<MyCachedNetworkImage> {
           child: Icon(
             widget.isProfile ? IconlyBold.profile : Icons.error,
             size: widget.isProfile ? null : 50,
-            color: widget.isProfile ? myhomepageBlue : Colors.red,
+            color: widget.isProfile ? BrainWorldColors.myhomepageBlue : Colors.red,
           ),
         ),
       ),

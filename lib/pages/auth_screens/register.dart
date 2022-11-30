@@ -1,23 +1,19 @@
-import 'dart:convert';
-
 import 'package:brainworld/components/bottomnavigation.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/my_text_field.dart';
 import 'package:brainworld/components/no_account.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
-import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/auth_screens/login.dart';
 import 'package:brainworld/pages/getstarted_page.dart';
 import 'package:brainworld/services/auth_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Register extends StatefulWidget {
-  Register({
+  const Register({
     Key? key,
   }) : super(key: key);
 
@@ -50,7 +46,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return loading
-        ? Loading()
+        ? const Loading()
         : Scaffold(
             body: SingleChildScrollView(
               child: Stack(overflow: Overflow.visible, children: [
@@ -74,12 +70,12 @@ class _RegisterState extends State<Register> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                        padding: const EdgeInsets.only(top: 139.0, left: 11),
-                        child: Text(
+                    const Padding(
+                        padding: EdgeInsets.only(top: 139.0, left: 11),
+                        child:  Text(
                           'Register',
                           style: TextStyle(
-                              color: Color.fromARGB(255, 0, 21, 255),
+                              color:  Color.fromARGB(255, 0, 21, 255),
                               fontSize: 43,
                               fontWeight: FontWeight.bold),
                         )),
@@ -92,7 +88,7 @@ class _RegisterState extends State<Register> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             buildText(text: 'Full name'),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             MyTextField(
@@ -107,11 +103,11 @@ class _RegisterState extends State<Register> {
                                 }
                               },
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             buildText(text: 'Email'),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             MyTextField(
@@ -139,7 +135,7 @@ class _RegisterState extends State<Register> {
                                 EmailValidator(errorText: "Enter a Valid Email")
                               ]),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             buildText(text: 'Password'),
@@ -172,7 +168,7 @@ class _RegisterState extends State<Register> {
                               ]),
                               suffixIconButton: IconButton(
                                 icon: const Icon(Icons.visibility),
-                                color: myhomepageBlue,
+                                color: BrainWorldColors.myhomepageBlue,
                                 onPressed: () {
                                   if (obscureText == true) {
                                     setState(() {
@@ -188,9 +184,9 @@ class _RegisterState extends State<Register> {
                             ),
                             Text(
                               error,
-                              style: TextStyle(color: Colors.red),
+                              style: const TextStyle(color: Colors.red),
                             ),
-                            SizedBox(
+                           const SizedBox(
                               height: 20,
                             ),
                             Align(
@@ -209,7 +205,7 @@ class _RegisterState extends State<Register> {
                                     // var body = json.decode(response.body);
                                     print(response['success']);
                                     if (response['success'] == true) {
-                                      snackBar(BottomNavigation(), context,
+                                      snackBar(const BottomNavigation(), context,
                                           'Registered in successfully');
                                     } else {
                                       setState(() => loading = false);
@@ -220,7 +216,7 @@ class _RegisterState extends State<Register> {
                                 },
                               ),
                             ),
-                            SizedBox(
+                          const  SizedBox(
                               height: 15,
                             ),
                             NoAccount(
@@ -229,7 +225,7 @@ class _RegisterState extends State<Register> {
                               pressed: () {
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
-                                        builder: (context) => Login()),
+                                        builder: (context) => const Login()),
                                     (Route<dynamic> route) => false);
                               },
                             ),
@@ -246,8 +242,8 @@ class _RegisterState extends State<Register> {
 
   Text buildText({text}) => Text(
         text,
-        style: TextStyle(
-          color: myhomepageBlue,
+        style: const TextStyle(
+          color: BrainWorldColors.myhomepageBlue,
           fontSize: 15,
           fontWeight: FontWeight.bold,
         ),

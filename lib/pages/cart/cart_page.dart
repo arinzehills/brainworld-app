@@ -2,7 +2,7 @@ import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
-import 'package:brainworld/components/utilities_widgets/radial-gradient.dart';
+import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/checkout/checkout.dart';
 import 'package:brainworld/services/cart_service.dart';

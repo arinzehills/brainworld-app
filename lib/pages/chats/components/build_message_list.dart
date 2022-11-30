@@ -1,12 +1,11 @@
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/chats/models/message.dart';
 import 'package:flutter/material.dart';
 
 class BuildMessageList extends StatefulWidget {
-  List<UsersMessage> messages;
-  int itemCount;
-  String sendersid;
-  BuildMessageList(
+  final List<UsersMessage> messages;
+ final int itemCount;
+ final  String sendersid;
+ const BuildMessageList(
       {Key? key,
       required this.messages,
       required this.sendersid,
@@ -46,8 +45,8 @@ class _BuildMessageListState extends State<BuildMessageList> {
       padding: const EdgeInsets.only(bottom: 98.0),
       child: ListView.builder(
           itemCount: widget.itemCount,
-          padding: EdgeInsets.only(top: 10, bottom: 10),
-          physics: BouncingScrollPhysics(),
+          padding: const EdgeInsets.only(top: 10, bottom: 10),
+          physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
           controller: listScrollController,
           reverse: true,
@@ -66,7 +65,7 @@ class _BuildMessageListState extends State<BuildMessageList> {
                 : showTime[index] = true
           }),
       child: Container(
-          padding: EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
+          padding: const EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
           child: (isUser ? buildSender(index) : buildReciever(index))),
     );
   }
@@ -77,25 +76,25 @@ class _BuildMessageListState extends State<BuildMessageList> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Color(0xff2255FF),
-                        Color(0xff1477FF).withOpacity(0.9),
+                        const Color(0xff2255FF),
+                        const Color(0xff1477FF).withOpacity(0.9),
                       ]),
                   color: Colors.white),
               child: Text(
                 widget.messages[index].messageText,
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: const TextStyle(fontSize: 15, color: Colors.white),
               ),
             ),
             showTime[index] == true
                 ? Text(widget.messages[index].sentAt.toString())
-                : SizedBox(),
+                : const SizedBox(),
           ],
         ),
       );
@@ -105,19 +104,19 @@ class _BuildMessageListState extends State<BuildMessageList> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.grey.shade200,
               ),
               child: Text(
                 widget.messages[index].messageText,
-                style: TextStyle(fontSize: 15, color: Color(0xff9B9B9B)),
+                style: const TextStyle(fontSize: 15, color: Color(0xff9B9B9B)),
               ),
             ),
             showTime[index] == true
                 ? Text(widget.messages[index].sentAt.toString())
-                : SizedBox(),
+                : const SizedBox(),
           ],
         ),
       );
