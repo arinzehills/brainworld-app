@@ -57,7 +57,7 @@ class _CheckoutState extends State<Checkout> {
                   pagetitle: 'CHECKOUT',
                   size: size,
                   height: size.height * 0.43,
-                  container_radius: 140,
+                  containerRadius: 140,
                   widget: AtmCard(size: size, cartController: cartController)),
               Form(
                 key: _formKey,

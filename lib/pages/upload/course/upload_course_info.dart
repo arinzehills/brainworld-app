@@ -107,7 +107,7 @@ class _UploadCourseInfoState extends State<UploadCourseInfo> {
                     size: size,
                     height: size.height * 0.17,
                     showDrawer: false,
-                    container_radius: 90,
+                    containerRadius: 90,
                     widget: Padding(
                       padding: const EdgeInsets.only(top: 0.0),
                       child: Center(

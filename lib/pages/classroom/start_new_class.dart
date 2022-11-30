@@ -33,7 +33,7 @@ class _StartNewClassState extends State<StartNewClass> {
             size: size,
             height: size.height * 0.21,
             // showDrawer: true,
-            container_radius: 90,
+            containerRadius: 90,
             // pagetitle: '2',
             widget: Padding(
               padding: const EdgeInsets.only(top: 0.0),

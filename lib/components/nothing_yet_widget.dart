@@ -1,4 +1,3 @@
-import 'package:brainworld/components/expandable_text_widget.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/constants/constant.dart';
@@ -33,20 +32,20 @@ class NothingYetWidget extends StatelessWidget {
                 size: size,
                 height: size.height * 0.21,
                 showDrawer: false,
-                container_radius: 90,
+                containerRadius: 90,
                 widget: Padding(
                   padding: const EdgeInsets.only(top: 0.0),
                   child: Center(
                     child: Column(
                       children: [
-                        ImageIcon(
-                          AssetImage('assets/images/uploads_blue.png'),
+                        const ImageIcon(
+                           AssetImage('assets/images/uploads_blue.png'),
                           size: 60,
                           color: Colors.white,
                         ),
                         Text(
                           pageTitle,
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+                          style: const TextStyle(color: Colors.white, fontSize: 15),
                         ),
                       ],
                     ),
@@ -79,7 +78,7 @@ class NothingYetWidget extends StatelessWidget {
 
               // ExpandableTextWidget(
               //     text: (pageContentText! + pageContentText!) ?? ''),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               MyButton(
@@ -91,7 +90,7 @@ class NothingYetWidget extends StatelessWidget {
                 widthRatio: 0.80,
                 pressed: onClick ??
                     () async {
-                      Get.to(AddToLocalLibray());
+                      Get.to(const AddToLocalLibray());
                     },
               ),
             ],

@@ -1,5 +1,4 @@
 import 'package:brainworld/components/my_cachednetwork_image.dart';
-import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/user.dart';
@@ -75,14 +74,14 @@ class _ProfileUserWidgetState extends State<ProfileUserWidget> {
       child: Container(
         // color: Colors.red,
         width: size(context).width * widget.containerWidthRatio,
-        padding: EdgeInsets.all(1),
+        padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           color: loading
               ? null
               : widget.showbgColor
                   ? Colors.black.withOpacity(0.01)
                   : null,
-          borderRadius: BorderRadius.all(Radius.circular(16)),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
         ),
         child: _buildProfile(loading),
       ),
@@ -104,8 +103,8 @@ class _ProfileUserWidgetState extends State<ProfileUserWidget> {
                 width: size(context).width * 0.4,
               ),
               widget.skeltonWidth == null
-                  ? Skeleton(width: 80, height: 12)
-                  : SizedBox(),
+                  ? const Skeleton(width: 80, height: 12)
+                  : const SizedBox(),
             ],
           ),
         ])

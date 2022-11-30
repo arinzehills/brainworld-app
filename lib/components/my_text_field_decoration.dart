@@ -8,16 +8,16 @@ class MyTextFieldDecoration {
   static InputDecoration textFieldDecoration(
       {VoidCallback? clickIcon, icon, hintText}) {
     return InputDecoration(
-      contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       fillColor: Colors.white,
       suffixIcon: clickIcon != null
           ? IconButton(
               icon: Icon(icon ?? IconlyBold.paper_upload),
               color: myhomepageBlue,
               onPressed: clickIcon)
-          : SizedBox(),
+          : const SizedBox(),
       hintText: hintText ?? 'hintTExt',
-      hintStyle: TextStyle(
+      hintStyle: const TextStyle(
         fontSize: 14,
       ),
       border: OutlineInputBorder(

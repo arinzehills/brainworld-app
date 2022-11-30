@@ -44,7 +44,7 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
                 pagetitle: 'CHECKOUT SUMMARY',
                 size: size,
                 height: size.height * 0.49,
-                container_radius: 140,
+                containerRadius: 140,
                 widget: AtmCard(size: size, cartController: cartController),
               ),
               Padding(

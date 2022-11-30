@@ -18,7 +18,7 @@ class MyNetworkImage extends StatefulWidget {
 class _MyNetworkImageState extends State<MyNetworkImage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: Center(
           child: CupertinoButton(
         onPressed: () {
@@ -31,7 +31,7 @@ class _MyNetworkImageState extends State<MyNetworkImage> {
             ),
           );
         },
-        child: Container(
+        child: SizedBox(
           height: widget.height,
           width: widget.width,
           child: ClipRRect(
@@ -47,7 +47,7 @@ class _MyNetworkImageState extends State<MyNetworkImage> {
                   width: 75,
                   height: 75,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                      borderRadius: const BorderRadius.all(Radius.circular(50)),
                       child: Icon(
                         IconlyBold.profile,
                         color: myhomepageBlue,
