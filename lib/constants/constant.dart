@@ -17,8 +17,8 @@ import 'package:socket_io_client/socket_io_client.dart';
 
 final iconsColor = const Color(0xffC9C4C4);
 // final generalUrl = "http://10.0.2.2:3000";
-final generalUrl = "http://localhost:3000";
-// final generalUrl = "https://brainworld-api.cyclic.app";
+// final generalUrl = "http://localhost:3000";
+final generalUrl = "https://brainworld-api.cyclic.app";
 final textGreyColor = const Color(0xff4B4949);
 final transparentGrey = const Color(0xffC9C4C4);
 // final welcomepageBlue= const Color(0xff0837ff);

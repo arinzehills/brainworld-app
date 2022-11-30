@@ -7,9 +7,6 @@ import 'package:brainworld/pages/chats/chat.dart';
 import 'package:brainworld/pages/homepage.dart';
 import 'package:brainworld/pages/laboratory/laboratory.dart';
 import 'package:brainworld/pages/library/library.dart';
-import 'package:brainworld/pages/library/user_library.dart';
-import 'package:brainworld/pages/library/welcome/library_welcome.dart';
-import 'package:brainworld/pages/purchased/purchased.dart';
 import 'package:brainworld/pages/user/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -41,8 +38,8 @@ class _BottomNavigationState extends State<BottomNavigation>
   void initState() {
     _popup_animation_controller = AnimationController(
       value: 0,
-      duration: Duration(milliseconds: 500),
-      reverseDuration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 500),
+      reverseDuration: const Duration(milliseconds: 1000),
       vsync: this,
     )..addStatusListener((status) => {setState(() {})});
   }
@@ -56,17 +53,17 @@ class _BottomNavigationState extends State<BottomNavigation>
   @override
   Widget build(BuildContext context) {
     List<Widget> pages = <Widget>[
-      MyHomePage(
+      const MyHomePage(
         title: 'Home',
       ),
       // Purchased(),
-      Library(),
+      const Library(),
       Chat(
           // chatUsersListController: chatUsersListController,
           ),
-      Laboratory(),
-      BooksLibrary(),
-      Profile(),
+      const Laboratory(),
+      const BooksLibrary(),
+      const Profile(),
     ];
     return Scaffold(
         body: PageStorage(
@@ -79,13 +76,13 @@ class _BottomNavigationState extends State<BottomNavigation>
                       bottom: 40,
                       left: size(context).width * 0.1,
                       child: uploadPopUp(_popup_animation_controller))
-                  : SizedBox(),
+                  : const SizedBox(),
             ],
           ),
         ),
         bottomNavigationBar: GestureDetector(
           child: BottomAppBar(
-              shape: CircularNotchedRectangle(),
+              shape: const CircularNotchedRectangle(),
               notchMargin: 5,
               child: Container(
                   height: 60,
@@ -111,7 +108,7 @@ class _BottomNavigationState extends State<BottomNavigation>
                               svgImage: 'assets/svg/chatsbubble.svg'),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       Row(
@@ -150,7 +147,7 @@ class _BottomNavigationState extends State<BottomNavigation>
           child: Container(
             width: 60,
             height: 60,
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: SvgPicture.asset(
                 !showuploadPopup
                     ? 'assets/svg/uploadicon.svg'
@@ -196,7 +193,7 @@ class _BottomNavigationState extends State<BottomNavigation>
                             _selectedIndex == 0 ? myhomepageBlue : Colors.grey,
                       )),
                 )
-              : SizedBox()
+              : const SizedBox()
         ]));
   }
 }

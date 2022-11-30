@@ -1,10 +1,8 @@
-import 'package:brainworld/components/bottomnavigation.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:brainworld/services/cart_service.dart';
 import 'package:brainworld/wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Wrapper(),
+        home: const Wrapper(),
       ),
     );
   }

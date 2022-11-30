@@ -138,7 +138,7 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                                           Container(
                                             width: 95,
                                             child: Text(
-                                              widget.list[index].title ?? '',
+                                              widget.list[index].title,
                                               textAlign: TextAlign.left,
                                               maxLines: 2,
                                               style: TextStyle(
