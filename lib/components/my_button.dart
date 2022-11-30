@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  String placeHolder;
-  double? widthRatio;
-  double? height;
-  bool isOval;
-  bool withBorder;
-  bool isGradientButton;
-  bool loadingState;
-  List<Color>? gradientColors;
+ final  String placeHolder;
+  final double? widthRatio;
+  final double? height;
+   final bool isOval;
+  final bool withBorder;
+  final bool isGradientButton;
+ final  bool loadingState;
+ final  List<Color>? gradientColors;
   final VoidCallback pressed;
-  Widget? child;
+ final  Widget? child;
 
   double? fontSize;
 
@@ -52,7 +52,7 @@ class MyButton extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(isOval ? 30 : 8)),
         ),
         child: loadingState
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(
                   color: Colors.white,
                 ),
@@ -71,7 +71,7 @@ class MyButton extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.white, fontSize: fontSize ?? 23),
                     ),
-                    child ?? SizedBox(),
+                    child ?? const SizedBox(),
                   ],
                 ),
               ),

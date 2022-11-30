@@ -1,34 +1,27 @@
-import 'dart:math';
-
-import 'package:brainworld/components/bottomnavcomponents/bottomnavcomponents.dart';
 import 'package:brainworld/components/comment_fieldbox.dart';
 import 'package:brainworld/components/my_cachednetwork_image.dart';
 import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/post_controller.dart';
 import 'package:brainworld/models/user.dart';
-import 'package:brainworld/pages/chats/components/chat_icon_gradient.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
 import 'package:brainworld/pages/homepage/components/reactionicon.dart';
-import 'package:brainworld/pages/upload/course/model/course.dart';
-import 'package:brainworld/pages/upload/post_detail.dart';
 import 'package:brainworld/services/cart_service.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
 class CoursesTile extends StatefulWidget {
-  PostsModel post;
-  String? commenttoShow;
-  Socket socket;
-  PostsController? postsController;
-  int? courseIndex;
+  final PostsModel post;
+  final String? commenttoShow;
+  final Socket socket;
+  final PostsController? postsController;
+  final int? courseIndex;
 
-  bool isCommentDetail;
-  CoursesTile(
+  final bool isCommentDetail;
+  const CoursesTile(
       {Key? key,
       required this.post,
       required this.socket,
@@ -56,8 +49,8 @@ class _CoursesTileState extends State<CoursesTile> {
     int commentlength = widget.post.comments!.length;
 
     return Container(
-      padding: EdgeInsets.only(right: 5, left: 5),
-      margin: EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.only(right: 5, left: 5),
+      margin: const EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(16)),
       child: Column(
@@ -103,7 +96,7 @@ class _CoursesTileState extends State<CoursesTile> {
                                 textColor: Colors.white,
                                 fontSize: 16.0);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.more_vert_sharp,
                         size: 25,
                         color: Color.fromARGB(255, 45, 45, 45),
@@ -125,12 +118,12 @@ class _CoursesTileState extends State<CoursesTile> {
                   height: 120,
                   width: 600,
                 ),
-          Container(
+          SizedBox(
             height: 20,
             child: Text(
               widget.post.title!.toUpperCase(),
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 15,
               ),
@@ -147,10 +140,10 @@ class _CoursesTileState extends State<CoursesTile> {
           ),
           reactionRow(user, commentlength),
           widget.isCommentDetail
-              ? (showCommentBox ? SizedBox() : SizedBox())
+              ? (showCommentBox ? const SizedBox() : const SizedBox())
               : showCommentBox
                   ? commentBox(commentlength, user)
-                  : SizedBox()
+                  : const SizedBox()
         ],
       ),
     );
@@ -158,25 +151,25 @@ class _CoursesTileState extends State<CoursesTile> {
 
   commentBox(int commentlength, User user) {
     return Container(
-      padding: EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           commentlength != 0
               ? TextButton(
                   style: TextButton.styleFrom(
-                    textStyle: TextStyle(fontSize: 17),
+                    textStyle: const TextStyle(fontSize: 17),
                   ),
                   onPressed: null,
                   child: Text(
-                    'View all ${commentlength} comments',
+                    'View all $commentlength comments',
                     style: TextStyle(color: myhomepageBlue),
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
           commentlength == 0
-              ? Center(
-                  child: Text('No Comment for this post'),
+              ? const Center(
+                  child:  Text('No Comment for this post'),
                 )
               : ProfileUserWidget(
                   userId: widget.post.comments!.last['user_id'],
@@ -193,14 +186,14 @@ class _CoursesTileState extends State<CoursesTile> {
 
   Container reactionRow(User user, int commentlength) {
     return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+      padding: const EdgeInsets.all(10),
+      decoration: const BoxDecoration(
+          borderRadius:  BorderRadius.only(
               bottomLeft: Radius.circular(16),
-              bottomRight: Radius.circular(16)),
-          gradient: LinearGradient(colors: [
+              bottomRight:  Radius.circular(16)),
+          gradient:  LinearGradient(colors: [
             Color.fromARGB(35, 34, 86, 255),
-            Color.fromARGB(65, 20, 118, 255)
+             Color.fromARGB(65, 20, 118, 255)
           ], begin: Alignment.topCenter)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -214,7 +207,7 @@ class _CoursesTileState extends State<CoursesTile> {
                 },
               ),
               Text(widget.post.likes!.length.toString()),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               ReactionIcon(
@@ -226,10 +219,10 @@ class _CoursesTileState extends State<CoursesTile> {
                 },
               ),
               Text(commentlength.toString()),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               ReactionIcon(iconUrl: 'assets/svg/sendicon.svg', onClick: () {}),

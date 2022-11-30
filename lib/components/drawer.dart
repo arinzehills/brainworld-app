@@ -5,16 +5,10 @@ import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/auth_screens/login.dart';
-import 'package:brainworld/pages/books_library/books_library.dart';
-import 'package:brainworld/pages/chats/chat.dart';
 import 'package:brainworld/pages/classroom/class_room_welcome.dart';
-import 'package:brainworld/pages/homepage.dart';
-import 'package:brainworld/pages/laboratory/laboratory.dart';
-import 'package:brainworld/pages/library/user_library.dart';
 import 'package:brainworld/pages/orders/orders.dart';
 import 'package:brainworld/pages/polls/polls.dart';
 import 'package:brainworld/pages/purchased/purchased.dart';
-import 'package:brainworld/pages/user/profile.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
@@ -26,7 +20,7 @@ class MyDrawer extends StatefulWidget {
   // final String email;
   // final String phone;
 
-  MyDrawer({
+ const MyDrawer({
     Key? key,
   }) : super(key: key);
 
@@ -49,15 +43,15 @@ class _MyDrawerState extends State<MyDrawer> {
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(30), bottomRight: Radius.circular(30)),
       ),
-      child: Container(
+      child: SizedBox(
         child: ListView(children: <Widget>[
           Container(
-            padding: EdgeInsets.all(40).copyWith(left: 10, top: 20),
+            padding: const EdgeInsets.all(40).copyWith(left: 10, top: 20),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       IconlyBold.close_square,
                     ),
                     color: myhomepageBlue,
@@ -96,13 +90,13 @@ class _MyDrawerState extends State<MyDrawer> {
               context: context,
               index: 1,
               isCustomRouting: true,
-              route: Polls(),
+              route: const Polls(),
               title: 'Polls'),
           buildMenuItem(
               context: context,
               isCustomRouting: true,
               index: 9,
-              route: Purchased(),
+              route: const Purchased(),
               title: 'Purchased'),
           // buildMenuItem(context: context, index: 2, title: 'Chats'),
           // buildMenuItem(context: context, index: 3, title: 'Lab'),
@@ -113,13 +107,13 @@ class _MyDrawerState extends State<MyDrawer> {
               index: 6,
               title: 'Class room',
               isCustomRouting: false,
-              route: ClassRoomWelcome()),
+              route: const ClassRoomWelcome()),
           buildMenuItem(
               context: context,
               index: 8,
               title: 'Orders',
               isCustomRouting: false,
-              route: Orders()),
+              route: const Orders()),
           MyButton(
               placeHolder: 'Logout',
               // isOval: true,
@@ -142,7 +136,7 @@ class _MyDrawerState extends State<MyDrawer> {
     return Padding(
       padding: const EdgeInsets.only(top: 0.6, bottom: 0.9),
       child: ListTile(
-        visualDensity: VisualDensity(vertical: 1),
+        visualDensity: const VisualDensity(vertical: 1),
         shape: RoundedRectangleBorder(
           side: BorderSide(width: 0.5, color: myhomepageBlue),
         ),
@@ -152,7 +146,7 @@ class _MyDrawerState extends State<MyDrawer> {
         title: Center(
           child: GradientText(
             title ?? 'Library ',
-            style: TextStyle(fontSize: 25),
+            style: const TextStyle(fontSize: 25),
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,

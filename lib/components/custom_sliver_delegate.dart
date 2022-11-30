@@ -60,11 +60,11 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
             child: textField(),
           ),
           Align(
-            alignment: Alignment(1.0, 0.9),
+            alignment: const Alignment(1.0, 0.9),
             child: Opacity(
               opacity: percent,
               child: Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 15,
                   top: 80,
                   right: 1,
@@ -72,15 +72,15 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                 child: Wrap(
                   children: [
                     Chat().buildText(title: 'Quick Chat'),
-                    Container(
+                    SizedBox(
                         height: 90,
                         width: double.infinity,
-                        child: chatUsersListController!.chatUsers.length == 0
+                        child: chatUsersListController!.chatUsers.isEmpty
                             ? ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount: 4,
                                 itemBuilder: (context, index) {
-                                  return Skeleton(
+                                  return const Skeleton(
                                     width: 75,
                                   );
                                 })
@@ -94,8 +94,7 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                                     // physics: NeverScrollableScrollPhysics(),
                                     itemBuilder: (context, index) {
                                       return chatUsersListController!
-                                                  .chatUsers.length <
-                                              1
+                                                  .chatUsers.isEmpty
                                           ? Center(
                                               child: Chat().buildText(
                                                 title:
@@ -115,8 +114,8 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                                                     width: size.width * 0.20,
                                                     decoration: BoxDecoration(
                                                         borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
+                                                            const BorderRadius.all(
+                                                                 Radius.circular(
                                                                     19)),
                                                         color: Colors.white,
                                                         boxShadow: [
@@ -128,7 +127,7 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                                                               blurRadius: 30,
                                                               spreadRadius: 0,
                                                               offset:
-                                                                  Offset(5, 20))
+                                                                  const Offset(5, 20))
                                                         ]),
                                                     child: Center(
                                                       child: Column(

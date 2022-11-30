@@ -1,4 +1,5 @@
-import 'package:brainworld/pages/splash_screen/splash_screen.dart';
+import 'package:brainworld/pages/auth_screens/login.dart';
+// import 'package:brainworld/pages/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class Wrapper extends StatefulWidget {
@@ -11,6 +12,6 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
-    return const SplashScreen();
+    return  Login();
   }
 }

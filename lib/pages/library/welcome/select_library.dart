@@ -1,9 +1,6 @@
-import 'dart:convert';
 import 'package:brainworld/components/my_cachednetwork_image.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Constants {
   Constants._();
@@ -12,9 +9,9 @@ class Constants {
 }
 
 class SelectLibrary extends StatefulWidget {
-  String? title;
-  Image? image;
-  SelectLibrary({this.image, this.title});
+  final String? title;
+  final Image? image;
+  const SelectLibrary({Key? key, this.image, this.title}) : super(key: key);
   @override
   _SelectLibraryState createState() => _SelectLibraryState();
 }
@@ -29,7 +26,7 @@ class _SelectLibraryState extends State<SelectLibrary> {
 
   Widget _buildList() {
     // final List<String> drivers = <String>['A', 'B', 'C','A', 'B', 'C','A', 'B', 'C'];
-    final user = Provider.of<User>(context);
+    // final user = Provider.of<User>(context);
     List<Map<String, String>> universities = [
       {
         'name': 'UNN',
@@ -65,7 +62,7 @@ class _SelectLibraryState extends State<SelectLibrary> {
         future: null,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else {
             return ListView.separated(
               padding: const EdgeInsets.fromLTRB(0, 1, 8, 1),
@@ -82,15 +79,15 @@ class _SelectLibraryState extends State<SelectLibrary> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      subtitle: Padding(
+                      subtitle: const Padding(
                         padding: EdgeInsets.all(3.0),
                       ),
-                      contentPadding: EdgeInsets.fromLTRB(-7, 5, 3, 5),
+                      contentPadding: const EdgeInsets.fromLTRB(-7, 5, 3, 5),
                       leading: CircleAvatar(
                         backgroundColor: Colors.transparent,
                         radius: Constants.avatarRadius,
                         child: ClipRRect(
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                                 Radius.circular(Constants.avatarRadius)),
                             child: MyCachedNetworkImage(
                               height: 50,
@@ -115,24 +112,24 @@ class _SelectLibraryState extends State<SelectLibrary> {
     return Stack(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
               left: Constants.padding,
               top: Constants.avatarRadius,
               right: Constants.padding,
               bottom: Constants.padding),
-          margin: EdgeInsets.only(top: Constants.avatarRadius),
+          margin: const EdgeInsets.only(top: Constants.avatarRadius),
           width: double.infinity,
           decoration: BoxDecoration(
               shape: BoxShape.rectangle,
               color: Colors.white,
               borderRadius: BorderRadius.circular(Constants.padding),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     color: Colors.black, offset: Offset(0, 10), blurRadius: 50),
               ]),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
+            children: const [
               Text(
                 'Select E-Library you want to access',
                 style: TextStyle(
@@ -157,8 +154,9 @@ class _SelectLibraryState extends State<SelectLibrary> {
           ),
         ),
         Container(
-            padding: EdgeInsets.only(left: 1, top: 95, right: 1, bottom: 1),
-            margin: EdgeInsets.only(top: Constants.avatarRadius),
+            padding:
+                const EdgeInsets.only(left: 1, top: 95, right: 1, bottom: 1),
+            margin: const EdgeInsets.only(top: Constants.avatarRadius),
             child: list),
         Positioned(
           left: Constants.padding,
@@ -167,8 +165,8 @@ class _SelectLibraryState extends State<SelectLibrary> {
             backgroundColor: Colors.transparent,
             radius: Constants.avatarRadius,
             child: ClipRRect(
-                borderRadius:
-                    BorderRadius.all(Radius.circular(Constants.avatarRadius)),
+                borderRadius: const BorderRadius.all(
+                    Radius.circular(Constants.avatarRadius)),
                 child: Image.asset("assets/images/brainworld-logo.png")),
           ),
         ),

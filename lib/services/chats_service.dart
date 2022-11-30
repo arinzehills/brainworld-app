@@ -1,8 +1,3 @@
-import 'dart:async';
-import 'package:brainworld/pages/chats/models/message.dart';
-
-// import 'package:open_file/open_file.dart';
-
 class ChatService {
   final String sendersid;
 

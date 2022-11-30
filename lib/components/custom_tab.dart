@@ -6,7 +6,7 @@ class CustomTab extends StatefulWidget {
   CustomTab({Key? key, required this.items, required this.widgetsItems})
       : super(key: key);
   List<String> items = const ['a', 'b'];
-  List<Widget> widgetsItems;
+final  List<Widget> widgetsItems;
   @override
   State<CustomTab> createState() => _CustomTabState();
 }
@@ -17,7 +17,7 @@ class _CustomTabState extends State<CustomTab> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 5, bottom: 0),
+      margin: const EdgeInsets.only(top: 5, bottom: 0),
       width: double.infinity,
       height: double.infinity,
       child: Column(
@@ -27,7 +27,7 @@ class _CustomTabState extends State<CustomTab> {
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: widget.items.length,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
@@ -45,11 +45,11 @@ class _CustomTabState extends State<CustomTab> {
                                   colors: currentIndex == index
                                       ? myblueGradient
                                       : [
-                                          Color.fromARGB(35, 34, 86, 255),
-                                          Color.fromARGB(65, 20, 118, 255)
+                                          const Color.fromARGB(35, 34, 86, 255),
+                                          const Color.fromARGB(65, 20, 118, 255)
                                         ],
                                   begin: Alignment.topCenter)),
-                          margin: EdgeInsets.all(5),
+                          margin: const EdgeInsets.all(5),
                           child: Center(
                             child: Text(
                               widget.items[index],
@@ -69,7 +69,7 @@ class _CustomTabState extends State<CustomTab> {
           Container(
               width: double.infinity,
               height: size(context).height * 0.67,
-              margin: EdgeInsets.only(top: 10),
+              margin: const EdgeInsets.only(top: 10),
               child: widget.widgetsItems[currentIndex]),
         ],
       ),
