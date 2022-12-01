@@ -67,7 +67,7 @@ class CartService extends GetxController {
           currentUserId: user(context).id,
           postId: cartItems[i].postId!,
           orderType: cartItems[i].postType,
-          currentUsserName: user(context).full_name,
+          currentUsserName: user(context).fullName,
           email: user(context).email,
           title: cartItems[i].title,
           price: cartItems[i].price);

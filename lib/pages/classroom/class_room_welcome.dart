@@ -61,7 +61,7 @@ class _ClassRoomWelcomeState extends State<ClassRoomWelcome> {
               onClick: () async {
                 var userModel = IsNewUserModel(
                     id: user.id,
-                    username: user.full_name,
+                    username: user.fullName,
                     newlyRegistered: true,
                     bookLib: userInfoData.bookLib == false ? false : true,
                     library: userInfoData.library == false ? false : true,

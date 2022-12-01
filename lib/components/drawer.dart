@@ -21,7 +21,7 @@ class MyDrawer extends StatefulWidget {
   // final String email;
   // final String phone;
 
- const MyDrawer({
+  const MyDrawer({
     Key? key,
   }) : super(key: key);
 
@@ -66,7 +66,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     child: Wrap(
                       children: [
                         Text(
-                          user.full_name,
+                          user.fullName,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
@@ -143,7 +143,8 @@ class _MyDrawerState extends State<MyDrawer> {
         ),
         // selected: _selectedIndex == index,
         // selectedColor: myhomepageBlue,
-        tileColor: _selectedIndex == index ? BrainWorldColors.myhomepageBlue : null,
+        tileColor:
+            _selectedIndex == index ? BrainWorldColors.myhomepageBlue : null,
         title: Center(
           child: GradientText(
             title ?? 'Library ',
@@ -153,7 +154,10 @@ class _MyDrawerState extends State<MyDrawer> {
               end: Alignment.bottomRight,
               colors: _selectedIndex == index
                   ? [Colors.white, Colors.white]
-                  : [BrainWorldColors.myhomepageBlue, BrainWorldColors.myhomepageLightBlue],
+                  : [
+                      BrainWorldColors.myhomepageBlue,
+                      BrainWorldColors.myhomepageLightBlue
+                    ],
             ),
           ),
         ),

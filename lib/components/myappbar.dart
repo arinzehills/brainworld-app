@@ -2,6 +2,7 @@ import 'package:brainworld/components/bottomnavigation.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/pages/cart/cart_page.dart';
 import 'package:brainworld/services/cart_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:brainworld/constants/constant.dart';
@@ -82,7 +83,7 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
                                   height: 25,
                                   width: 25,
                                   // fit: BoxFit.fill,
-                                  color: iconsColor,
+                                  color: BrainWorldColors.iconsColors,
                                   semanticsLabel: 'A red up arrow'),
                             ),
                             const SizedBox(
@@ -98,7 +99,7 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
                                   'assets/svg/profileicon.svg',
                                   height: 22,
                                   width: 22,
-                                  color: iconsColor,
+                                  color: BrainWorldColors.iconsColors,
                                   semanticsLabel: 'A red up arrow'),
                             ),
                           ],

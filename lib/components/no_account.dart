@@ -1,5 +1,6 @@
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class NoAccount extends StatelessWidget {
@@ -16,8 +17,8 @@ class NoAccount extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(title,
-              style: TextStyle(
-                  color: myhomepageBlue,
+              style: const TextStyle(
+                  color: BrainWorldColors.myhomepageBlue,
                   fontSize: 12,
                   fontWeight: FontWeight.bold)),
          const SizedBox(

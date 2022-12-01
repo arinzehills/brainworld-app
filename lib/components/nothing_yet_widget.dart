@@ -2,6 +2,7 @@ import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/upload/add_to_local_library.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -39,13 +40,14 @@ class NothingYetWidget extends StatelessWidget {
                     child: Column(
                       children: [
                         const ImageIcon(
-                           AssetImage('assets/images/uploads_blue.png'),
+                          AssetImage('assets/images/uploads_blue.png'),
                           size: 60,
                           color: Colors.white,
                         ),
                         Text(
                           pageTitle,
-                          style: const TextStyle(color: Colors.white, fontSize: 15),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 15),
                         ),
                       ],
                     ),
@@ -67,7 +69,7 @@ class NothingYetWidget extends StatelessWidget {
               Text(
                 pageHeader,
                 style: TextStyle(
-                    color: myhomepageBlue.withOpacity(0.7),
+                    color: BrainWorldColors.myhomepageBlue.withOpacity(0.7),
                     fontSize: 32,
                     fontWeight: FontWeight.w500),
               ),

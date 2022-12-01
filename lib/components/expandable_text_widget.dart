@@ -1,4 +1,4 @@
-import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
@@ -41,15 +41,15 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
                     children: [
                       Text(
                         flag ? 'Show more' : 'Show less',
-                        style: TextStyle(
-                            color: myhomepageBlue, fontWeight: FontWeight.w500),
+                        style: const TextStyle(
+                            color: BrainWorldColors.myhomepageBlue, fontWeight: FontWeight.w500),
                       ),
                       Icon(
                           flag
                               ? IconlyLight.arrow_down_2
                               : IconlyLight.arrow_up_2,
                           size: 18,
-                          color: myhomepageBlue)
+                          color: BrainWorldColors.myhomepageBlue)
                     ],
                   ),
                 )

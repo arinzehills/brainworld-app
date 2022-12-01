@@ -77,7 +77,7 @@ class AtmCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    user(context).full_name,
+                    user(context).fullName,
                     style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

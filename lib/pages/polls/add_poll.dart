@@ -1,5 +1,4 @@
 import 'package:brainworld/components/normal_curve_container.dart';
-import 'package:brainworld/components/nothing_yet_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -17,10 +16,10 @@ class _AddPollState extends State<AddPoll> {
       body: Column(
         children: [
           NormalCurveContainer(
-              widget: Padding(
-                padding: const EdgeInsets.all(48.0),
-                child: Center(
-                    child: Text(
+              widget: const Padding(
+                padding:   EdgeInsets.all(48.0),
+                child:  Center(
+                    child:  Text(
                   'Add a poll ',
                   style: TextStyle(color: Colors.white),
                 )),

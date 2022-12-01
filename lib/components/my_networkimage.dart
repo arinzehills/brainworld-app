@@ -1,5 +1,5 @@
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/fullresourcepage/full_photo_page.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
@@ -46,11 +46,11 @@ class _MyNetworkImageState extends State<MyNetworkImage> {
                   color: Colors.white,
                   width: 75,
                   height: 75,
-                  child: ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(50)),
+                  child: const ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
                       child: Icon(
                         IconlyBold.profile,
-                        color: myhomepageBlue,
+                        color: BrainWorldColors.myhomepageBlue,
                       )),
                 );
               },
@@ -63,7 +63,7 @@ class _MyNetworkImageState extends State<MyNetworkImage> {
                   height: 90,
                   child: Center(
                     child: CircularProgressIndicator(
-                      color: myhomepageBlue,
+                      color: BrainWorldColors.myhomepageBlue,
                       value: loadingProgress.expectedTotalBytes != null
                           ? loadingProgress.cumulativeBytesLoaded /
                               loadingProgress.expectedTotalBytes!

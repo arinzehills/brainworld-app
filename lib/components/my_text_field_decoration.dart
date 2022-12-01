@@ -1,4 +1,4 @@
-import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
@@ -13,7 +13,7 @@ class MyTextFieldDecoration {
       suffixIcon: clickIcon != null
           ? IconButton(
               icon: Icon(icon ?? IconlyBold.paper_upload),
-              color: myhomepageBlue,
+              color: BrainWorldColors.myhomepageBlue,
               onPressed: clickIcon)
           : const SizedBox(),
       hintText: hintText ?? 'hintTExt',
@@ -21,7 +21,7 @@ class MyTextFieldDecoration {
         fontSize: 14,
       ),
       border: OutlineInputBorder(
-        borderSide: BorderSide(color: myhomepageLightBlue, width: 0.1),
+        borderSide: const BorderSide(color: BrainWorldColors.myhomepageLightBlue, width: 0.1),
         borderRadius: BorderRadius.circular(10.0),
       ),
     );

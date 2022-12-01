@@ -56,7 +56,7 @@ class _LibraryState extends State<Library> {
                 onClick: () async {
                   var userModel = IsNewUserModel(
                       id: user.id,
-                      username: user.full_name,
+                      username: user.fullName,
                       newlyRegistered: true,
                       bookLib: userInfoData.classRoom == false ? false : true,
                       library: false,

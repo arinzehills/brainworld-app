@@ -193,7 +193,7 @@ class _UserLibraryState extends State<UserLibrary> {
         direction: Axis.vertical,
         children: [
           Text(
-            user.full_name,
+            user.fullName,
             style: TextStyle(
                 color: myhomepageBlue,
                 fontSize: 23,

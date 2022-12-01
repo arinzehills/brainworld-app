@@ -1,14 +1,12 @@
-import 'package:brainworld/models/user.dart';
 import 'package:brainworld/services/adminservice/admin_course_service.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class FutureDropDown extends StatefulWidget {
-  String selectedValue;
+  final String selectedValue;
   // final StringCallback callback;
-  void Function(String?)? onChanged;
+ final void Function(String?)? onChanged;
 
-  FutureDropDown({Key? key, required this.selectedValue, this.onChanged})
+ const FutureDropDown({Key? key, required this.selectedValue, this.onChanged})
       : super(key: key);
 
   @override
@@ -22,7 +20,7 @@ class _FutureDropDownState extends State<FutureDropDown> {
         future: AdminCourseService().getAllPosts(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return Text('Loading...');
+            return const Text('Loading...');
           } else {
             List<DropdownMenuItem<String>> categoriesItems = [
               DropdownMenuItem(
@@ -42,9 +40,9 @@ class _FutureDropDownState extends State<FutureDropDown> {
               }
             }
             return Padding(
-              padding: EdgeInsets.all(0.0).copyWith(top: 2, bottom: 2),
+              padding: const EdgeInsets.all(0.0).copyWith(top: 2, bottom: 2),
               child: Container(
-                padding: EdgeInsets.only(left: 25, right: 25),
+                padding: const EdgeInsets.only(left: 25, right: 25),
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 1),
                     borderRadius: BorderRadius.circular(25)),
@@ -58,10 +56,10 @@ class _FutureDropDownState extends State<FutureDropDown> {
                   elevation: 16,
                   isExpanded: true,
                   style: const TextStyle(color: Colors.grey),
-                  underline: SizedBox(),
+                  underline: const SizedBox(),
                   onChanged: widget.onChanged,
                   value: widget.selectedValue,
-                  hint: Text('My courses'),
+                  hint: const Text('My courses'),
                 ),
               ),
             );

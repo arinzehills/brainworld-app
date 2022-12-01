@@ -51,9 +51,9 @@ class _NetworkPlayerWidgetState extends State<NetworkPlayerWidget> {
             controller: controller,
           ),
           widget.showVideoName == false
-              ? SizedBox()
+              ? const SizedBox()
               : Container(
-                  padding: EdgeInsets.only(left: 15, right: 15),
+                  padding: const EdgeInsets.only(left: 15, right: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -62,7 +62,7 @@ class _NetworkPlayerWidgetState extends State<NetworkPlayerWidget> {
                         child: Text(
                           widget.videoName,
                           textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.w600),
+                          style: const TextStyle(fontWeight: FontWeight.w600),
                         ),
                       ),
                       if (controller != null && controller.value.isInitialized)

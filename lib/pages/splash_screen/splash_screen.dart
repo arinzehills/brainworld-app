@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
-
 import 'package:brainworld/components/bottomnavigation.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/auth_screens/login.dart';
@@ -8,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
-  const   SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -40,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   _completeSplash() async {
     final _user = Provider.of<User?>(context);
     if (_user == null) {
-      return Login();
+      return const  Login();
     } else {
       return const BottomNavigation();
     }

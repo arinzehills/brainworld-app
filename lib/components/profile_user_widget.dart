@@ -3,6 +3,7 @@ import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/services/auth_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class ProfileUserWidget extends StatefulWidget {
@@ -140,7 +141,7 @@ class _ProfileUserWidgetState extends State<ProfileUserWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                widget.comment ?? user.full_name,
+                widget.comment ?? user.fullName,
                 overflow: TextOverflow.fade,
                 maxLines: 2,
                 style: TextStyle(
@@ -152,10 +153,12 @@ class _ProfileUserWidgetState extends State<ProfileUserWidget> {
               SizedBox(height: widget.withGapBwText ? 10 : null),
               Text(
                 (widget.isUserSubtitle
-                    ? '${user.full_name}, ${widget.subTitle}'
+                    ? '${user.fullName}, ${widget.subTitle}'
                     : widget.subTitle ?? 'February 21, 2022'),
                 style: TextStyle(
-                    color: widget.subTitleColor ?? textGreyColor, fontSize: 13),
+                    color:
+                        widget.subTitleColor ?? BrainWorldColors.textGreyColor,
+                    fontSize: 13),
               ),
             ],
           ),

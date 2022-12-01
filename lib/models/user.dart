@@ -2,7 +2,7 @@ class User {
   // final String role;
 
   final String id;
-  final String full_name;
+  final String fullName;
   final String email;
   final String? phone;
   final String? profilePicture;
@@ -11,7 +11,7 @@ class User {
 
   User({
     required this.id,
-    required this.full_name,
+    required this.fullName,
     required this.email,
     this.phone,
     this.profilePicture,
@@ -20,7 +20,7 @@ class User {
   });
   static User fromJson(Map<String, dynamic> json) => User(
         id: json['_id'],
-        full_name: json['full_name'],
+        fullName: json['full_name'],
         profilePicture: json['profilePicture'],
         email: json['email'],
         phone: json['phone'],
@@ -28,7 +28,7 @@ class User {
       );
   Map<String, Object?> toJson() => {
         // 'id': id,
-        'full_name': full_name,
+        'full_name': fullName,
         'email': email,
         'profilePicture': profilePicture,
         'password': password,

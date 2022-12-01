@@ -9,6 +9,7 @@ import 'package:brainworld/pages/chats/models/books_model.dart';
 import 'package:brainworld/pages/chats/models/cart_model.dart';
 import 'package:brainworld/pages/fullresourcepage/full_pdf_page.dart';
 import 'package:brainworld/services/cart_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:brainworld/utils/pdf_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -48,8 +49,9 @@ class _HorizontalListViewState extends State<HorizontalListView> {
           stream: null,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Center(
-                child: CircularProgressIndicator(color: myhomepageBlue),
+              return const Center(
+                child: CircularProgressIndicator(
+                    color: BrainWorldColors.myhomepageBlue),
               );
             } else {
               return
@@ -112,11 +114,12 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     loading[index] == true
-                                        ? SizedBox(
+                                        ? const SizedBox(
                                             height: 90,
                                             width: 90,
                                             child: CircularProgressIndicator(
-                                              color: myhomepageBlue,
+                                              color: BrainWorldColors
+                                                  .myhomepageBlue,
                                             ),
                                           )
                                         : MyCachedNetworkImage(
@@ -156,9 +159,10 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                                                     cartController
                                                         .addCourse(cartModel);
                                                   },
-                                                  child: Icon(
+                                                  child: const Icon(
                                                     Icons.add_shopping_cart,
-                                                    color: myhomepageBlue,
+                                                    color: BrainWorldColors
+                                                        .myhomepageBlue,
                                                     size: 22,
                                                   ),
                                                 )

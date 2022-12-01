@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class BuildMessageList extends StatefulWidget {
   final List<UsersMessage> messages;
- final int itemCount;
- final  String sendersid;
- const BuildMessageList(
+  final int itemCount;
+  final String sendersid;
+  const BuildMessageList(
       {Key? key,
       required this.messages,
       required this.sendersid,
@@ -17,8 +17,8 @@ class BuildMessageList extends StatefulWidget {
 }
 
 class _BuildMessageListState extends State<BuildMessageList> {
- final int _limit = 20;
-  final int _limitIncrement = 20;
+  late int _limit = 20;
+  late int _limitIncrement = 20;
   Map<int, bool> showTime = {};
 
   final ScrollController listScrollController = ScrollController();
@@ -65,7 +65,8 @@ class _BuildMessageListState extends State<BuildMessageList> {
                 : showTime[index] = true
           }),
       child: Container(
-          padding: const EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
+          padding:
+              const EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
           child: (isUser ? buildSender(index) : buildReciever(index))),
     );
   }

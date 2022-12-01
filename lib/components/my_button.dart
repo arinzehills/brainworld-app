@@ -12,9 +12,9 @@ class MyButton extends StatelessWidget {
   final VoidCallback pressed;
  final  Widget? child;
 
-  double? fontSize;
+ final double? fontSize;
 
-  MyButton({
+ const MyButton({Key? key, 
     required this.placeHolder,
     this.child,
     this.isOval = false,
@@ -26,7 +26,7 @@ class MyButton extends StatelessWidget {
     this.loadingState = false,
     this.gradientColors,
     required this.pressed,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

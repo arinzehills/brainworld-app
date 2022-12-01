@@ -1,8 +1,9 @@
-import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class RadiantGradientMask extends StatelessWidget {
-  const RadiantGradientMask({Key? key, required this.child, this.isGrey}) : super(key: key);
+  const RadiantGradientMask({Key? key, required this.child, this.isGrey})
+      : super(key: key);
   final Widget child;
   final bool? isGrey;
 
@@ -15,7 +16,7 @@ class RadiantGradientMask extends StatelessWidget {
           // center: Alignment.centerRight,
           // radius: 1,
           colors: isGrey == true
-              ? [iconsColor, iconsColor]
+              ? [BrainWorldColors.iconsColors, BrainWorldColors.iconsColors]
               :
               // myblueGradientTransparent,
               <Color>[
