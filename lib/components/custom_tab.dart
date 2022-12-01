@@ -1,4 +1,5 @@
 import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -56,7 +57,7 @@ class _CustomTabState extends State<CustomTab> {
                               style: GoogleFonts.laila(
                                   color: currentIndex == index
                                       ? Colors.white
-                                      : myhomepageBlue),
+                                      : BrainWorldColors.myhomepageBlue),
                             ),
                           ),
                         ),

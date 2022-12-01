@@ -8,6 +8,7 @@ import 'package:brainworld/pages/homepage.dart';
 import 'package:brainworld/pages/laboratory/laboratory.dart';
 import 'package:brainworld/pages/library/library.dart';
 import 'package:brainworld/pages/user/profile.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:socket_io_client/socket_io_client.dart';
@@ -86,8 +87,8 @@ class _BottomNavigationState extends State<BottomNavigation>
               notchMargin: 5,
               child: Container(
                   height: 60,
-                  decoration:
-                      BoxDecoration(color: myhomepageBlue.withOpacity(0.07)),
+                  decoration: BoxDecoration(
+                      color: BrainWorldColors.myhomepageBlue.withOpacity(0.07)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -181,7 +182,7 @@ class _BottomNavigationState extends State<BottomNavigation>
             child: SvgPicture.asset(svgImage ?? 'assets/svg/homeicon.svg',
                 height: 20,
                 fit: BoxFit.fill,
-                color: iconsColor,
+                color: BrainWorldColors.iconsColors,
                 semanticsLabel: 'A red up arrow'),
           ),
           _selectedIndex == number
@@ -189,8 +190,9 @@ class _BottomNavigationState extends State<BottomNavigation>
                   padding: const EdgeInsets.only(top: 3.0),
                   child: Text(name,
                       style: TextStyle(
-                        color:
-                            _selectedIndex == 0 ? myhomepageBlue : Colors.grey,
+                        color: _selectedIndex == 0
+                            ? BrainWorldColors.myhomepageBlue
+                            : Colors.grey,
                       )),
                 )
               : const SizedBox()

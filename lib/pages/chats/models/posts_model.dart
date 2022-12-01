@@ -11,8 +11,8 @@ String chatModelToJson(PostsModel data) => json.encode(data.toJson());
 
 class PostsModel {
   PostsModel({
-    this.post_id,
-    this.user_id,
+    this.postId,
+    this.userId,
     this.price,
     this.image,
     this.imageUrl,
@@ -30,8 +30,8 @@ class PostsModel {
     this.videoUrls,
   });
 
-  String? user_id;
-  String? post_id;
+  String? userId;
+  String? postId;
   String? title;
   String? price;
   String? caption;
@@ -50,8 +50,8 @@ class PostsModel {
   final List? videoUrls;
 
   factory PostsModel.fromJson(Map<String, dynamic> json) => PostsModel(
-        user_id: json["user_id"],
-        post_id: json["_id"],
+        userId: json["user_id"],
+        postId: json["_id"],
         price: json["price"],
         // image: json["image"],
         imageUrl: json["image"],
@@ -74,8 +74,8 @@ class PostsModel {
 
   Map<String, dynamic> toJson() => {
         "title": title,
-        "user_id": user_id,
-        "post_id": post_id,
+        "user_id": userId,
+        "post_id": postId,
         "images": image,
         "imageUrl": imageUrl,
         "price": price,

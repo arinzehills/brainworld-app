@@ -9,10 +9,10 @@ import 'package:socket_io_client/socket_io_client.dart';
 
 class CommentFieldBox extends StatefulWidget {
   final PostsModel post;
- final Socket socket;
+  final Socket socket;
 
- final bool isCommentDetail;
- const CommentFieldBox(
+  final bool isCommentDetail;
+  const CommentFieldBox(
       {Key? key,
       required this.post,
       required this.socket,
@@ -34,7 +34,9 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
 
     return Container(
       padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-      color: widget.isCommentDetail ? const Color.fromARGB(255, 233, 238, 251) : null,
+      color: widget.isCommentDetail
+          ? const Color.fromARGB(255, 233, 238, 251)
+          : null,
       child: Row(
         children: [
           ChatIconGradient(
@@ -68,7 +70,7 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
               pressed: _controller.text == ''
                   ? null
                   : () => sendComment(
-                        widget.post.post_id,
+                        widget.post.postId,
                         user.id,
                         comment,
                       ),

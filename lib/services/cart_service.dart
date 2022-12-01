@@ -17,7 +17,7 @@ class CartService extends GetxController {
           snackPosition: SnackPosition.TOP,
           backgroundColor: myhomepageBlue.withOpacity(0.5),
           colorText: Colors.white,
-          duration: const  Duration(seconds: 1));
+          duration: const Duration(seconds: 1));
     } else {
       _cartItems[cartItem] = 1;
 
@@ -27,7 +27,7 @@ class CartService extends GetxController {
           snackPosition: SnackPosition.TOP,
           backgroundColor: myhomepageBlue.withOpacity(0.5),
           colorText: Colors.white,
-          duration:const Duration(milliseconds: 800));
+          duration: const Duration(milliseconds: 800));
     }
   }
 
@@ -40,7 +40,7 @@ class CartService extends GetxController {
           snackPosition: SnackPosition.TOP,
           backgroundColor: myhomepageBlue.withOpacity(0.5),
           colorText: Colors.white,
-          duration:const Duration(milliseconds: 900));
+          duration: const Duration(milliseconds: 900));
     }
   }
 
@@ -62,12 +62,12 @@ class CartService extends GetxController {
     for (var i = 0; i < cartItems.length; i++) {
       var order_id = generateRandomString(3) + DateTime.now().toIso8601String();
       OrderInfo order = OrderInfo(
-          order_id: order_id,
-          user_id: cartItems[i].user_id,
-          current_user_id: user(context).id,
-          post_id: cartItems[i].post_id!,
+          orderId: order_id,
+          userId: cartItems[i].userId,
+          currentUserId: user(context).id,
+          postId: cartItems[i].postId!,
           orderType: cartItems[i].postType,
-          current_user_name: user(context).full_name,
+          currentUsserName: user(context).full_name,
           email: user(context).email,
           title: cartItems[i].title,
           price: cartItems[i].price);

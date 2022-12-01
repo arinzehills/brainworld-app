@@ -7,6 +7,7 @@ import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
 import 'package:brainworld/pages/homepage/components/reactionicon.dart';
 import 'package:brainworld/services/cart_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -62,7 +63,7 @@ class _CoursesTileState extends State<CoursesTile> {
               Row(
                 children: [
                   ProfileUserWidget(
-                    userId: widget.post.user_id!,
+                    userId: widget.post.userId!,
                     // comment: 'Brain World',
                     containerWidthRatio: 0.79,
                     imageUrl: widget.post.imageUrl,
@@ -92,7 +93,8 @@ class _CoursesTileState extends State<CoursesTile> {
                             : Fluttertoast.showToast(
                                 gravity: ToastGravity.TOP,
                                 msg: "Not a course",
-                                backgroundColor: myhomepageBlue,
+                                backgroundColor:
+                                    BrainWorldColors.myhomepageBlue,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
                       },
@@ -135,7 +137,7 @@ class _CoursesTileState extends State<CoursesTile> {
             child: Text(
               widget.post.caption ?? '',
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: textGreyColor, fontSize: 13),
+              style: const TextStyle(color: BrainWorldColors.textGreyColor, fontSize: 13),
             ),
           ),
           reactionRow(user, commentlength),
@@ -163,13 +165,13 @@ class _CoursesTileState extends State<CoursesTile> {
                   onPressed: null,
                   child: Text(
                     'View all $commentlength comments',
-                    style: TextStyle(color: myhomepageBlue),
+                    style: const TextStyle(color: BrainWorldColors.myhomepageBlue),
                   ),
                 )
               : const SizedBox(),
           commentlength == 0
               ? const Center(
-                  child:  Text('No Comment for this post'),
+                  child: Text('No Comment for this post'),
                 )
               : ProfileUserWidget(
                   userId: widget.post.comments!.last['user_id'],
@@ -188,12 +190,12 @@ class _CoursesTileState extends State<CoursesTile> {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: const BoxDecoration(
-          borderRadius:  BorderRadius.only(
+          borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(16),
-              bottomRight:  Radius.circular(16)),
-          gradient:  LinearGradient(colors: [
+              bottomRight: Radius.circular(16)),
+          gradient: LinearGradient(colors: [
             Color.fromARGB(35, 34, 86, 255),
-             Color.fromARGB(65, 20, 118, 255)
+            Color.fromARGB(65, 20, 118, 255)
           ], begin: Alignment.topCenter)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -203,7 +205,7 @@ class _CoursesTileState extends State<CoursesTile> {
               ReactionIcon(
                 iconUrl: 'assets/svg/loveicon.svg',
                 onClick: () async {
-                  likePost(widget.post.post_id, user.id);
+                  likePost(widget.post.postId, user.id);
                 },
               ),
               Text(widget.post.likes!.length.toString()),

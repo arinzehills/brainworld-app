@@ -79,7 +79,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
     widget.socket.emit('postReaction', {
       "postReaction": {
         "reactionType": 'none',
-        "user_id": widget.course.user_id,
+        "user_id": widget.course.userId,
       }
     });
     widget.socket.on('getAllPost', (allPosts) {
@@ -181,7 +181,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                               Row(
                                 children: [
                                   ProfileUserWidget(
-                                    userId: widget.course.user_id!,
+                                    userId: widget.course.userId!,
                                     comment: toBeginningOfSentenceCase(
                                             widget.course.title) ??
                                         '',
@@ -203,7 +203,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                                               child: ChatDetail(
                                                   sendersid: user.id,
                                                   clickeduserid:
-                                                      widget.course.user_id!,
+                                                      widget.course.userId!,
                                                   name: 'widget.name'),
                                             ),
                                           ))
@@ -238,7 +238,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                                 () => Row(
                                   children: [
                                     ProfileUserWidget(
-                                      userId: widget.course.user_id!,
+                                      userId: widget.course.userId!,
                                       isUtilityType: true,
                                       isUserSubtitle: true,
                                       comment: 'Course Instructor',
@@ -353,7 +353,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                 text: widget.course.likes!.length.toString(),
                 onClick: () async {
                   reactOnPost(
-                      widget.course.post_id, widget.course.user_id, 'like');
+                      widget.course.postId, widget.course.userId, 'like');
                 },
               ),
               ReactionIcon(
@@ -382,7 +382,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                           ? 'Subscribed'
                           : 'Subscribe',
                   pressed: () {
-                    reactOnPost(widget.course.post_id, widget.course.user_id,
+                    reactOnPost(widget.course.postId, widget.course.userId,
                         'subscribe');
                   }),
               SizedBox(

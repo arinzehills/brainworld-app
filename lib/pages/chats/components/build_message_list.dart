@@ -17,8 +17,8 @@ class BuildMessageList extends StatefulWidget {
 }
 
 class _BuildMessageListState extends State<BuildMessageList> {
-  int _limit = 20;
-  int _limitIncrement = 20;
+ final int _limit = 20;
+  final int _limitIncrement = 20;
   Map<int, bool> showTime = {};
 
   final ScrollController listScrollController = ScrollController();

@@ -61,7 +61,7 @@ class VideoListWidget extends StatelessWidget {
                   ),
                 ),
                 ProfileUserWidget(
-                  userId: course.user_id!,
+                  userId: course.userId!,
                   // isUtilityType: true,
                   tileGap: 0,
                   imageHeight: 30,

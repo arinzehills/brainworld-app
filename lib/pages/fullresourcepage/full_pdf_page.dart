@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:brainworld/components/myappbar.dart';
-import 'package:brainworld/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 

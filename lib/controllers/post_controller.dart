@@ -1,4 +1,3 @@
-import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
 import 'package:get/get.dart';
 

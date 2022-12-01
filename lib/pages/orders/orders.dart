@@ -159,7 +159,7 @@ class _OrdersState extends State<Orders> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             ProfileUserWidget(
-              userId: order.user_id,
+              userId: order.userId,
               // isUtilityType: true,
               comment: order.title,
               subTitle: order.orderOn,

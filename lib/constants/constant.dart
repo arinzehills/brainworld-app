@@ -119,7 +119,7 @@ void seeDetailsModalBottomSheet(
     required cartController}) {
   PostsModel course = postsController!.allPost[courseIndex!];
   CartModel cartModel = CartModel.fromJson(course.toJson());
-  print(cartModel.user_id);
+  print(cartModel.userId);
   showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -136,12 +136,15 @@ void seeDetailsModalBottomSheet(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Padding(
-                        padding:  EdgeInsets.only(left: 13.0),
+                        padding: EdgeInsets.only(left: 13.0),
                         child: GradientText('Options',
-                            style:  TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 20),
                             gradient: LinearGradient(
-                              colors: [BrainWorldColors.myhomepageBlue, BrainWorldColors.myhomepageLightBlue],
+                              colors: [
+                                BrainWorldColors.myhomepageBlue,
+                                BrainWorldColors.myhomepageLightBlue
+                              ],
                             ))),
                     RadiantGradientMask(
                       child: IconButton(

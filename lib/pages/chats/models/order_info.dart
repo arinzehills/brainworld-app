@@ -3,11 +3,11 @@ import 'package:brainworld/components/utilities_widgets/mydate_formatter.dart';
 class OrderInfo {
   // final String role;
 
-  final String user_id; //owner of course
-  final String order_id;
-  final String post_id;
-  final String current_user_id;
-  final String current_user_name;
+  final String userId; //owner of course
+  final String orderId;
+  final String postId;
+  final String currentUserId;
+  final String currentUsserName;
   final String email;
   final String? phone;
   final String? address;
@@ -19,11 +19,11 @@ class OrderInfo {
   // final String? profilePhoto;
 
   OrderInfo({
-    required this.user_id,
-    required this.order_id,
-    required this.post_id,
-    required this.current_user_id,
-    required this.current_user_name,
+    required this.userId,
+    required this.orderId,
+    required this.postId,
+    required this.currentUserId,
+    required this.currentUsserName,
     required this.email,
     this.address,
     this.phone,
@@ -34,11 +34,11 @@ class OrderInfo {
     // this.profilePhoto
   });
   static OrderInfo fromJson(Map<String, dynamic> json) => OrderInfo(
-        order_id: json['order_id'],
-        user_id: json['user_id'],
-        current_user_id: json['current_user_id'],
-        post_id: json['post_id'],
-        current_user_name: json['current_user_name'],
+        orderId: json['order_id'],
+        userId: json['user_id'],
+        currentUserId: json['current_user_id'],
+        postId: json['post_id'],
+        currentUsserName: json['current_user_name'],
         email: json['email'],
         address: json['address'],
         // profilePhoto: json['profilePhotoUrl'],
@@ -53,12 +53,12 @@ class OrderInfo {
       );
 
   Map<String, dynamic> toJson() => {
-        'user_id': user_id,
-        'order_id': order_id,
-        'current_user_id': current_user_id,
-        'post_id': post_id,
+        'user_id': userId,
+        'order_id': orderId,
+        'current_user_id': currentUserId,
+        'post_id': postId,
         'orderType': orderType,
-        'current_user_name': current_user_name,
+        'current_user_name': currentUsserName,
         'email': email,
         'phone': phone,
         'address': address,

@@ -1,11 +1,12 @@
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/services/cart_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class AtmCard extends StatelessWidget {
-  final cartTotal;
+  final String? cartTotal;
 
-  AtmCard({
+  const AtmCard({
     Key? key,
     required this.size,
     this.cartTotal,
@@ -25,16 +26,19 @@ class AtmCard extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(30)),
             boxShadow: [
               BoxShadow(
-                color: myhomepageLightBlue.withOpacity(0.9),
+                color: BrainWorldColors.myhomepageLightBlue.withOpacity(0.9),
                 // spreadRadius: 5,
                 blurRadius: 10,
                 offset: const Offset(0, 5), // changes position of shadow
               ),
             ],
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [myhomepageBlue, myhomepageLightBlue])),
+                colors: [
+                  BrainWorldColors.myhomepageBlue,
+                  BrainWorldColors.myhomepageLightBlue
+                ])),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -44,7 +48,7 @@ class AtmCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const ImageIcon(
-                     AssetImage('assets/images/visa.png'),
+                    AssetImage('assets/images/visa.png'),
                     size: 60,
                     color: Colors.white,
                   ),
@@ -59,7 +63,7 @@ class AtmCard extends StatelessWidget {
               ),
             ),
             const Center(
-              child:  Text(
+              child: Text(
                 '1234 5678 910 1112',
                 style: TextStyle(
                     color: Colors.white,
@@ -81,7 +85,7 @@ class AtmCard extends StatelessWidget {
                   ),
                   const Text(
                     '11/22',
-                    style:  TextStyle(
+                    style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 15),

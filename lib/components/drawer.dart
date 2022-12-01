@@ -10,6 +10,7 @@ import 'package:brainworld/pages/orders/orders.dart';
 import 'package:brainworld/pages/polls/polls.dart';
 import 'package:brainworld/pages/purchased/purchased.dart';
 import 'package:brainworld/services/auth_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
@@ -54,7 +55,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     icon: const Icon(
                       IconlyBold.close_square,
                     ),
-                    color: myhomepageBlue,
+                    color: BrainWorldColors.myhomepageBlue,
                     onPressed: () {
                       Navigator.of(context).pop();
                     }),
@@ -68,8 +69,8 @@ class _MyDrawerState extends State<MyDrawer> {
                           user.full_name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: myhomepageBlue,
+                          style: const TextStyle(
+                            color: BrainWorldColors.myhomepageBlue,
                             fontSize: 25,
                           ),
                         ),
@@ -122,9 +123,9 @@ class _MyDrawerState extends State<MyDrawer> {
               pressed: () async {
                 await AuthService().logout();
                 var response = await AuthService().logout();
-                MyNavigate.navigatepushuntil(Login(), context);
+                MyNavigate.navigatepushuntil(const Login(), context);
                 if (response['success'] == true) {
-                  snackBar(Login(), context, 'Logged out successfully');
+                  snackBar(const Login(), context, 'Logged out successfully');
                 }
               })
         ]),
@@ -137,12 +138,12 @@ class _MyDrawerState extends State<MyDrawer> {
       padding: const EdgeInsets.only(top: 0.6, bottom: 0.9),
       child: ListTile(
         visualDensity: const VisualDensity(vertical: 1),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 0.5, color: myhomepageBlue),
+        shape: const RoundedRectangleBorder(
+          side: BorderSide(width: 0.5, color: BrainWorldColors.myhomepageBlue),
         ),
         // selected: _selectedIndex == index,
         // selectedColor: myhomepageBlue,
-        tileColor: _selectedIndex == index ? myhomepageBlue : null,
+        tileColor: _selectedIndex == index ? BrainWorldColors.myhomepageBlue : null,
         title: Center(
           child: GradientText(
             title ?? 'Library ',
@@ -152,7 +153,7 @@ class _MyDrawerState extends State<MyDrawer> {
               end: Alignment.bottomRight,
               colors: _selectedIndex == index
                   ? [Colors.white, Colors.white]
-                  : [myhomepageBlue, myhomepageLightBlue],
+                  : [BrainWorldColors.myhomepageBlue, BrainWorldColors.myhomepageLightBlue],
             ),
           ),
         ),

@@ -238,7 +238,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             ProfileUserWidget(
-              userId: cartItems[index].user_id,
+              userId: cartItems[index].userId,
               // isUtilityType: true,
               isCircular: false,
               imageUrl: cartItems[index].imageUrl,

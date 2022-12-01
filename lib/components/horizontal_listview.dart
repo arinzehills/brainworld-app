@@ -58,8 +58,8 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                   //   )
                   // :
                   Padding(
-                padding:
-                    const EdgeInsets.only(top: 0, left: 10, right: 10, bottom: 10),
+                padding: const EdgeInsets.only(
+                    top: 0, left: 10, right: 10, bottom: 10),
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
@@ -69,8 +69,8 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                       String filename = widget.list[index].filename!;
                       BookModel book = widget.list[index];
                       CartModel cartModel = CartModel(
-                          user_id: book.usersId!,
-                          post_id: book.id,
+                          userId: book.usersId!,
+                          postId: book.id,
                           title: book.title,
                           price: book.price,
                           imageUrl: book.bookCoverImageURL,
@@ -97,8 +97,8 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                               height: 100,
                               width: widget.size.width * 0.35,
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
@@ -163,13 +163,16 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                                                   ),
                                                 )
                                               : Container(
-                                                  padding: const EdgeInsets.all(1.6),
-                                                  decoration: const BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                               Radius.circular(
-                                                                  50)),
-                                                      color: Colors.red),
+                                                  padding:
+                                                      const EdgeInsets.all(1.6),
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          50)),
+                                                          color: Colors.red),
                                                   child: const Icon(
                                                     IconlyBold.delete,
                                                     color: Colors.white,

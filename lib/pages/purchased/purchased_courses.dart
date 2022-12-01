@@ -59,7 +59,7 @@ class _PurchasedCoursesState extends State<PurchasedCourses> {
                     Align(
                       alignment: Alignment(-1, 0),
                       child: ProfileUserWidget(
-                        userId: course.user_id!,
+                        userId: course.userId!,
                         isUserSubtitle: true,
                         comment: course.title,
                         subTitle: course.postedOn,

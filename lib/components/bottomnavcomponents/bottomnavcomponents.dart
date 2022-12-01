@@ -1,9 +1,9 @@
 import 'dart:ui';
 import 'package:animations/animations.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/books_library/add_to_books.dart';
 import 'package:brainworld/pages/upload/add_post.dart';
 import 'package:brainworld/pages/upload/course/upload_course_info.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -93,7 +93,7 @@ Widget iconAndCourse({title, icon, double? iconHeight, VoidCallback? onclick}) {
               SvgPicture.asset('assets/svg/$icon',
                   height: iconHeight ?? 21,
                   // fit: BoxFit.fill,
-                  color: myhomepageBlue,
+                  color: BrainWorldColors.myhomepageBlue,
                   semanticsLabel: 'A red up arrow'),
               Text(
                 title ?? '',
