@@ -14,7 +14,7 @@ import 'package:socket_io_client/socket_io_client.dart';
 import '../chat_detail.dart';
 
 class ChatListWidget extends StatefulWidget {
-  final String userid;
+  final String userId;
   final String clickedEmail;
   final Socket socket;
   final String name;
@@ -22,8 +22,9 @@ class ChatListWidget extends StatefulWidget {
   final String? imageUrl;
   final String? time;
   final bool? isMessageRead;
- const ChatListWidget(Key? key,
-      {required this.userid,
+  const ChatListWidget(
+      {Key? key,
+      required this.userId,
       required this.name,
       required this.clickedEmail,
       required this.socket,
@@ -74,7 +75,7 @@ class _ChatListWidgetState extends State<ChatListWidget> {
                 create: (context) => ChatController(),
                 child: ChatDetail(
                     sendersid: userData['_id'],
-                    clickeduserid: widget.userid,
+                    clickeduserid: widget.userId,
                     senderEmail: userData['email'],
                     clickedEmail: widget.clickedEmail,
                     name: widget.name),
@@ -115,7 +116,7 @@ class _ChatListWidgetState extends State<ChatListWidget> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               ProfileUserWidget(
-                userId: widget.userid,
+                userId: widget.userId,
                 // isUtilityType: true,
                 containerWidthRatio: 0.73,
                 withGapBwText: true,

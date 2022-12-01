@@ -1,17 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
 import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/my_networkimage.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
-import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
-import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/fullresourcepage/full_photo_page.dart';
 import 'package:brainworld/pages/user/profile.dart';
 import 'package:brainworld/services/auth_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -63,7 +60,7 @@ class _EditProfileState extends State<EditProfile> {
     }
 
     return userData == null
-        ? Loading()
+        ? const Loading()
         : StreamBuilder(
             stream: null,
             builder: (context, snapshot) {
@@ -92,7 +89,7 @@ class _EditProfileState extends State<EditProfile> {
                 // UserWidget(title: '******',leading: Icons.password),
               ];
               return Scaffold(
-                drawer: MyDrawer(),
+                drawer: const MyDrawer(),
                 body: SafeArea(
                   child: SingleChildScrollView(
                     child: Stack(children: [
@@ -110,7 +107,7 @@ class _EditProfileState extends State<EditProfile> {
                                 child: Center(
                                   child: Text(
                                     userData['full_name'],
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 30),
                                   ),
                                 ),
@@ -121,8 +118,8 @@ class _EditProfileState extends State<EditProfile> {
                               child: ListView.separated(
                                 itemCount: title.length,
                                 shrinkWrap: true,
-                                padding: EdgeInsets.only(top: 16),
-                                physics: NeverScrollableScrollPhysics(),
+                                padding: const EdgeInsets.only(top: 16),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, index) {
                                   return ProfileList(
                                     name: title[index].title,
@@ -136,7 +133,7 @@ class _EditProfileState extends State<EditProfile> {
                                         Container(
                                   height: 2,
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.vertical(
+                                      borderRadius: const BorderRadius.vertical(
                                           bottom: Radius.circular(50)),
                                       gradient: LinearGradient(
                                           begin: Alignment.topLeft,
@@ -147,15 +144,15 @@ class _EditProfileState extends State<EditProfile> {
                             ),
                             Container(
                               height: 2,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   borderRadius: BorderRadius.vertical(
                                       bottom: Radius.circular(50)),
                                   gradient: LinearGradient(
                                       begin: Alignment.topLeft,
                                       end: Alignment.bottomRight,
                                       colors: [
-                                        myhomepageOrange,
-                                        myhomepageLightOrange
+                                        BrainWorldColors.myhomepageOrange,
+                                        BrainWorldColors.myhomepageLightOrange
                                       ])),
                             ),
                           ],
@@ -195,10 +192,10 @@ class _EditProfileState extends State<EditProfile> {
                               maxRadius: 15,
                               child: IconButton(
                                   onPressed: selectImage,
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.camera_alt,
                                     size: 17,
-                                    color: myhomepageBlue,
+                                    color: BrainWorldColors.myhomepageBlue,
                                   ))),
                         ),
                       )),
@@ -228,7 +225,7 @@ class _EditProfileState extends State<EditProfile> {
     if (result == null) return;
     final path = result.files.single.path!;
 
-    setState(() => avatarImageFile = new File(path));
+    setState(() => avatarImageFile = File(path));
     uploadImage(avatarImageFile);
   }
 

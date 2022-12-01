@@ -2,11 +2,10 @@ import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/constants/api_utils_constants.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/chats/models/isnewuser_data_model.dart';
 import 'package:brainworld/pages/library/welcome/select_library.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class LibraryWelcome extends StatefulWidget {
   const LibraryWelcome({Key? key}) : super(key: key);
@@ -36,16 +35,16 @@ class _LibraryWelcomeState extends State<LibraryWelcome> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final user = Provider.of<User>(context);
+    // final user = Provider.of<User>(context);
 
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: Column(
         children: [
           SizedBox(
             height: size.height * 0.091,
           ),
-        const  Text(
+          const Text(
             'Choose Library to Access',
             style: TextStyle(color: Colors.black, fontSize: 22),
           ),
@@ -75,9 +74,9 @@ Future comingSoon(context) {
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
-      backgroundColor: myhomepageBlue,
+      backgroundColor: BrainWorldColors.myhomepageBlue,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      content: Container(
+      content: SizedBox(
         height: 357,
         child: Center(
             child: Column(
@@ -88,11 +87,11 @@ Future comingSoon(context) {
               height: 250,
               width: 290,
             ),
-         const   Text(
+            const Text(
               'Coming Soon..',
               style: TextStyle(color: Colors.white),
             ),
-        const    SizedBox(
+            const SizedBox(
               height: 7,
             ),
             MyButton(

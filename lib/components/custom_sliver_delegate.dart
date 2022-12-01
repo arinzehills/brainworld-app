@@ -71,7 +71,7 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                 ),
                 child: Wrap(
                   children: [
-                    Chat().buildText(title: 'Quick Chat'),
+                    const Chat().buildText(title: 'Quick Chat'),
                     SizedBox(
                         height: 90,
                         width: double.infinity,
@@ -96,7 +96,7 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                                       return chatUsersListController!
                                               .chatUsers.isEmpty
                                           ? Center(
-                                              child: Chat().buildText(
+                                              child: const Chat().buildText(
                                                 title:
                                                     "have not started any conversation",
                                               ),

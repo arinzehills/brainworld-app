@@ -33,7 +33,7 @@ Widget uploadPopUp(_controller) {
                   offset: const Offset(0, 3), // changes position of shadow
                 ),
               ],
-              borderRadius: const BorderRadius.all( Radius.circular(15)),
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
               color: Colors.white),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,7 +61,7 @@ Widget uploadPopUp(_controller) {
                       title: 'Post',
                       icon: 'posticon.svg',
                       onclick: () {
-                        Get.to(const AddPost(note_count: 1));
+                        Get.to(const AddPost(noteCount: 1));
                       })
                 ],
               )

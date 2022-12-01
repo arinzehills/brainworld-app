@@ -1,15 +1,15 @@
-import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ReactionIcon extends StatelessWidget {
-  String iconUrl;
-  double? iconHeight;
-  bool? withMarginLeft;
-  String? text;
+  final String iconUrl;
+  final double? iconHeight;
+  final bool? withMarginLeft;
+  final String? text;
   final VoidCallback onClick;
 
-  ReactionIcon({
+  const ReactionIcon({
     Key? key,
     required this.onClick,
     required this.iconUrl,
@@ -29,7 +29,7 @@ class ReactionIcon extends StatelessWidget {
             child: SvgPicture.asset(iconUrl,
                 height: iconHeight ?? 21,
                 // fit: BoxFit.fill,
-                color: myhomepageBlue,
+                color: BrainWorldColors.myhomepageBlue,
                 semanticsLabel: 'A red up arrow'),
           ),
           Text(text ?? ''),

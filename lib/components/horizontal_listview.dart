@@ -230,7 +230,7 @@ class _HorizontalListViewState extends State<HorizontalListView> {
     });
 
     MyNavigate.navigatejustpush(
-        FullPDFPage(file: file, filename: filename), context);
+        FullPDFPage(file: file, fileName: filename), context);
     // }
   }
 }

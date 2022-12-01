@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/my_button.dart';
-import 'package:brainworld/components/my_cachednetwork_image.dart';
 import 'package:brainworld/components/my_networkimage.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
@@ -10,11 +8,10 @@ import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/auth_screens/login.dart';
-import 'package:brainworld/pages/fullresourcepage/full_photo_page.dart';
 import 'package:brainworld/pages/user/components/profile_list.dart';
 import 'package:brainworld/pages/user/edit_profile.dart';
 import 'package:brainworld/services/auth_service.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -63,7 +60,7 @@ class _ProfileState extends State<Profile> {
     final user = Provider.of<User>(context);
 
     return userData == null
-        ? Loading()
+        ? const Loading()
         : Builder(builder: (context) {
             List<UserWidget> title = [
               UserWidget(
@@ -81,7 +78,7 @@ class _ProfileState extends State<Profile> {
             ];
 
             return Scaffold(
-              drawer: MyDrawer(),
+              drawer: const MyDrawer(),
               body: SafeArea(
                 child: SingleChildScrollView(
                   child: Stack(children: [
@@ -98,7 +95,7 @@ class _ProfileState extends State<Profile> {
                               child: Center(
                                 child: Text(
                                   userData['full_name'],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 30),
                                 ),
                               ),
@@ -109,8 +106,8 @@ class _ProfileState extends State<Profile> {
                             child: ListView.separated(
                               itemCount: 4,
                               shrinkWrap: true,
-                              padding: EdgeInsets.only(top: 16),
-                              physics: NeverScrollableScrollPhysics(),
+                              padding: const EdgeInsets.only(top: 16),
+                              physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 //  DocumentSnapshot  document=snapshot.data as DocumentSnapshot<Object?>;
                                 //    dynamic orderData=document.data();
@@ -123,33 +120,33 @@ class _ProfileState extends State<Profile> {
                                   (BuildContext context, int index) =>
                                       Container(
                                 height: 2,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.vertical(
                                         bottom: Radius.circular(50)),
                                     gradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                         colors: [
-                                          myhomepageLightBlue,
-                                          myhomepageBlue
+                                          BrainWorldColors.myhomepageLightBlue,
+                                          BrainWorldColors.myhomepageBlue
                                         ])),
                               ),
                             ),
                           ),
                           Container(
                             height: 2,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.vertical(
                                     bottom: Radius.circular(50)),
                                 gradient: LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                     colors: [
-                                      myhomepageLightBlue,
-                                      myhomepageBlue
+                                      BrainWorldColors.myhomepageLightBlue,
+                                      BrainWorldColors.myhomepageBlue
                                     ])),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           MyButton(
@@ -162,7 +159,8 @@ class _ProfileState extends State<Profile> {
                             gradientColors: myOrangeGradientTransparent,
                             pressed: () async {
                               var response = await AuthService().logout();
-                              MyNavigate.navigatepushuntil(Login(), context);
+                              MyNavigate.navigatepushuntil(
+                                  const Login(), context);
                             },
                           )
                         ],
@@ -259,10 +257,11 @@ class _ProfileState extends State<Profile> {
                         gradientColors: myblueGradientTransparent,
                         isGradientButton: true,
                         pressed: () {
-                          MyNavigate.navigatejustpush(EditProfile(), context);
+                          MyNavigate.navigatejustpush(
+                              const EditProfile(), context);
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 18.0),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 18.0),
                           child: ImageIcon(
                             AssetImage('assets/images/edit_user.png'),
                             size: 30,

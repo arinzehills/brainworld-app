@@ -4,15 +4,16 @@ import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
 class PostDetail extends StatefulWidget {
-  PostsModel post;
-  Socket socket;
-  PostDetail({Key? key, required this.post, required this.socket})
+  final PostsModel post;
+  final Socket socket;
+  const PostDetail({Key? key, required this.post, required this.socket})
       : super(key: key);
 
   @override
@@ -30,13 +31,13 @@ class _PostDetailState extends State<PostDetail> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             IconlyBold.arrow_left,
-            color: myhomepageLightBlue,
+            color: BrainWorldColors.myhomepageLightBlue,
           ),
         ),
         elevation: 0,
-        title: Text(
+        title: const Text(
           'Post',
           style: TextStyle(color: Colors.black),
         ),
@@ -53,7 +54,7 @@ class _PostDetailState extends State<PostDetail> {
                   socket: widget.socket,
                   isCommentDetail: true,
                 ),
-                Container(
+                SizedBox(
                   height: size(context).height * 0.3,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 1.0),
@@ -72,7 +73,7 @@ class _PostDetailState extends State<PostDetail> {
                         }),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 )
               ],
@@ -98,8 +99,8 @@ class _PostDetailState extends State<PostDetail> {
           minHeight: isUser ? 70 : 0,
         ),
         width: isUser ? null : size(context).width * 0.6,
-        margin: EdgeInsets.all(8),
-        padding: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: !isUser ? Colors.grey.shade200 : null,
@@ -109,8 +110,8 @@ class _PostDetailState extends State<PostDetail> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                      Color(0xff2255FF),
-                      Color(0xff1477FF).withOpacity(0.9),
+                      const Color(0xff2255FF),
+                      const Color(0xff1477FF).withOpacity(0.9),
                     ]),
         ),
         child: Column(
@@ -118,7 +119,7 @@ class _PostDetailState extends State<PostDetail> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             isUser
-                ? SizedBox()
+                ? const SizedBox()
                 : ProfileUserWidget(
                     userId: widget.post.comments![index]['user_id'],
                     isUtilityType: true,

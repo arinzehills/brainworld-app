@@ -4,7 +4,7 @@ import 'package:brainworld/pages/chats/models/posts_model.dart';
 import 'package:flutter/material.dart';
 
 class VideoListWidget extends StatelessWidget {
-  VideoListWidget(
+ const VideoListWidget(
       {Key? key,
       required this.course,
       this.video,

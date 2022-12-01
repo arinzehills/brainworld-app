@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/upload/course/model/course.dart';
 import 'package:brainworld/services/auth_service.dart';

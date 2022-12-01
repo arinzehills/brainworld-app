@@ -1,4 +1,3 @@
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/fullresourcepage/full_photo_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

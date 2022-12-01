@@ -4,9 +4,8 @@ import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/chats/models/books_model.dart';
-import 'package:brainworld/pages/chats/models/posts_model.dart';
-import 'package:brainworld/services/post_service.dart';
 import 'package:brainworld/services/upload_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:brainworld/utils/util.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:iconly/iconly.dart';
@@ -51,7 +50,7 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
             padding: const EdgeInsets.only(top: 0.0),
             child: Center(
               child: Column(
-                children: [
+                children: const [
                   ImageIcon(
                     AssetImage('assets/images/uploads_blue.png'),
                     size: 60,
@@ -81,7 +80,7 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
                     Container(
                       width: MediaQuery.of(context).size.width * 0.87,
                       // height: 46,
-                      padding: EdgeInsets.only(top: 2),
+                      padding: const EdgeInsets.only(top: 2),
                       child: TextFormField(
                         validator: (val) => val!.isEmpty
                             ? 'Enter the title of your post'
@@ -95,7 +94,7 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
                     buildText(text: 'Category/Shelf'),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.87,
                         // height: 46,
                         child: TextFormField(
@@ -110,7 +109,7 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
                       ),
                     ),
                     buildText(text: 'Your book'),
-                    Container(
+                    SizedBox(
                       width: MediaQuery.of(context).size.width * 0.87,
                       height: 46,
                       child: TextFormField(
@@ -122,10 +121,10 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    showUploadStatus ? _buildUploadView() : SizedBox(),
+                    showUploadStatus ? _buildUploadView() : const SizedBox(),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: MyButton(
@@ -165,14 +164,14 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-              padding: EdgeInsets.only(top: 10),
-              child: new Column(children: <Widget>[
+              padding: const EdgeInsets.only(top: 10),
+              child: Column(children: <Widget>[
                 Text(
                   '$_progressPercentValue %',
                 ),
               ])),
           Container(
-              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
               child: LinearProgressIndicator(value: _progressValue)),
         ]);
   }
@@ -198,7 +197,7 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
     if (result == null) return;
     final path = result.files.single.path!;
 
-    setState(() => file = new File(path));
+    setState(() => file = File(path));
 
     print('file ' + file!.toString());
     final fileName = Path.basename(file!.path);
@@ -210,20 +209,22 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
   InputDecoration textfielddecoration(
       {VoidCallback? clickIcon, icon, hintText}) {
     return InputDecoration(
-      contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      contentPadding:
+          const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       fillColor: Colors.white,
       suffixIcon: clickIcon != null
           ? IconButton(
               icon: Icon(icon ?? IconlyBold.paper_upload),
-              color: myhomepageBlue,
+              color: BrainWorldColors.myhomepageBlue,
               onPressed: clickIcon)
-          : SizedBox(),
+          : const SizedBox(),
       hintText: hintText ?? 'hintTExt',
-      hintStyle: TextStyle(
+      hintStyle: const TextStyle(
         fontSize: 14,
       ),
       border: OutlineInputBorder(
-        borderSide: BorderSide(color: myhomepageLightBlue, width: 0.1),
+        borderSide: const BorderSide(
+            color: BrainWorldColors.myhomepageLightBlue, width: 0.1),
         borderRadius: BorderRadius.circular(10.0),
       ),
     );
@@ -235,8 +236,8 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
           alignment: Alignment.centerLeft,
           child: Text(
             text,
-            style: TextStyle(
-              color: myhomepageBlue,
+            style: const TextStyle(
+              color: BrainWorldColors.myhomepageBlue,
               fontSize: 15,
               fontWeight: FontWeight.bold,
             ),

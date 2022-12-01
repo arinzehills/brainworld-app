@@ -3,6 +3,7 @@ import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/chats/models/cart_model.dart';
 import 'package:brainworld/pages/chats/models/order_info.dart';
 import 'package:brainworld/services/auth_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +16,7 @@ class CartService extends GetxController {
           'You have added the ${cartItem.title} to the cart ',
           // "You have added a product with ${cartItem.courseType}",
           snackPosition: SnackPosition.TOP,
-          backgroundColor: myhomepageBlue.withOpacity(0.5),
+          backgroundColor: BrainWorldColors.myhomepageBlue.withOpacity(0.5),
           colorText: Colors.white,
           duration: const Duration(seconds: 1));
     } else {
@@ -25,7 +26,7 @@ class CartService extends GetxController {
           'You have added the ${cartItem.title} to the cart ',
           // "You have added a product with ${cartItem.courseType}",
           snackPosition: SnackPosition.TOP,
-          backgroundColor: myhomepageBlue.withOpacity(0.5),
+          backgroundColor: BrainWorldColors.myhomepageBlue.withOpacity(0.5),
           colorText: Colors.white,
           duration: const Duration(milliseconds: 800));
     }
@@ -38,7 +39,7 @@ class CartService extends GetxController {
           'Item removed', 'You have remove the ${cartItem.title} from cart ',
           // "You have added a product with ${cartItem.courseType}",
           snackPosition: SnackPosition.TOP,
-          backgroundColor: myhomepageBlue.withOpacity(0.5),
+          backgroundColor: BrainWorldColors.myhomepageBlue.withOpacity(0.5),
           colorText: Colors.white,
           duration: const Duration(milliseconds: 900));
     }

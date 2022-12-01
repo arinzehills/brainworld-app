@@ -197,15 +197,15 @@ class _ChatState extends State<Chat> {
                                 padding: const EdgeInsets.only(top: 16),
                                 physics: const ScrollPhysics(),
                                 itemBuilder: (context, index) {
-                                  if (chatUsersListController.chatUsers.length <
-                                      1) {
-                                    return Chat().buildNoChats(
+                                  if (chatUsersListController
+                                      .chatUsers.isNotEmpty) {
+                                    return const Chat().buildNoChats(
                                         "have not started any conversation",
                                         size);
                                   } else {
                                     return ChatListWidget(
                                       socket: socket,
-                                      userid: chatUsersListController
+                                      userId: chatUsersListController
                                           .chatUsers[index].id,
                                       clickedEmail: chatUsersListController
                                           .chatUsers[index].email,

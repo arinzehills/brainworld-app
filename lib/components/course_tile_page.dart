@@ -62,8 +62,8 @@ final  Icon? icon;
     if (tiles.isEmpty) {
       return ListTile(
         title: Text(title),
-        leading: RadiantGradientMask(
-          child: const Icon(
+        leading: const RadiantGradientMask(
+          child: Icon(
             Icons.video_library,
             color: Colors.white,
           ),

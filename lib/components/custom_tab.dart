@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomTab extends StatefulWidget {
-  CustomTab({Key? key, required this.items, required this.widgetsItems})
+   CustomTab({Key? key, required this.items, required this.widgetsItems})
       : super(key: key);
-  List<String> items = const ['a', 'b'];
-final  List<Widget> widgetsItems;
+   List<String> items = const ['a', 'b'];
+  final List<Widget> widgetsItems;
   @override
   State<CustomTab> createState() => _CustomTabState();
 }

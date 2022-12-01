@@ -29,7 +29,7 @@ class BooksLibrary extends StatefulWidget {
 class _BooksLibraryState extends State<BooksLibrary> {
   bool loading = false;
   late IsNewUserModel userInfoData;
-  late Future books_data;
+  late Future booksData;
   int categoryLength = 0;
   int bookLength = 0;
   @override
@@ -43,7 +43,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
 
   _getUserRegInfo() async {
     var userInfo = await getUserRegInfo();
-    if (this.mounted) {
+    if (mounted) {
       setState(() {
         userInfoData = IsNewUserModel.fromJson(userInfo);
       });
@@ -55,10 +55,10 @@ class _BooksLibraryState extends State<BooksLibrary> {
 
     //this.students = await TransactionService.
     //              transactionInstance.getUserTransactions(1);
-    books_data = UploadService().getAllBooks();
+    booksData = UploadService().getAllBooks();
     print('books_data');
     // var books_data2 = books_data as Map;
-    books_data.then((value) => {
+    booksData.then((value) => {
           print('value'),
           print(value['categories']),
           setState(() => categoryLength = value['categories'].length),
@@ -76,14 +76,14 @@ class _BooksLibraryState extends State<BooksLibrary> {
       drawer: const MyDrawer(),
       appBar: bookLength == 0 ? null : MyAppMenuBar(title: 'Books'),
       body: FutureBuilder(
-          future: books_data,
+          future: booksData,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Text(snapshot.error.toString());
             } else if (snapshot.data == null) {
               return const Loading();
             } else {
-              var book_items_map = snapshot.data! as Map;
+              var bookItemsMap = snapshot.data! as Map;
 
               return
                   // book_items_map['books'].length == 0
@@ -212,7 +212,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                 child: Padding(
                                     padding: const EdgeInsets.all(20),
                                     child: textField())),
-                            book_items_map['books'].length == 0
+                            bookItemsMap['books'].length == 0
                                 ? NothingYetWidget(
                                     pageTitle: '',
                                     pageHeader: "No Books Yet",
@@ -230,7 +230,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                     padding: EdgeInsets.only(
                                         top: size(context).height * 0.3),
                                     child: FutureBuilder(
-                                        future: books_data,
+                                        future: booksData,
                                         builder: (context, snapshot) {
                                           if (snapshot.hasError) {
                                             return Text(
@@ -238,11 +238,11 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                           } else if (snapshot.data == null) {
                                             return const Loading();
                                           } else {
-                                            var book_items_map =
+                                            var bookItemsMap =
                                                 snapshot.data! as Map;
                                             List<BookModel> books = [];
                                             for (var data
-                                                in book_items_map['books']) {
+                                                in bookItemsMap['books']) {
                                               books.add(
                                                   BookModel.fromJson(data));
                                             }
@@ -271,16 +271,15 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                                         // scrollDirection: Axis.horizontal,
                                                         physics:
                                                             const BouncingScrollPhysics(),
-                                                        itemCount:
-                                                            book_items_map[
-                                                                    'categories']
-                                                                .length,
+                                                        itemCount: bookItemsMap[
+                                                                'categories']
+                                                            .length,
                                                         itemBuilder:
                                                             (context, index) {
                                                           return libraryList(
                                                               list: books,
                                                               category:
-                                                                  book_items_map[
+                                                                  bookItemsMap[
                                                                           'categories']
                                                                       [index]);
                                                         }),
@@ -334,7 +333,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
             ],
           ),
         ),
-        Container(
+        SizedBox(
             height: 185.0,
             // width: size(context).width * 1.1,
             child: HorizontalListView(

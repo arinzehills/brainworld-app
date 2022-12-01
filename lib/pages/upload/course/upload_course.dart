@@ -6,24 +6,24 @@ import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
-import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
-import 'package:brainworld/constants/api_utils_constants.dart';
+
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/upload/course/model/course.dart';
 import 'package:brainworld/pages/upload/course/model/course_tile.dart';
 import 'package:brainworld/services/course_service.dart';
+import 'package:brainworld/themes/themes.dart';
 
 import 'package:file_picker/file_picker.dart';
 
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as Path;
-import 'package:provider/provider.dart';
 
 class UploadCourse extends StatefulWidget {
-  Course? courseinfo;
-  List<File>? files;
-  IconData? leading;
-  UploadCourse({this.courseinfo, this.files});
+  final Course? courseinfo;
+  final List<File>? files;
+  final IconData? leading;
+  const UploadCourse({Key? key, this.courseinfo, this.files, this.leading})
+      : super(key: key);
 
   @override
   _UploadCourseState createState() => _UploadCourseState();
@@ -39,7 +39,7 @@ class _UploadCourseState extends State<UploadCourse> {
   List<String> videoURls = [];
   List<String> fileURls = [];
   final List<String> subtitles = [];
-  String sub_title = '';
+  String subTitle = '';
   String error = '';
   String videoURL = '';
   String videoname = 'Add a Video';
@@ -56,7 +56,7 @@ class _UploadCourseState extends State<UploadCourse> {
 
     if (result == null) return;
     final path = result.files.single.path!;
-    setState(() => video = new File(path));
+    setState(() => video = File(path));
     final fileName = Path.basename(video!.path);
     setState(() {
       videoname = fileName.split('.').first;
@@ -72,10 +72,10 @@ class _UploadCourseState extends State<UploadCourse> {
 
   Future uploadCourse(uid, File? video) async {}
 
-  addintoallarrays(coursename, sub_title) {
+  addintoallarrays(coursename, subTitle) {
     coursescontents.add(
-        CourseTile(title: sub_title, tiles: [CourseTile(title: coursename)]));
-    subtitles.add(sub_title);
+        CourseTile(title: subTitle, tiles: [CourseTile(title: coursename)]));
+    subtitles.add(subTitle);
   }
 
   @override
@@ -84,14 +84,14 @@ class _UploadCourseState extends State<UploadCourse> {
     // var user = Provider().
     print('my videoswe ' + widget.files.toString());
     print('my videoswe ' + widget.files!.length.toString());
-    print('widget.courseinfo!.videourl ${videoURL}');
+    print('widget.courseinfo!.videourl $videoURL');
     // print('widget.courseinfo!.video ${widget.courseinfo!.video}');
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: SafeArea(
         child: Stack(children: [
           SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Builder(
               builder: (context) => Column(
                 children: [
@@ -104,7 +104,7 @@ class _UploadCourseState extends State<UploadCourse> {
                       padding: const EdgeInsets.only(top: 0.0),
                       child: Center(
                         child: Column(
-                          children: [
+                          children: const [
                             ImageIcon(
                               AssetImage('assets/images/uploads_blue.png'),
                               size: 50,
@@ -146,13 +146,13 @@ class _UploadCourseState extends State<UploadCourse> {
                   //hits the plus button to add contents
                   showaddContentWidget == true
                       ? addCourseContents()
-                      : SizedBox()
+                      : const SizedBox()
                 ],
               ),
             ),
           ),
           coursescontents.isEmpty || showaddContentWidget == true
-              ? SizedBox()
+              ? const SizedBox()
               : Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
@@ -164,7 +164,7 @@ class _UploadCourseState extends State<UploadCourse> {
                       placeHolder: 'UPLOAD',
                       pressed: () async {
                         setState(() => {loading = true});
-                        var course = new Course(
+                        var course = Course(
                             usersid: user(context).id,
                             courseTitle: widget.courseinfo!.courseTitle,
                             description: widget.courseinfo!.description,
@@ -186,15 +186,15 @@ class _UploadCourseState extends State<UploadCourse> {
                         print(response);
                         if (response['success'] == true) {
                           setState(() => loading = false);
-                          snackBar(BottomNavigation(), context,
+                          snackBar(const BottomNavigation(), context,
                               'Post added successfully');
                         } else {
                           setState(() => loading = false);
                           setState(() => error = response['message']);
                         }
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 18.0),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 18.0),
                         child: ImageIcon(
                           AssetImage('assets/images/uploads_blue.png'),
                           size: 50,
@@ -220,7 +220,7 @@ class _UploadCourseState extends State<UploadCourse> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(18.0),
-                    child: Container(
+                    child: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.87,
                       height: 46,
                       child: TextFormField(
@@ -229,24 +229,25 @@ class _UploadCourseState extends State<UploadCourse> {
                           errorStyle: const TextStyle(fontSize: 0.2),
                           hintText: 'Title'
                               '(E.g Introduction to mathematics)',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             fontSize: 14,
                           ),
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: myhomepageLightBlue, width: 0.1),
+                            borderSide: const BorderSide(
+                                color: BrainWorldColors.myhomepageLightBlue,
+                                width: 0.1),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
                         onChanged: (val) {
-                          setState(() => sub_title = val);
+                          setState(() => subTitle = val);
                         },
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(18.0),
-                    child: Container(
+                    child: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.87,
                       height: 46,
                       child: TextFormField(
@@ -256,16 +257,17 @@ class _UploadCourseState extends State<UploadCourse> {
                           errorStyle: const TextStyle(fontSize: 0.2),
                           suffixIcon: IconButton(
                               icon: const Icon(Icons.video_library),
-                              color: myhomepageBlue,
+                              color: BrainWorldColors.myhomepageBlue,
                               onPressed: selectFile),
                           fillColor: Colors.white,
                           hintText: videoname,
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             fontSize: 14,
                           ),
                           border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: myhomepageBlue, width: 0.1),
+                            borderSide: const BorderSide(
+                                color: BrainWorldColors.myhomepageBlue,
+                                width: 0.1),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
@@ -280,14 +282,14 @@ class _UploadCourseState extends State<UploadCourse> {
                     padding: const EdgeInsets.only(left: 12.0),
                     child: Text(
                       error,
-                      style: TextStyle(color: Colors.red),
+                      style: const TextStyle(color: Colors.red),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Padding(
-                    padding: EdgeInsets.all(0.0).copyWith(right: 40),
+                    padding: const EdgeInsets.all(0.0).copyWith(right: 40),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -307,7 +309,7 @@ class _UploadCourseState extends State<UploadCourse> {
                                 });
                               } else {
                                 //if video is selected
-                                addintoallarrays(videoname, sub_title);
+                                addintoallarrays(videoname, subTitle);
                                 videos.add(video!);
                                 print(subtitles);
                                 print('videonames ' + videonames.toString());
@@ -328,15 +330,18 @@ class _UploadCourseState extends State<UploadCourse> {
         ),
       );
   Widget noCourseContents() => Padding(
-        padding: EdgeInsets.all(8.0).copyWith(top: 35),
-        child: Container(
+        padding: const EdgeInsets.all(8.0).copyWith(top: 35),
+        child: SizedBox(
           child: Center(
             child: Column(
-              children: [
+              children: const [
                 GradientText('No Contents for this Course yet',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     gradient: LinearGradient(
-                      colors: [myhomepageBlue, myhomepageLightBlue],
+                      colors: [
+                        BrainWorldColors.myhomepageBlue,
+                        BrainWorldColors.myhomepageLightBlue
+                      ],
                     )),
                 SizedBox(
                   height: 20,
@@ -364,21 +369,24 @@ class _UploadCourseState extends State<UploadCourse> {
               width: 50,
               height: 50,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [myhomepageBlue, myhomepageLightBlue]),
-                borderRadius: BorderRadius.all(Radius.circular(100)),
+                    colors: [
+                      BrainWorldColors.myhomepageBlue,
+                      BrainWorldColors.myhomepageLightBlue
+                    ]),
+                borderRadius: const BorderRadius.all(Radius.circular(100)),
                 boxShadow: [
                   BoxShadow(
-                    color: myhomepageBlue.withOpacity(0.24),
+                    color: BrainWorldColors.myhomepageBlue.withOpacity(0.24),
                     // spreadRadius: 5,
                     blurRadius: 10,
-                    offset: Offset(0, 5), // changes position of shadow
+                    offset: const Offset(0, 5), // changes position of shadow
                   ),
                 ],
               ),
-              child: Center(
+              child: const Center(
                   child: Icon(
                 Icons.add,
                 color: Colors.white,

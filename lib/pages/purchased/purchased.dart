@@ -3,6 +3,7 @@ import 'package:brainworld/components/myappbar.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/purchased/purchased_books.dart';
 import 'package:brainworld/pages/purchased/purchased_courses.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,15 +16,18 @@ class Purchased extends StatefulWidget {
 
 class _PurchasedState extends State<Purchased> {
   List<String> items = ["Course", "Books"];
-  List<Widget> purchasedItems = [PurchasedCourses(), PurchasedBooks()];
+  List<Widget> purchasedItems = [
+    const PurchasedCourses(),
+    const PurchasedBooks()
+  ];
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       appBar: MyAppMenuBar(title: 'Purchased Items'),
       body: Container(
-        margin: EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
         width: double.infinity,
         height: double.infinity,
         child: Column(
@@ -33,7 +37,7 @@ class _PurchasedState extends State<Purchased> {
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: items.length,
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
@@ -50,19 +54,19 @@ class _PurchasedState extends State<Purchased> {
                                 gradient: LinearGradient(
                                     colors: currentIndex == index
                                         ? myblueGradient
-                                        : [
+                                        : const [
                                             Color.fromARGB(35, 34, 86, 255),
                                             Color.fromARGB(65, 20, 118, 255)
                                           ],
                                     begin: Alignment.topCenter)),
-                            margin: EdgeInsets.all(5),
+                            margin: const EdgeInsets.all(5),
                             child: Center(
                               child: Text(
                                 items[index],
                                 style: GoogleFonts.laila(
                                     color: currentIndex == index
                                         ? Colors.white
-                                        : myhomepageBlue),
+                                        : BrainWorldColors.myhomepageBlue),
                               ),
                             ),
                           ),
@@ -75,7 +79,7 @@ class _PurchasedState extends State<Purchased> {
             Container(
                 width: double.infinity,
                 height: size(context).height * 0.67,
-                margin: EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10),
                 child: purchasedItems[currentIndex]),
           ],
         ),

@@ -7,9 +7,6 @@ import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/chats/models/books_model.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:http/http.dart' as http;
-import 'package:brainworld/models/user.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 typedef void OnDownloadProgressCallback(int receivedBytes, int totalBytes);
 typedef void OnUploadProgressCallback(int sentBytes, int totalBytes);
 
@@ -17,7 +14,7 @@ class UploadService {
   static bool trustSelfSigned = true;
 
   static HttpClient getHttpClient() {
-    HttpClient httpClient = new HttpClient()
+    HttpClient httpClient =  HttpClient()
       ..connectionTimeout = const Duration(seconds: 10)
       ..badCertificateCallback =
           ((X509Certificate cert, String host, int port) => trustSelfSigned);
@@ -193,8 +190,8 @@ class UploadService {
   }
 
   static Future<String> readResponseAsString(HttpClientResponse response) {
-    var completer = new Completer<String>();
-    var contents = new StringBuffer();
+    var completer =  Completer<String>();
+    var contents =  StringBuffer();
     response.transform(utf8.decoder).listen((String data) {
       contents.write(data);
     }, onDone: () => completer.complete(contents.toString()));

@@ -28,16 +28,16 @@ class _BottomNavigationState extends State<BottomNavigation>
   ChatController chatUsersListController = ChatController();
 
   final PageStorageBucket _bucket = PageStorageBucket();
-  late AnimationController _popup_animation_controller;
+  late AnimationController _popupAnimationController;
   bool get isForwardAnimation =>
-      _popup_animation_controller.status == AnimationStatus.forward ||
-      _popup_animation_controller.status == AnimationStatus.completed;
+      _popupAnimationController.status == AnimationStatus.forward ||
+      _popupAnimationController.status == AnimationStatus.completed;
   late int _selectedIndex = widget.index ?? 0;
   bool showuploadPopup = false;
 
   @override
   void initState() {
-    _popup_animation_controller = AnimationController(
+    _popupAnimationController = AnimationController(
       value: 0,
       duration: const Duration(milliseconds: 500),
       reverseDuration: const Duration(milliseconds: 1000),
@@ -47,7 +47,7 @@ class _BottomNavigationState extends State<BottomNavigation>
 
   @override
   void dispose() {
-    _popup_animation_controller.dispose();
+    _popupAnimationController.dispose();
     super.dispose();
   }
 
@@ -59,7 +59,7 @@ class _BottomNavigationState extends State<BottomNavigation>
       ),
       // Purchased(),
       const Library(),
-      Chat(
+      const Chat(
           // chatUsersListController: chatUsersListController,
           ),
       const Laboratory(),
@@ -76,7 +76,7 @@ class _BottomNavigationState extends State<BottomNavigation>
                   ? Positioned(
                       bottom: 40,
                       left: size(context).width * 0.1,
-                      child: uploadPopUp(_popup_animation_controller))
+                      child: uploadPopUp(_popupAnimationController))
                   : const SizedBox(),
             ],
           ),
@@ -136,8 +136,8 @@ class _BottomNavigationState extends State<BottomNavigation>
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             isForwardAnimation
-                ? _popup_animation_controller.reverse()
-                : _popup_animation_controller.forward();
+                ? _popupAnimationController.reverse()
+                : _popupAnimationController.forward();
             setState(() {
               showuploadPopup = !showuploadPopup;
             });

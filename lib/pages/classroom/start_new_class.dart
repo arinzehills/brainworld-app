@@ -4,6 +4,7 @@ import 'package:brainworld/components/my_text_field.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/upload/add_to_local_library.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
@@ -26,7 +27,7 @@ class _StartNewClassState extends State<StartNewClass> {
     bool autovalidate = false;
 
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: Column(
         children: [
           NormalCurveContainer(
@@ -39,7 +40,7 @@ class _StartNewClassState extends State<StartNewClass> {
               padding: const EdgeInsets.only(top: 0.0),
               child: Center(
                 child: Column(
-                  children: [
+                  children: const [
                     Text(
                       'Start new class',
                       style: TextStyle(color: Colors.white, fontSize: 17),
@@ -55,7 +56,7 @@ class _StartNewClassState extends State<StartNewClass> {
             width: 220,
           ),
           Padding(
-            padding: EdgeInsets.all(14).copyWith(bottom: 1),
+            padding: const EdgeInsets.all(14).copyWith(bottom: 1),
             child: MyTextField(
               hintText: 'Enter Meeting code',
               autovalidate: autovalidate,
@@ -83,12 +84,12 @@ class _StartNewClassState extends State<StartNewClass> {
               ]),
               suffixIconButton: IconButton(
                 icon: const Icon(Icons.copy),
-                color: myhomepageBlue,
+                color: BrainWorldColors.myhomepageBlue,
                 onPressed: () {},
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           MyButton(
@@ -99,7 +100,7 @@ class _StartNewClassState extends State<StartNewClass> {
             gradientColors: myblueGradientTransparent,
             widthRatio: 0.80,
             pressed: () async {
-              Get.to(AddToLocalLibray());
+              Get.to(const AddToLocalLibray());
             },
           ),
           TextButton(
@@ -107,7 +108,7 @@ class _StartNewClassState extends State<StartNewClass> {
             child: Text(
               'Share link',
               style: TextStyle(
-                  color: myhomepageBlue.withOpacity(0.7),
+                  color: BrainWorldColors.myhomepageBlue.withOpacity(0.7),
                   fontSize: 22,
                   fontWeight: FontWeight.w500),
             ),

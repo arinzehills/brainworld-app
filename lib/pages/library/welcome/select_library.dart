@@ -1,5 +1,5 @@
 import 'package:brainworld/components/my_cachednetwork_image.dart';
-import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class Constants {
@@ -74,8 +74,8 @@ class _SelectLibraryState extends State<SelectLibrary> {
                   child: ListTile(
                       title: Text(
                         universities[index]['name']! + ' Library',
-                        style: TextStyle(
-                          color: myhomepageBlue,
+                        style: const TextStyle(
+                          color: BrainWorldColors.myhomepageBlue,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

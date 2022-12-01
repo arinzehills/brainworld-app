@@ -2,14 +2,13 @@ import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/nothing_yet_widget.dart';
-import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/api_utils_constants.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/chats/models/isnewuser_data_model.dart';
 import 'package:brainworld/pages/classroom/start_new_class.dart';
-import 'package:brainworld/pages/upload/add_to_local_library.dart';
 import 'package:brainworld/services/auth_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +35,7 @@ class _ClassRoomWelcomeState extends State<ClassRoomWelcome> {
 
   _getUserRegInfo() async {
     var userInfo = await getUserRegInfo();
-    if (this.mounted) {
+    if (mounted) {
       setState(() {
         userInfoData = IsNewUserModel.fromJson(userInfo);
       });
@@ -49,7 +48,7 @@ class _ClassRoomWelcomeState extends State<ClassRoomWelcome> {
     final user = Provider.of<User>(context);
 
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: showIntroPage && userInfoData.classRoom == true
           ? NothingYetWidget(
               pageTitle: 'WELCOME TO BRAINWORLD LECTURE THEATRE',
@@ -86,7 +85,7 @@ class _ClassRoomWelcomeState extends State<ClassRoomWelcome> {
                     padding: const EdgeInsets.only(top: 0.0),
                     child: Center(
                       child: Column(
-                        children: [
+                        children: const [
                           ImageIcon(
                             AssetImage('assets/images/uploads_blue.png'),
                             size: 46,
@@ -113,12 +112,12 @@ class _ClassRoomWelcomeState extends State<ClassRoomWelcome> {
                   child: Text(
                     'Join Classroom',
                     style: TextStyle(
-                        color: myhomepageBlue.withOpacity(0.7),
+                        color: BrainWorldColors.myhomepageBlue.withOpacity(0.7),
                         fontSize: 22,
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 MyButton(
@@ -129,7 +128,7 @@ class _ClassRoomWelcomeState extends State<ClassRoomWelcome> {
                   gradientColors: myblueGradientTransparent,
                   widthRatio: 0.80,
                   pressed: () async {
-                    Get.to(StartNewClass());
+                    Get.to(const StartNewClass());
                   },
                 ),
               ],
