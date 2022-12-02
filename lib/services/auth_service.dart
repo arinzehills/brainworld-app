@@ -2,9 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/isnewuser_data_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:http/http.dart' as http;
-import 'package:brainworld/models/user.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

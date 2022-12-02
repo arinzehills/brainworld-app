@@ -4,10 +4,11 @@ import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/components/utilities_widgets/url_to_readable.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/posts_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/services/order_service.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class PurchasedCourses extends StatefulWidget {
   const PurchasedCourses({Key? key}) : super(key: key);
@@ -20,6 +21,8 @@ class _PurchasedCoursesState extends State<PurchasedCourses> {
   bool noitems = true;
   @override
   Widget build(BuildContext context) {
+    final _logger = Logger();
+
     return FutureBuilder<List<PostsModel>>(
         future: OrderService.getUserPurchasedCourses(),
         builder: (context, snapshot) {
@@ -27,7 +30,7 @@ class _PurchasedCoursesState extends State<PurchasedCourses> {
             //when is loading
             return buildLoading(context);
           }
-          if (snapshot.data!.length == 0) {
+          if (snapshot.data!.isEmpty) {
             return const NoItemsWidget();
           }
           return ListView.builder(
@@ -35,7 +38,8 @@ class _PurchasedCoursesState extends State<PurchasedCourses> {
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 var course = snapshot.data![index];
-                print(UrlToReadable.urlToReadableURL(course.videoURL!, '.png'));
+                _logger.d(
+                    UrlToReadable.urlToReadableURL(course.videoURL!, '.png'));
                 return Column(
                   children: [
                     Padding(

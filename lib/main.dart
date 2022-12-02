@@ -1,4 +1,4 @@
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:brainworld/services/cart_service.dart';
 import 'package:brainworld/wrapper.dart';

@@ -3,14 +3,14 @@ import 'package:brainworld/components/horizontal_listview.dart';
 import 'package:brainworld/components/nothing_yet_widget.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
-import 'package:brainworld/pages/chats/models/books_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/upload/add_to_local_library.dart';
 import 'package:brainworld/services/upload_service.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class UserLibrary extends StatefulWidget {
@@ -21,6 +21,8 @@ class UserLibrary extends StatefulWidget {
 }
 
 class _UserLibraryState extends State<UserLibrary> {
+  final _logger = Logger();
+
   bool loading = false;
   late Future booksData;
   int categoryLength = 0;
@@ -38,12 +40,12 @@ class _UserLibraryState extends State<UserLibrary> {
 
     //this.students = await TransactionService.
     //              transactionInstance.getUserTransactions(1);
-    this.booksData = UploadService().getUserBooks();
-    print('books_data');
+    booksData = UploadService().getUserBooks();
+    _logger.d('books_data');
     // var books_data2 = books_data as Map;
     booksData.then((value) => {
-          print('value'),
-          print(value['categories']),
+          _logger.d('value'),
+          _logger.d(value['categories']),
           setState(() => categoryLength = value['categories'].length),
           setState(() => bookLength = value['books'].length)
         });
@@ -53,8 +55,7 @@ class _UserLibraryState extends State<UserLibrary> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-    final GlobalKey<ScaffoldState> _scaffoldKey =
-        new GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
     return Scaffold(
         key: _scaffoldKey,
@@ -98,7 +99,7 @@ class _UserLibraryState extends State<UserLibrary> {
                             children: [
                               ClipRRect(
                                   borderRadius: const BorderRadius.all(
-                                      const Radius.circular(50)),
+                                       Radius.circular(50)),
                                   child: Image.asset(
                                     "assets/images/glory.png",
                                     height: 80,
@@ -122,14 +123,14 @@ class _UserLibraryState extends State<UserLibrary> {
                           future: booksData,
                           builder: (context, snapshot) {
                             if (snapshot.hasError) {
-                              print('sdhasdfbgu ' + snapshot.error.toString());
+                              _logger.d('sdhasdfbgu ' + snapshot.error.toString());
                               return Text(snapshot.error.toString());
                             } else if (snapshot.data == null) {
                               return const Loading();
                             } else {
-                              var book_items_map = snapshot.data! as Map;
+                              var bookItemsMap = snapshot.data! as Map;
                               List<BookModel> books = [];
-                              for (var data in book_items_map['books']) {
+                              for (var data in bookItemsMap['books']) {
                                 books.add(BookModel.fromJson(data));
                               }
                               return SingleChildScrollView(
@@ -152,13 +153,13 @@ class _UserLibraryState extends State<UserLibrary> {
                                           physics:
                                               const BouncingScrollPhysics(),
                                           itemCount:
-                                              book_items_map['categories']
+                                              bookItemsMap['categories']
                                                   .length,
                                           itemBuilder: (context, index) {
                                             return libraryList(
                                                 list: books,
                                                 category:
-                                                    book_items_map['categories']
+                                                    bookItemsMap['categories']
                                                         [index]);
                                           }),
                                     )
@@ -226,7 +227,7 @@ class _UserLibraryState extends State<UserLibrary> {
                     width: 5,
                   ),
                   Text(
-                    '${bookLength} books in your library',
+                    '$bookLength books in your library',
                     style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ],

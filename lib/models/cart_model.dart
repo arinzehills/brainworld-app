@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:brainworld/components/utilities_widgets/mydate_formatter.dart';
 
-CartModel chatModelFromJson(String str) => CartModel.fromJson(json.decode(str));
+CartModel cartModelFromJson(String str) => CartModel.fromJson(json.decode(str));
 
-String chatModelToJson(CartModel data) => json.encode(data.toJson());
+String cartModelToJson(CartModel data) => json.encode(data.toJson());
 
 class CartModel {
   CartModel({

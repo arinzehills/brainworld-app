@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:brainworld/pages/chats/models/books_model.dart';
-import 'package:brainworld/pages/chats/models/posts_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/services/auth_service.dart';
 
 class OrderService {

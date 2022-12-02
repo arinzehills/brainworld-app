@@ -1,12 +1,13 @@
 import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/chats/components/build_message_list.dart';
 import 'package:brainworld/pages/chats/components/chat_icon_gradient.dart';
-import 'package:brainworld/pages/chats/models/message.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
@@ -151,8 +152,7 @@ class _ChatDetailState extends State<ChatDetail> {
                     decoration: const InputDecoration(
                         fillColor: Colors.red,
                         hintText: "Write message...",
-                        hintStyle:
-                            TextStyle(color: Color(0xffC9C4C4)),
+                        hintStyle: TextStyle(color: Color(0xffC9C4C4)),
                         border: InputBorder.none),
                   ),
                 ),
@@ -181,6 +181,8 @@ class _ChatDetailState extends State<ChatDetail> {
   }
 
   void socketServer() {
+    final _logger = Logger();
+
     try {
       // socket = io(
       //     generalUrl,
@@ -197,20 +199,22 @@ class _ChatDetailState extends State<ChatDetail> {
         'forceNew': true
       });
       socket.connect();
-      socket.on('connect', (data) => print('Connected:' + socket.id!));
+      socket.on('connect', (data) => _logger.d('Connected:' + socket.id!));
     } catch (e) {
-      print(e.toString());
+      _logger.d(e.toString());
     }
   }
 
   setupSocketListener() {
+    final _logger = Logger();
+
     socket.on('_getAllChats', (data) {
       var chats = data['chats'];
       for (var data in chats) {
         dynamic list = Provider.of<ChatController>(context, listen: false)
             .messages
             .where((chat) => chat.id == data['_id']);
-        print(list.length);
+        _logger.d(list.length);
         Future.delayed(const Duration(microseconds: 2));
         if (list.length == 0) {
           Provider.of<ChatController>(context, listen: false)

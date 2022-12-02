@@ -1,7 +1,7 @@
 import 'package:brainworld/components/my_cachednetwork_image.dart';
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';

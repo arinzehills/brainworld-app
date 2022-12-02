@@ -3,7 +3,7 @@ import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/auth_screens/login.dart';
 import 'package:brainworld/pages/classroom/class_room_welcome.dart';
 import 'package:brainworld/pages/orders/orders.dart';

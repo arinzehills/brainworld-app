@@ -1,10 +1,11 @@
 import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/posts_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class VideoListWidget extends StatelessWidget {
- const VideoListWidget(
+  const VideoListWidget(
       {Key? key,
       required this.course,
       this.video,
@@ -17,8 +18,10 @@ class VideoListWidget extends StatelessWidget {
   final int? index;
   @override
   Widget build(BuildContext context) {
-    print('video');
-    print(index);
+    final _logger = Logger();
+
+    _logger.d('video');
+    _logger.d(index);
     return Padding(
       padding: const EdgeInsets.only(left: 3.0),
       child: Container(

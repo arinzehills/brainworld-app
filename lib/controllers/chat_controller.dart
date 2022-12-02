@@ -1,4 +1,4 @@
-import 'package:brainworld/pages/chats/models/message.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:flutter/material.dart';
 
 // class ChatController extends GetxController {

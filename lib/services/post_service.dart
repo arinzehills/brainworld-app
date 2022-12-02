@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/post_controller.dart';
-import 'package:brainworld/pages/chats/models/posts_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:http/http.dart' as http;
 

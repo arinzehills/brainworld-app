@@ -4,12 +4,13 @@ import 'package:brainworld/components/myappbar.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/post_controller.dart';
-import 'package:brainworld/pages/chats/models/posts_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/upload/post_detail.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -21,6 +22,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final _logger = Logger();
+
   PostsController chatUsersListController = PostsController();
   bool loading = false;
   late Socket socket;
@@ -44,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
     socket.on('getAllPost', (allPosts) {
       chatUsersListController.allPost.clear();
-      print(allPosts['message']);
+      _logger.d(allPosts['message']);
       for (var post in allPosts['posts']) {
         setStateIfMounted(() {
           chatUsersListController.allPost.add(PostsModel.fromJson(post));
@@ -61,12 +64,15 @@ class _MyHomePageState extends State<MyHomePage> {
         'autoConnect': false,
       });
       socket.connect();
-      socket.on('connect', (data) => print('Connected:' + socket.id!));
-      socket.on('connect_error',
-          (error) => print('Connnection Error:' + error.message.toString()));
-      socket.on('error', (error) => print('Error:' + error.message.toString()));
+      socket.on('connect', (data) => _logger.d('Connected:' + socket.id!));
+      socket.on(
+          'connect_error',
+          (error) =>
+              _logger.d('Connnection Error:' + error.message.toString()));
+      socket.on(
+          'error', (error) => _logger.d('Error:' + error.message.toString()));
     } catch (e) {
-      print(e.toString());
+      _logger.d(e.toString());
     }
   }
 

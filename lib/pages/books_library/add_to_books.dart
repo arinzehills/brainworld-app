@@ -6,10 +6,11 @@ import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/my_text_field_decoration.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/books_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:iconly/iconly.dart';
+import 'package:logger/logger.dart';
 import 'package:path/path.dart' as Path;
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,7 @@ class _AddToBooksState extends State<AddToBooks> {
   String filename = 'Select book';
   String imagename = 'Select image for book cover';
   String error = '';
+  final _logger = Logger();
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +200,7 @@ class _AddToBooksState extends State<AddToBooks> {
                                     book, file!, bookCoverImage!.path);
                                 var body = json.decode(response.body);
                                 // print(body);
-                                print(body['success']);
+                                _logger.d(body['success']);
                                 if (body['success']) {
                                   snackBar(
                                       const BottomNavigation(
@@ -232,12 +234,12 @@ class _AddToBooksState extends State<AddToBooks> {
 
     setState(() => file = File(path));
 
-    print('file ' + file!.toString());
+    _logger.d('file ' + file!.toString());
     final fileName = Path.basename(file!.path);
     setState(() {
       filename = fileName;
     });
-    print('filenames ' + fileName);
+    _logger.d('filenames ' + fileName);
     final fileExtension = Path.extension(file!.path);
   }
 
@@ -255,7 +257,7 @@ class _AddToBooksState extends State<AddToBooks> {
     setState(() {
       imagename = bookCoverName;
     });
-    print('book names ' + bookCoverName);
+    _logger.d('book names ' + bookCoverName);
 
     // final fileExtension = Path.extension(file!.path);
   }

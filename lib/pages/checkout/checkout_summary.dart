@@ -4,11 +4,12 @@ import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/cart_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterwave/flutterwave.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import '../../components/bottomnavigation.dart';
 import '../../services/cart_service.dart';
 
@@ -171,7 +172,8 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
                   fontSize: 16,
                   gradientColors: myOrangeGradientTransparent,
                   pressed: () {
-                    MyNavigate.navigatepushuntil(const BottomNavigation(), context);
+                    MyNavigate.navigatepushuntil(
+                        const BottomNavigation(), context);
                   },
                 ),
                 MyButton(
@@ -201,10 +203,12 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
   }
 
   _handlePaymentInitialization() async {
+    final _logger = Logger();
+
     final flutterwave = Flutterwave.forUIPayment(
       amount: cartController.total,
       currency: FlutterwaveCurrency.NGN,
-      context: this.context,
+      context: context,
       publicKey: "FLWPUBK_TEST-b6fec30caf684ee6845762074efb8ce3-X",
       encryptionKey: 'FLWSECK_TESTa753a5576d98',
       email: user(context).email,
@@ -217,7 +221,7 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
     );
     final response = await flutterwave.initializeForUiPayments();
     if (response != null) {
-      print(response.data!.status);
+      _logger.d(response.data!.status);
       // setState(() {
       //   loading = true;
       // });
