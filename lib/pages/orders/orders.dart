@@ -1,15 +1,12 @@
-import 'package:brainworld/components/atm_card_widget.dart';
 import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/myappbar.dart';
 import 'package:brainworld/components/profile_user_widget.dart';
-import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/main.dart';
 import 'package:brainworld/pages/chats/models/order_info.dart';
-import 'package:brainworld/services/cart_service.dart';
 import 'package:brainworld/services/order_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -30,7 +27,7 @@ class _OrdersState extends State<Orders> {
           var dataAsMap = snapshot.data as Map;
           return Scaffold(
             appBar: MyAppMenuBar(title: 'Your Orders'),
-            drawer: MyDrawer(),
+            drawer: const MyDrawer(),
             body: SingleChildScrollView(
                 child: Padding(
               padding: const EdgeInsets.all(23.0),
@@ -39,21 +36,27 @@ class _OrdersState extends State<Orders> {
                   Container(
                     // height: 100,
                     // width: 200,
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(30)),
                         boxShadow: [
                           BoxShadow(
-                            color: myhomepageLightBlue.withOpacity(0.6),
+                            color: BrainWorldColors.myhomepageLightBlue
+                                .withOpacity(0.6),
                             spreadRadius: 5,
                             blurRadius: 10,
-                            offset: Offset(0, 5), // changes position of shadow
+                            offset: const Offset(
+                                0, 5), // changes position of shadow
                           ),
                         ],
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
-                            colors: [myhomepageBlue, myhomepageLightBlue])),
+                            colors: [
+                              BrainWorldColors.myhomepageBlue,
+                              BrainWorldColors.myhomepageLightBlue
+                            ])),
                     child: !snapshot.hasData
                         ? buildLoader()
                         : Column(
@@ -82,7 +85,7 @@ class _OrdersState extends State<Orders> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Column(
@@ -112,14 +115,14 @@ class _OrdersState extends State<Orders> {
                       ? ListView.builder(
                           itemCount: 10,
                           shrinkWrap: true,
-                          padding: EdgeInsets.only(top: 35),
+                          padding: const EdgeInsets.only(top: 35),
                           itemBuilder: (context, index) {
                             return buildLoader(isList: true);
                           })
                       : ListView.builder(
                           itemCount: dataAsMap['orders'].length,
                           shrinkWrap: true,
-                          padding: EdgeInsets.only(top: 35),
+                          padding: const EdgeInsets.only(top: 35),
                           itemBuilder: (context, index) {
                             OrderInfo order =
                                 OrderInfo.fromJson(dataAsMap['orders'][index]);
@@ -139,7 +142,7 @@ class _OrdersState extends State<Orders> {
       ),
       child: Container(
         height: 92,
-        padding: EdgeInsets.only(left: 4, right: 16, top: 3, bottom: 10),
+        padding: const EdgeInsets.only(left: 4, right: 16, top: 3, bottom: 10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
             color: Colors.white,
@@ -159,7 +162,7 @@ class _OrdersState extends State<Orders> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             ProfileUserWidget(
-              userId: order.user_id,
+              userId: order.userId,
               // isUtilityType: true,
               comment: order.title,
               subTitle: order.orderOn,
@@ -176,8 +179,8 @@ class _OrdersState extends State<Orders> {
               children: [
                 Text(
                   order.price,
-                  style: TextStyle(
-                    fontSize: 13, color: myhomepageBlue,
+                  style: const TextStyle(
+                    fontSize: 13, color: BrainWorldColors.myhomepageBlue,
                     // fontWeight: widget.isMessageRead?FontWeight.bold:FontWeight.normal
                   ),
                 ),
@@ -217,14 +220,14 @@ class _OrdersState extends State<Orders> {
   buildLoader({bool isList = false}) {
     return isList
         ? Wrap(children: [
-            Skeleton(width: 70, height: 70),
+            const Skeleton(width: 70, height: 70),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Skeleton(
                   width: size(context).width * 0.54,
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Skeleton(
                   width: size(context).width * 0.4,
                 ),
@@ -234,17 +237,17 @@ class _OrdersState extends State<Orders> {
           ])
         : Column(
             children: [
-              Skeleton(
+              const Skeleton(
                 width: 100,
               ),
-              Skeleton(
+              const Skeleton(
                 width: 100,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Column(
-                    children: [
+                    children: const [
                       Skeleton(
                         width: 100,
                       ),
@@ -254,11 +257,11 @@ class _OrdersState extends State<Orders> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
-                    children: [
+                    children: const [
                       Skeleton(
                         width: 100,
                       ),

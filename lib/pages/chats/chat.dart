@@ -1,32 +1,28 @@
-import 'dart:convert';
-
 import 'package:brainworld/components/custom_sliver_delegate.dart';
 import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/myappbar.dart';
-import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/controllers/chat_controller.dart';
 import 'package:brainworld/controllers/chat_users_controller.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/chats/components/chat_list_widget.dart';
-import 'package:brainworld/pages/chats/models/message.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
 class Chat extends StatefulWidget {
   // Socket chatSocket;
-  Chat({
+  const Chat({
     Key? key,
     // required this.chatSocket
   }) : super(key: key);
+
   Text buildText({title}) {
     return Text(
       title,
-      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+      style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
     );
   }
 
@@ -35,16 +31,16 @@ class Chat extends StatefulWidget {
             height: size.height * 0.31,
             width: size.width * 0.7,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderRadius: const BorderRadius.all(Radius.circular(100)),
                 boxShadow: [
                   BoxShadow(
-                    color: myhomepageBlue.withOpacity(0.24),
+                    color: BrainWorldColors.myhomepageBlue.withOpacity(0.24),
                     // spreadRadius: 5,
                     blurRadius: 10,
-                    offset: Offset(0, 5), // changes position of shadow
+                    offset: const Offset(0, 5), // changes position of shadow
                   ),
                 ],
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [Colors.white, Colors.white])),
@@ -52,12 +48,12 @@ class Chat extends StatefulWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                    borderRadius: const BorderRadius.all(Radius.circular(50)),
                     child: Image.asset(
                       "assets/images/dullbaby.png",
                       height: 110,
                     )),
-                Text(
+                const Text(
                   ' no chats yet',
                 )
               ],
@@ -132,7 +128,7 @@ class _ChatState extends State<Chat> {
 
       for (var user in allUsers) {
         // users.add(_users);
-        if (this.mounted) {
+        if (mounted) {
           if (user['email'] !=
               Provider.of<User>(context, listen: false).email) {
             setState(() {
@@ -159,13 +155,13 @@ class _ChatState extends State<Chat> {
     print(chatUsersListController.chatUsers.length);
 
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       appBar: MyAppMenuBar(title: 'Chats'),
       body: SafeArea(
         child: Stack(children: [
           RefreshIndicator(
             onRefresh: () async {
-              await Future.delayed(Duration(seconds: 1));
+              await Future.delayed(const Duration(seconds: 1));
               getUsers();
             },
             child: CustomScrollView(shrinkWrap: true, slivers: <Widget>[
@@ -175,7 +171,7 @@ class _ChatState extends State<Chat> {
                 delegate: CustomSliverDelegate(
                   expandedHeight: 129,
                   chatUsersListController: chatUsersListController,
-                  alignment: Alignment(0.0, 0.9),
+                  alignment: const Alignment(0.0, 0.9),
                 ),
               ),
               SliverToBoxAdapter(
@@ -185,10 +181,10 @@ class _ChatState extends State<Chat> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       widget.buildText(title: 'Messages'),
-                      chatUsersListController.chatUsers.length == 0
+                      chatUsersListController.chatUsers.isEmpty
                           ? ListView.builder(
                               itemCount: 5,
-                              physics: ScrollPhysics(),
+                              physics: const ScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 return buildSkeleton(context);
@@ -198,23 +194,23 @@ class _ChatState extends State<Chat> {
                                 itemCount:
                                     chatUsersListController.chatUsers.length,
                                 shrinkWrap: true,
-                                padding: EdgeInsets.only(top: 16),
-                                physics: ScrollPhysics(),
+                                padding: const EdgeInsets.only(top: 16),
+                                physics: const ScrollPhysics(),
                                 itemBuilder: (context, index) {
-                                  if (chatUsersListController.chatUsers.length <
-                                      1) {
-                                    return Chat().buildNoChats(
+                                  if (chatUsersListController
+                                      .chatUsers.isNotEmpty) {
+                                    return const Chat().buildNoChats(
                                         "have not started any conversation",
                                         size);
                                   } else {
                                     return ChatListWidget(
                                       socket: socket,
-                                      userid: chatUsersListController
+                                      userId: chatUsersListController
                                           .chatUsers[index].id,
                                       clickedEmail: chatUsersListController
                                           .chatUsers[index].email,
                                       name: chatUsersListController
-                                          .chatUsers[index].full_name,
+                                          .chatUsers[index].fullName,
                                       messageText: chatUsersListController
                                           .chatUsers[index].email,
                                       imageUrl: imgUrl[index],
@@ -222,6 +218,7 @@ class _ChatState extends State<Chat> {
                                       isMessageRead: (index == 0 || index == 3)
                                           ? true
                                           : false,
+                                      time: '',
                                     );
                                   }
                                 },
@@ -240,14 +237,14 @@ class _ChatState extends State<Chat> {
 
   Wrap buildSkeleton(context) {
     return Wrap(children: [
-      Skeleton(width: 70, height: 70),
+      const Skeleton(width: 70, height: 70),
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Skeleton(
             width: size(context).width * 0.54,
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Skeleton(
             width: size(context).width * 0.4,
           ),

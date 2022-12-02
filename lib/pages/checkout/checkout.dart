@@ -5,15 +5,11 @@ import 'package:brainworld/components/my_text_field.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/cart_model.dart';
 import 'package:brainworld/pages/checkout/checkout_summary.dart';
 import 'package:brainworld/services/cart_service.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'dart:math';
-import 'package:provider/provider.dart';
 
 class Checkout extends StatefulWidget {
   const Checkout({
@@ -48,7 +44,7 @@ class _CheckoutState extends State<Checkout> {
     String phoneInitialValue = user(context).phone ?? 'Not added';
 
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -57,7 +53,7 @@ class _CheckoutState extends State<Checkout> {
                   pagetitle: 'CHECKOUT',
                   size: size,
                   height: size.height * 0.43,
-                  container_radius: 140,
+                  containerRadius: 140,
                   widget: AtmCard(size: size, cartController: cartController)),
               Form(
                 key: _formKey,
@@ -67,7 +63,7 @@ class _CheckoutState extends State<Checkout> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Email',
                         style: TextStyle(
                           color: Colors.black,
@@ -76,7 +72,7 @@ class _CheckoutState extends State<Checkout> {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       MyTextField(
@@ -92,10 +88,10 @@ class _CheckoutState extends State<Checkout> {
                           setState(() => phone = val);
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         'Phone',
                         style: TextStyle(
                           color: Colors.black,
@@ -104,7 +100,7 @@ class _CheckoutState extends State<Checkout> {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       MyTextField(
@@ -122,10 +118,10 @@ class _CheckoutState extends State<Checkout> {
                           setState(() => phone = val);
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         'Address',
                         style: TextStyle(
                           color: Colors.black,
@@ -134,7 +130,7 @@ class _CheckoutState extends State<Checkout> {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       MyTextField(
@@ -148,7 +144,7 @@ class _CheckoutState extends State<Checkout> {
                         validator:
                             RequiredValidator(errorText: 'Address is required'),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Center(

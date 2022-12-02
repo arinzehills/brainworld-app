@@ -1,8 +1,8 @@
-import 'package:brainworld/components/expandable_text_widget.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/upload/add_to_local_library.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -33,20 +33,21 @@ class NothingYetWidget extends StatelessWidget {
                 size: size,
                 height: size.height * 0.21,
                 showDrawer: false,
-                container_radius: 90,
+                containerRadius: 90,
                 widget: Padding(
                   padding: const EdgeInsets.only(top: 0.0),
                   child: Center(
                     child: Column(
                       children: [
-                        ImageIcon(
+                        const ImageIcon(
                           AssetImage('assets/images/uploads_blue.png'),
                           size: 60,
                           color: Colors.white,
                         ),
                         Text(
                           pageTitle,
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 15),
                         ),
                       ],
                     ),
@@ -68,7 +69,7 @@ class NothingYetWidget extends StatelessWidget {
               Text(
                 pageHeader,
                 style: TextStyle(
-                    color: myhomepageBlue.withOpacity(0.7),
+                    color: BrainWorldColors.myhomepageBlue.withOpacity(0.7),
                     fontSize: 32,
                     fontWeight: FontWeight.w500),
               ),
@@ -79,7 +80,7 @@ class NothingYetWidget extends StatelessWidget {
 
               // ExpandableTextWidget(
               //     text: (pageContentText! + pageContentText!) ?? ''),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               MyButton(
@@ -91,7 +92,7 @@ class NothingYetWidget extends StatelessWidget {
                 widthRatio: 0.80,
                 pressed: onClick ??
                     () async {
-                      Get.to(AddToLocalLibray());
+                      Get.to(const AddToLocalLibray());
                     },
               ),
             ],

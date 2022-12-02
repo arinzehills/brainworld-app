@@ -11,7 +11,7 @@ class Laboratory extends StatefulWidget {
 class _LaboratoryState extends State<Laboratory> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: NothingYetWidget(
         pageTitle: 'START LAB PRACTICE',
         pageHeader: "Lab Test Taken",

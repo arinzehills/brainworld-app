@@ -8,11 +8,11 @@ import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
 class CommentFieldBox extends StatefulWidget {
-  PostsModel post;
-  Socket socket;
+  final PostsModel post;
+  final Socket socket;
 
-  bool isCommentDetail;
-  CommentFieldBox(
+  final bool isCommentDetail;
+  const CommentFieldBox(
       {Key? key,
       required this.post,
       required this.socket,
@@ -33,8 +33,10 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
     final user = Provider.of<User>(context);
 
     return Container(
-      padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
-      color: widget.isCommentDetail ? Color.fromARGB(255, 233, 238, 251) : null,
+      padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+      color: widget.isCommentDetail
+          ? const Color.fromARGB(255, 233, 238, 251)
+          : null,
       child: Row(
         children: [
           ChatIconGradient(
@@ -44,7 +46,7 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
             iconName: Icons.add,
             bgColor: myblueGradientTransparent,
           ),
-          SizedBox(
+          const SizedBox(
             width: 8,
           ),
           Expanded(
@@ -53,7 +55,7 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
               textCapitalization: TextCapitalization.sentences,
               autocorrect: true,
               enableSuggestions: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   fillColor: Colors.red,
                   hintText: "Add a comment...",
                   hintStyle: TextStyle(color: Color(0xffC9C4C4)),
@@ -68,7 +70,7 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
               pressed: _controller.text == ''
                   ? null
                   : () => sendComment(
-                        widget.post.post_id,
+                        widget.post.postId,
                         user.id,
                         comment,
                       ),
@@ -76,7 +78,7 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
               iconSize: 20,
               bgHeight: 35,
               bgColor: myOrangeGradientTransparent),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
         ],

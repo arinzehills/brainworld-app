@@ -10,6 +10,7 @@ import 'package:brainworld/pages/books_library/add_to_books.dart';
 import 'package:brainworld/pages/chats/models/books_model.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:brainworld/services/upload_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
@@ -28,7 +29,7 @@ class BooksLibrary extends StatefulWidget {
 class _BooksLibraryState extends State<BooksLibrary> {
   bool loading = false;
   late IsNewUserModel userInfoData;
-  late Future books_data;
+  late Future booksData;
   int categoryLength = 0;
   int bookLength = 0;
   @override
@@ -42,7 +43,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
 
   _getUserRegInfo() async {
     var userInfo = await getUserRegInfo();
-    if (this.mounted) {
+    if (mounted) {
       setState(() {
         userInfoData = IsNewUserModel.fromJson(userInfo);
       });
@@ -54,10 +55,10 @@ class _BooksLibraryState extends State<BooksLibrary> {
 
     //this.students = await TransactionService.
     //              transactionInstance.getUserTransactions(1);
-    this.books_data = UploadService().getAllBooks();
+    booksData = UploadService().getAllBooks();
     print('books_data');
     // var books_data2 = books_data as Map;
-    books_data.then((value) => {
+    booksData.then((value) => {
           print('value'),
           print(value['categories']),
           setState(() => categoryLength = value['categories'].length),
@@ -72,17 +73,17 @@ class _BooksLibraryState extends State<BooksLibrary> {
     print('userInfoData');
     // print(userInfoData?.bookLib);
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       appBar: bookLength == 0 ? null : MyAppMenuBar(title: 'Books'),
       body: FutureBuilder(
-          future: books_data,
+          future: booksData,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Text(snapshot.error.toString());
             } else if (snapshot.data == null) {
-              return Loading();
+              return const Loading();
             } else {
-              var book_items_map = snapshot.data! as Map;
+              var bookItemsMap = snapshot.data! as Map;
 
               return
                   // book_items_map['books'].length == 0
@@ -96,7 +97,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
                           onClick: () async {
                             var userModel = IsNewUserModel(
                                 id: user.id,
-                                username: user.full_name,
+                                username: user.fullName,
                                 newlyRegistered: true,
                                 bookLib: false,
                                 library: userInfoData.library == false
@@ -108,13 +109,14 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                 regAt: 'regAt');
                             ;
                             AuthService.setIsNewUser(userModel);
-                            MyNavigate.navigatejustpush(AddToBooks(), context);
+                            MyNavigate.navigatejustpush(
+                                const AddToBooks(), context);
                           },
                         )
                       : Stack(
                           children: [
                             Container(
-                                padding: EdgeInsets.only(top: 5),
+                                padding: const EdgeInsets.only(top: 5),
                                 // color: Color.fromARGB(255, 13, 39, 127),
                                 decoration: BoxDecoration(
                                     gradient: LinearGradient(
@@ -124,7 +126,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     ClipRRect(
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                             Radius.circular(50)),
                                         child: Image.asset(
                                           "assets/images/brainworld-logo.png",
@@ -134,24 +136,25 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 20,
                                         ),
-                                        Text(
+                                        const Text(
                                           'Brain World',
                                           style: TextStyle(
-                                              color: myhomepageBlue,
+                                              color: BrainWorldColors
+                                                  .myhomepageBlue,
                                               fontSize: 23,
                                               fontWeight: FontWeight.w500),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 3,
                                         ),
-                                        Text(
+                                        const Text(
                                           'Buy books at ease here on brain world',
                                           style: TextStyle(color: Colors.white),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 8,
                                         ),
                                         Row(
@@ -165,33 +168,33 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                                     color: Colors.white,
                                                     semanticsLabel:
                                                         'A red up arrow'),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 5,
                                                 ),
                                                 Text(
-                                                  '${bookLength} books in your library',
-                                                  style: TextStyle(
+                                                  '$bookLength books in your library',
+                                                  style: const TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 12),
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 8,
                                             ),
                                             Row(
                                               children: [
-                                                Icon(
+                                                const Icon(
                                                   IconlyBold.scan,
                                                   size: 15,
                                                   color: Colors.white,
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 5,
                                                 ),
                                                 Text(
-                                                  '${categoryLength} shelfs',
-                                                  style: TextStyle(
+                                                  '$categoryLength shelfs',
+                                                  style: const TextStyle(
                                                       color: Colors.white),
                                                 ),
                                               ],
@@ -207,9 +210,9 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                 alignment: Alignment(
                                     0, -size(context).height * 0.00081),
                                 child: Padding(
-                                    padding: EdgeInsets.all(20),
+                                    padding: const EdgeInsets.all(20),
                                     child: textField())),
-                            book_items_map['books'].length == 0
+                            bookItemsMap['books'].length == 0
                                 ? NothingYetWidget(
                                     pageTitle: '',
                                     pageHeader: "No Books Yet",
@@ -219,7 +222,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                         'You can also sell your own books here\n at any price u want',
                                     onClick: () async {
                                       MyNavigate.navigatejustpush(
-                                          AddToBooks(), context);
+                                          const AddToBooks(), context);
                                     },
                                   )
                                 : Padding(
@@ -227,19 +230,19 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                     padding: EdgeInsets.only(
                                         top: size(context).height * 0.3),
                                     child: FutureBuilder(
-                                        future: books_data,
+                                        future: booksData,
                                         builder: (context, snapshot) {
                                           if (snapshot.hasError) {
                                             return Text(
                                                 snapshot.error.toString());
                                           } else if (snapshot.data == null) {
-                                            return Loading();
+                                            return const Loading();
                                           } else {
-                                            var book_items_map =
+                                            var bookItemsMap =
                                                 snapshot.data! as Map;
                                             List<BookModel> books = [];
                                             for (var data
-                                                in book_items_map['books']) {
+                                                in bookItemsMap['books']) {
                                               books.add(
                                                   BookModel.fromJson(data));
                                             }
@@ -249,10 +252,9 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   libraryList(list: books),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 8.0),
+                                                  const Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 8.0),
                                                     child: Text(
                                                         'Your Shelfs/Categories',
                                                         style: TextStyle(
@@ -262,22 +264,22 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                                   ),
                                                   Container(
                                                     height: 250,
-                                                    padding: EdgeInsets.only(
-                                                        bottom: 50),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            bottom: 50),
                                                     child: ListView.builder(
                                                         // scrollDirection: Axis.horizontal,
                                                         physics:
-                                                            BouncingScrollPhysics(),
-                                                        itemCount:
-                                                            book_items_map[
-                                                                    'categories']
-                                                                .length,
+                                                            const BouncingScrollPhysics(),
+                                                        itemCount: bookItemsMap[
+                                                                'categories']
+                                                            .length,
                                                         itemBuilder:
                                                             (context, index) {
                                                           return libraryList(
                                                               list: books,
                                                               category:
-                                                                  book_items_map[
+                                                                  bookItemsMap[
                                                                           'categories']
                                                                       [index]);
                                                         }),
@@ -317,13 +319,13 @@ class _BooksLibraryState extends State<BooksLibrary> {
                 decoration: BoxDecoration(
                     gradient:
                         LinearGradient(colors: myblueGradientTransparent)),
-                margin: EdgeInsets.only(right: 4),
+                margin: const EdgeInsets.only(right: 4),
                 height: 14,
                 width: 6,
               ),
               Text(
                 category != null ? category : 'All books',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w600),
@@ -331,7 +333,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
             ],
           ),
         ),
-        Container(
+        SizedBox(
             height: 185.0,
             // width: size(context).width * 1.1,
             child: HorizontalListView(
@@ -371,12 +373,13 @@ class _BooksLibraryState extends State<BooksLibrary> {
               ),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: myhomepageBlue, width: 0.0),
+              borderSide: const BorderSide(
+                  color: BrainWorldColors.myhomepageBlue, width: 0.0),
               borderRadius: BorderRadius.circular(10.0),
             ),
-            prefixIcon: Icon(
+            prefixIcon: const Icon(
               IconlyBold.search,
-              color: iconsColor,
+              color: BrainWorldColors.iconsColors,
             )),
       ),
     );

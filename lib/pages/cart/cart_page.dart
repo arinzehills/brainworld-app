@@ -2,10 +2,11 @@ import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
-import 'package:brainworld/components/utilities_widgets/radial-gradient.dart';
+import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/checkout/checkout.dart';
 import 'package:brainworld/services/cart_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -14,11 +15,11 @@ import 'package:iconly/iconly.dart';
 void showCartBottomSheet(context) {
   showModalBottomSheet(
       context: context,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       builder: (context) {
-        return MyCartWidget();
+        return const MyCartWidget();
       });
 }
 
@@ -49,9 +50,9 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                   child: ListView.builder(
                       itemCount: cartController.cartItems.length,
                       shrinkWrap: true,
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       //  padding: EdgeInsets.only(top: 10,bottom: 10),
-                      physics: ScrollPhysics(),
+                      physics: const ScrollPhysics(),
                       itemBuilder: (context, index) {
                         final cartItems =
                             cartController.cartItems.keys.toList();
@@ -68,14 +69,14 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             'No Items in cart',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                                 color: Colors.black),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Image.asset(
@@ -100,32 +101,36 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                       padding: const EdgeInsets.only(left: 13.0),
                       child: GradientText(
                           'Your cart(${cartController.cartItems.length})',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
-                          gradient: LinearGradient(
-                            colors: [myhomepageBlue, myhomepageLightBlue],
+                          gradient: const LinearGradient(
+                            colors: [
+                              BrainWorldColors.myhomepageBlue,
+                              BrainWorldColors.myhomepageLightBlue
+                            ],
                           ))),
-                  SizedBox(
+                  const SizedBox(
                     width: 60,
                   ),
                   OutlineButton(
-                    color: myhomepageBlue,
-                    disabledBorderColor: myhomepageLightOrange,
-                    borderSide: BorderSide(color: myhomepageBlue),
+                    color: BrainWorldColors.myhomepageBlue,
+                    disabledBorderColor: BrainWorldColors.myhomepageLightOrange,
+                    borderSide: const BorderSide(
+                        color: BrainWorldColors.myhomepageBlue),
                     onPressed: () {
                       cartController.removeAllCourses();
                     },
-                    child: Text(
+                    child: const Text(
                       'Empty cart',
-                      style: TextStyle(color: myhomepageBlue),
+                      style: TextStyle(color: BrainWorldColors.myhomepageBlue),
                     ),
                   ),
                   RadiantGradientMask(
                     child: IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         //  Icons.cabin,
                         IconlyBold.close_square,
-                        color: myhomepageBlue,
+                        color: BrainWorldColors.myhomepageBlue,
                       ),
                       onPressed: () {
                         Navigator.pop(context);
@@ -141,27 +146,30 @@ class _MyCartWidgetState extends State<MyCartWidget> {
             Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  padding: EdgeInsets.all(10),
-                  constraints: BoxConstraints(
+                  padding: const EdgeInsets.all(10),
+                  constraints: const BoxConstraints(
                     maxHeight: double.infinity,
                   ),
                   height: 85,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(20)),
+                          const BorderRadius.vertical(top: const Radius.circular(20)),
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
                             color: Colors.black.withOpacity(0.1),
                             blurRadius: 30,
                             spreadRadius: 0,
-                            offset: Offset(5, 20)),
+                            offset: const Offset(5, 20)),
                       ],
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [myhomepageLightBlue, myhomepageBlue])),
+                          colors: [
+                            BrainWorldColors.myhomepageLightBlue,
+                            BrainWorldColors.myhomepageBlue
+                          ])),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -170,7 +178,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               'Total',
                               style: TextStyle(
                                 color: Colors.white,
@@ -180,7 +188,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                             ),
                             Text(
                               'NGN ${cartController.total}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 26,
                               ),
@@ -188,7 +196,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                           ],
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 12.0, left: 6, right: 10),
@@ -197,7 +205,8 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                           widthRatio: 0.4,
                           isOval: true,
                           pressed: () {
-                            MyNavigate.navigatejustpush(Checkout(), context);
+                            MyNavigate.navigatejustpush(
+                                const Checkout(), context);
                           },
                           isGradientButton: true,
                           gradientColors: myOrangeGradientTransparent,
@@ -218,7 +227,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
       padding: const EdgeInsets.only(bottom: 10.0),
       child: Container(
         height: 92,
-        padding: EdgeInsets.only(left: 4, right: 16, top: 3, bottom: 10),
+        padding: const EdgeInsets.only(left: 4, right: 16, top: 3, bottom: 10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
             color: Colors.white,
@@ -238,7 +247,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             ProfileUserWidget(
-              userId: cartItems[index].user_id,
+              userId: cartItems[index].userId,
               // isUtilityType: true,
               isCircular: false,
               imageUrl: cartItems[index].imageUrl,
@@ -256,8 +265,8 @@ class _MyCartWidgetState extends State<MyCartWidget> {
               children: [
                 Text(
                   "NGN" + cartItems[index].price,
-                  style: TextStyle(
-                    fontSize: 13, color: myhomepageBlue,
+                  style: const TextStyle(
+                    fontSize: 13, color: BrainWorldColors.myhomepageBlue,
                     // fontWeight: widget.isMessageRead?FontWeight.bold:FontWeight.normal
                   ),
                 ),
@@ -270,7 +279,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                         borderRadius: BorderRadius.circular(50),
                         gradient: LinearGradient(
                             colors: myOrangeGradientTransparent)),
-                    child: Center(
+                    child: const Center(
                         child: Icon(
                       IconlyBold.delete,
                       color: Colors.white,

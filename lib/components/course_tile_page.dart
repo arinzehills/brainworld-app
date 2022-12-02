@@ -1,6 +1,6 @@
 // import 'package:brainworld/models/Course_tile.dart';
 
-import 'package:brainworld/components/utilities_widgets/radial-gradient.dart';
+import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/pages/upload/course/model/course.dart';
 import 'package:brainworld/pages/upload/course/model/course_tile.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +8,13 @@ import 'package:flutter/material.dart';
 class CourseTilePage extends StatelessWidget {
   final Course? course;
   final List<CourseTile> courseContents;
-  Function(String)? onTap;
+  final Function(String)? onTap;
 
   CourseTilePage(
       {Key? key, this.course, this.onTap, this.courseContents = const []})
       : super(key: key);
 
-  final CourseTile2 = <CourseTile>[];
+  final courseTile2 = <CourseTile>[];
   @override
   Widget build(BuildContext context) {
     // courseTitles.forEach((title) => {
@@ -36,7 +36,7 @@ class CourseTilePage extends StatelessWidget {
 
     return ListView(
       shrinkWrap: true,
-      physics: ScrollPhysics(),
+      physics: const ScrollPhysics(),
       children: courseContents
           .map((tile) => CourseTileWidget(
                 tile: tile,
@@ -49,9 +49,9 @@ class CourseTilePage extends StatelessWidget {
 
 class CourseTileWidget extends StatelessWidget {
   final CourseTile? tile;
-  Function(String)? onTap;
-  Icon? icon;
-  CourseTileWidget({Key? key, this.tile, this.icon, this.onTap})
+  final Function(String)? onTap;
+final  Icon? icon;
+ const CourseTileWidget({Key? key, this.tile, this.icon, this.onTap})
       : super(key: key);
 
   @override
@@ -62,7 +62,7 @@ class CourseTileWidget extends StatelessWidget {
     if (tiles.isEmpty) {
       return ListTile(
         title: Text(title),
-        leading: RadiantGradientMask(
+        leading: const RadiantGradientMask(
           child: Icon(
             Icons.video_library,
             color: Colors.white,
@@ -80,7 +80,7 @@ class CourseTileWidget extends StatelessWidget {
                   },
                   child: CourseTileWidget(
                     tile: tile,
-                    icon: Icon(Icons.video_library),
+                    icon: const Icon(Icons.video_library),
                   ),
                 ))
             .toList(),

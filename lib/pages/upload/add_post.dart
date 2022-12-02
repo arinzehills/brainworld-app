@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:brainworld/themes/themes.dart';
 import 'package:path/path.dart' as Path;
 
 import 'package:brainworld/components/bottomnavigation.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
-import 'package:brainworld/components/utilities_widgets/radial-gradient.dart';
+import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
@@ -18,13 +19,13 @@ import 'package:provider/provider.dart';
 
 class AddPost extends StatefulWidget {
   final String? docid;
-  final int note_count;
+  final int noteCount;
   final String? title;
   final String? decription;
   const AddPost(
       {Key? key,
       this.docid,
-      required this.note_count,
+      required this.noteCount,
       this.title,
       this.decription})
       : super(key: key);
@@ -45,7 +46,7 @@ class _AddPostState extends State<AddPost> {
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        content: Container(
+        content: SizedBox(
           height: 172,
           child: Center(
             child: Column(
@@ -61,8 +62,8 @@ class _AddPostState extends State<AddPost> {
                     onPressed: () {},
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 17.0, top: 9),
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 17.0, top: 9),
                   child: Text(
                     'Confirm Delete?',
                     style: TextStyle(
@@ -71,26 +72,26 @@ class _AddPostState extends State<AddPost> {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 15.0),
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 15.0),
                   child: Text(
                     'Are you sure you want to delete?',
                     style: TextStyle(fontSize: 15, fontFamily: 'Roboto'),
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
+                    SizedBox(
                       height: 45,
                       child: RaisedButton(
-                        child: Text(
+                        child: const Text(
                           'No',
                           style: TextStyle(
                               color: Colors.white, fontFamily: 'Roboto'),
                         ),
-                        color: myhomepageBlue,
+                        color: BrainWorldColors.myhomepageBlue,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(23)),
                         onPressed: () => {
@@ -98,10 +99,10 @@ class _AddPostState extends State<AddPost> {
                         },
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 45,
                       child: RaisedButton(
-                        child: Text(
+                        child: const Text(
                           'Yes',
                           style: TextStyle(
                               color: Colors.white, fontFamily: 'Roboto'),
@@ -138,13 +139,13 @@ class _AddPostState extends State<AddPost> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               IconlyBold.arrow_left,
-              color: myhomepageLightBlue,
+              color: BrainWorldColors.myhomepageLightBlue,
             ),
           ),
           elevation: 0,
-          title: Text(
+          title: const Text(
             'Add Post',
             style: TextStyle(color: Colors.black),
           ),
@@ -152,9 +153,9 @@ class _AddPostState extends State<AddPost> {
           backgroundColor: Colors.white,
           actions: [
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.more_vert,
-                color: myhomepageBlue,
+                color: BrainWorldColors.myhomepageBlue,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {
@@ -185,16 +186,17 @@ class _AddPostState extends State<AddPost> {
                             initialValue:
                                 widget.docid == null ? null : widget.title,
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
+                              contentPadding: const EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 10.0),
                               fillColor: Colors.white,
                               hintText: 'Title',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 fontSize: 14,
                               ),
                               border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: myhomepageLightBlue, width: 0.1),
+                                borderSide: const BorderSide(
+                                    color: BrainWorldColors.myhomepageLightBlue,
+                                    width: 0.1),
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                             ),
@@ -218,11 +220,12 @@ class _AddPostState extends State<AddPost> {
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
                                 hintText: 'Enter caption...',
-                                hintStyle: TextStyle(
+                                hintStyle: const TextStyle(
                                   fontSize: 14,
                                 ),
                                 border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.grey),
+                                  borderSide:
+                                      const BorderSide(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(23.0),
                                 ),
                               ),
@@ -246,10 +249,11 @@ class _AddPostState extends State<AddPost> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               IconButton(
-                                  icon: RadiantGradientMask(
+                                  icon: const RadiantGradientMask(
                                     child: Icon(
                                       IconlyBold.image,
-                                      color: myhomepageLightBlue,
+                                      color:
+                                          BrainWorldColors.myhomepageLightBlue,
                                       size: 39.83,
                                     ),
                                   ),
@@ -315,7 +319,7 @@ class _AddPostState extends State<AddPost> {
   void _showModalBottomSheet(context, uid, docid) {
     showModalBottomSheet(
         context: context,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         builder: (context) {
@@ -326,19 +330,25 @@ class _AddPostState extends State<AddPost> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                        padding: const EdgeInsets.only(left: 13.0),
-                        child: GradientText('More options',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                            gradient: LinearGradient(
-                              colors: [myhomepageBlue, myhomepageLightBlue],
-                            ))),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 13.0),
+                      child: GradientText(
+                        'More options',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                        gradient: LinearGradient(
+                          colors: [
+                            BrainWorldColors.myhomepageBlue,
+                            BrainWorldColors.myhomepageLightBlue
+                          ],
+                        ),
+                      ),
+                    ),
                     RadiantGradientMask(
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           IconlyBold.close_square,
-                          color: myhomepageBlue,
+                          color: BrainWorldColors.myhomepageBlue,
                         ),
                         onPressed: () {
                           Navigator.pop(context);
@@ -357,18 +367,18 @@ class _AddPostState extends State<AddPost> {
                     child: Row(
                       children: [
                         IconButton(
-                          icon: RadiantGradientMask(
+                          icon: const RadiantGradientMask(
                             child: Icon(
                               Icons.cancel,
-                              color: myhomepageLightBlue,
+                              color: BrainWorldColors.myhomepageLightBlue,
                               size: 19.83,
                             ),
                           ),
                           tooltip: 'cancel',
                           onPressed: () {},
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 13.0),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 13.0),
                           child: Text(
                             'Cancel changes',
                             style: TextStyle(
@@ -391,14 +401,14 @@ class _AddPostState extends State<AddPost> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0).copyWith(left: 12),
                         child: Row(
-                          children: [
+                          children: const [
                             Icon(
                               Icons.delete,
                               color: Colors.red,
                               size: 19.83,
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 13.0),
+                              padding: EdgeInsets.only(left: 13.0),
                               child: Text(
                                 'Delete Note',
                                 style: TextStyle(

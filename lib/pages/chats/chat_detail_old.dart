@@ -1,10 +1,9 @@
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
-import 'package:brainworld/pages/chats/components/build_message_list.dart';
 import 'package:brainworld/pages/chats/components/chat_icon_gradient.dart';
 import 'package:brainworld/pages/chats/models/message.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconly/iconly.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
@@ -35,14 +34,14 @@ class _ChatDetailState extends State<ChatDetail> {
   final _controller = TextEditingController();
   ChatController chatController = ChatController();
   List<UsersMessage> userMessage = [
-    UsersMessage(
+    const UsersMessage(
       name: "Jorge Henry",
       messageText: "Hey where are you?",
       imageURL: "assets/uploads_blue.png",
       // createdAt: "31 Mar",
       sendersid: 'him',
     ),
-    UsersMessage(
+    const UsersMessage(
       name: "Andrey Jones",
       messageText: "Can you please share the file?",
       imageURL: "assets/uploads_blue.png",
@@ -57,7 +56,7 @@ class _ChatDetailState extends State<ChatDetail> {
   void initState() {
     readLocal();
     socketServer();
-    Future.delayed(Duration(microseconds: 2));
+    Future.delayed(const Duration(microseconds: 2));
 
     socket.emit('sendMessage', {
       {'chatID': groupChatId, "data": null}
@@ -83,7 +82,7 @@ class _ChatDetailState extends State<ChatDetail> {
         backgroundColor: Colors.white,
         flexibleSpace: SafeArea(
           child: Container(
-            padding: EdgeInsets.only(right: 16),
+            padding: const EdgeInsets.only(right: 16),
             child: Row(
               children: <Widget>[
                 IconButton(
@@ -93,16 +92,16 @@ class _ChatDetailState extends State<ChatDetail> {
                   icon: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Color.fromARGB(105, 237, 235, 235)),
-                    child: Center(
+                        color:const Color.fromARGB(105, 237, 235, 235)),
+                    child: const Center(
                       child: Icon(
                         IconlyBold.arrow_left,
-                        color: iconsColor,
+                        color: BrainWorldColors.iconsColors,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 2,
                 ),
                 showimg
@@ -116,7 +115,7 @@ class _ChatDetailState extends State<ChatDetail> {
                           errorBuilder: (context, object, stackTrace) {
                             return ClipRRect(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(50)),
+                                    const BorderRadius.all(const Radius.circular(50)),
                                 child: Image.asset(
                                   "assets/images/green native.png",
                                   height: 50,
@@ -125,12 +124,12 @@ class _ChatDetailState extends State<ChatDetail> {
                         ),
                       )
                     : ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(50)),
+                        borderRadius: const BorderRadius.all(Radius.circular(50)),
                         child: Image.asset(
                           "assets/images/green native.png",
                           height: 50,
                         )),
-                SizedBox(
+                const SizedBox(
                   width: 12,
                 ),
                 Expanded(
@@ -140,29 +139,29 @@ class _ChatDetailState extends State<ChatDetail> {
                     children: <Widget>[
                       Text(
                         widget.name ?? '',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 6,
                       ),
-                      Text(
+                      const Text(
                         "Online now",
                         style:
-                            TextStyle(color: Color(0xff18DE4E), fontSize: 13),
+                             TextStyle(color: Color(0xff18DE4E), fontSize: 13),
                       ),
                     ],
                   ),
                 ),
-                Icon(IconlyBold.call, color: iconsColor),
-                SizedBox(
+                const Icon(IconlyBold.call, color:BrainWorldColors.iconsColors),
+                const SizedBox(
                   width: 10,
                 ),
-                Icon(
+               const Icon(
                   IconlyBold.video,
-                  color: iconsColor,
+                  color: BrainWorldColors.iconsColors,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
               ],
@@ -181,10 +180,10 @@ class _ChatDetailState extends State<ChatDetail> {
         Align(
           alignment: Alignment.bottomLeft,
           child: Container(
-            padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+            padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
             height: 100,
             width: double.infinity,
-            color: Color.fromARGB(255, 224, 230, 250),
+            color: const Color.fromARGB(255, 224, 230, 250),
             child: Row(
               children: <Widget>[
                 ChatIconGradient(
@@ -196,12 +195,12 @@ class _ChatDetailState extends State<ChatDetail> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(
+                  icon:const Icon(
                     IconlyBold.voice,
-                    color: iconsColor,
+                    color: BrainWorldColors.iconsColors,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
                 Expanded(
@@ -210,7 +209,7 @@ class _ChatDetailState extends State<ChatDetail> {
                     textCapitalization: TextCapitalization.sentences,
                     autocorrect: true,
                     enableSuggestions: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         fillColor: Colors.red,
                         hintText: "Write message...",
                         hintStyle: TextStyle(color: Color(0xffC9C4C4)),
@@ -221,7 +220,7 @@ class _ChatDetailState extends State<ChatDetail> {
                     }),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
                 ChatIconGradient(
@@ -237,7 +236,7 @@ class _ChatDetailState extends State<ChatDetail> {
                     iconSize: 30,
                     bgHeight: 60,
                     bgColor: myOrangeGradientTransparent),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
               ],
@@ -278,7 +277,7 @@ class _ChatDetailState extends State<ChatDetail> {
         dynamic list =
             // chatController.chatMessages.where((chat) => chat.id == data['_id']);
 
-            Future.delayed(Duration(microseconds: 2));
+            Future.delayed(const Duration(microseconds: 2));
         if (list.length == 0) {
           //   setState(() {
           // chatController.chatMessages.add(UsersMessage.fromJson(data));

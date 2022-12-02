@@ -44,7 +44,7 @@ class _LibraryState extends State<Library> {
     final user = Provider.of<User>(context);
 
     return loading
-        ? Loading()
+        ? const Loading()
         : (showIntroPage && userInfoData.library == true)
             ? NothingYetWidget(
                 pageTitle: 'WELCOME TO BRAINWORLD MERGED E-LIBRARY',
@@ -56,7 +56,7 @@ class _LibraryState extends State<Library> {
                 onClick: () async {
                   var userModel = IsNewUserModel(
                       id: user.id,
-                      username: user.full_name,
+                      username: user.fullName,
                       newlyRegistered: true,
                       bookLib: userInfoData.classRoom == false ? false : true,
                       library: false,
@@ -70,11 +70,11 @@ class _LibraryState extends State<Library> {
                 },
               )
             : Scaffold(
-                drawer: MyDrawer(),
+                drawer: const MyDrawer(),
                 appBar: MyAppMenuBar(title: 'Library'),
                 body: CustomTab(
-                  widgetsItems: [LibraryWelcome(), UserLibrary()],
-                  items: ['Library', 'My Library'],
+                  widgetsItems: const [LibraryWelcome(), UserLibrary()],
+                  items: const ['Library', 'My Library'],
                 ),
               );
   }

@@ -5,8 +5,7 @@ import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/chats/models/cart_model.dart';
-import 'package:brainworld/pages/chats/models/order_info.dart';
-import 'package:brainworld/pages/upload/course/model/course.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterwave/flutterwave.dart';
 import 'package:get/get.dart';
@@ -14,10 +13,10 @@ import '../../components/bottomnavigation.dart';
 import '../../services/cart_service.dart';
 
 class CheckoutSummary extends StatefulWidget {
-  CheckoutSummary({Key? key, required this.phone, required this.address})
+  const CheckoutSummary({Key? key, required this.phone, required this.address})
       : super(key: key);
-  String phone;
-  String address;
+  final String phone;
+  final String address;
   @override
   _CheckoutSummaryState createState() => _CheckoutSummaryState();
 }
@@ -44,7 +43,7 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
                 pagetitle: 'CHECKOUT SUMMARY',
                 size: size,
                 height: size.height * 0.49,
-                container_radius: 140,
+                containerRadius: 140,
                 widget: AtmCard(size: size, cartController: cartController),
               ),
               Padding(
@@ -52,13 +51,15 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
                       const EdgeInsets.only(left: 15.0, right: 10.0, top: 20),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      borderRadius: const BorderRadius.all(Radius.circular(30)),
                       boxShadow: [
                         BoxShadow(
-                          color: myhomepageBlue.withOpacity(0.6),
+                          color:
+                              BrainWorldColors.myhomepageBlue.withOpacity(0.6),
                           // spreadRadius: 5,
                           blurRadius: 10,
-                          offset: Offset(0, 5), // changes position of shadow
+                          offset:
+                              const Offset(0, 5), // changes position of shadow
                         ),
                       ],
                       color: Colors.white,
@@ -71,8 +72,8 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
                                 // itemCount: info.toJson().length,
                                 itemCount: cartController.cartItems.length,
                                 shrinkWrap: true,
-                                padding: EdgeInsets.only(top: 16),
-                                physics: ScrollPhysics(),
+                                padding: const EdgeInsets.only(top: 16),
+                                physics: const ScrollPhysics(),
                                 itemBuilder: (context, index) {
                                   // print('oga ${info.toJson().length}');
                                   final courses =
@@ -88,12 +89,12 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
                                           children: [
                                             Text(
                                               courses[index].title,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.w500),
                                             ),
                                             Text(
                                               'NGN : ${courses[index].price}',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.w300),
                                             ),
                                           ],
@@ -138,13 +139,15 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
       padding: const EdgeInsets.only(top: 12.0, left: 20, right: 20),
       child: Column(
         children: [
-          Container(
+          SizedBox(
             child: Column(
               children: [
-                GradientText('Transaction successful',
+                const GradientText('Transaction successful',
                     style: TextStyle(fontSize: 17),
-                    gradient: LinearGradient(
-                        colors: [myhomepageBlue, myhomepageLightBlue])),
+                    gradient: LinearGradient(colors: [
+                      BrainWorldColors.myhomepageBlue,
+                      BrainWorldColors.myhomepageLightBlue
+                    ])),
                 Image.asset(
                   'assets/images/dullbaby.png',
                   height: 190,
@@ -152,7 +155,7 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Padding(
@@ -168,7 +171,7 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
                   fontSize: 16,
                   gradientColors: myOrangeGradientTransparent,
                   pressed: () {
-                    MyNavigate.navigatepushuntil(BottomNavigation(), context);
+                    MyNavigate.navigatepushuntil(const BottomNavigation(), context);
                   },
                 ),
                 MyButton(
@@ -205,7 +208,7 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
       publicKey: "FLWPUBK_TEST-b6fec30caf684ee6845762074efb8ce3-X",
       encryptionKey: 'FLWSECK_TESTa753a5576d98',
       email: user(context).email,
-      fullName: user(context).full_name,
+      fullName: user(context).fullName,
       txRef: DateTime.now().toIso8601String(),
       narration: "Brain World academy",
       isDebugMode: true,

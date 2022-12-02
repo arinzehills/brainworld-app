@@ -1,5 +1,5 @@
 import 'package:brainworld/components/bottomnavcomponents/bottomnavcomponents.dart';
-import 'package:brainworld/components/utilities_widgets/radial-gradient.dart';
+import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
 import 'package:brainworld/pages/books_library/books_library.dart';
@@ -7,10 +7,8 @@ import 'package:brainworld/pages/chats/chat.dart';
 import 'package:brainworld/pages/homepage.dart';
 import 'package:brainworld/pages/laboratory/laboratory.dart';
 import 'package:brainworld/pages/library/library.dart';
-import 'package:brainworld/pages/library/user_library.dart';
-import 'package:brainworld/pages/library/welcome/library_welcome.dart';
-import 'package:brainworld/pages/purchased/purchased.dart';
 import 'package:brainworld/pages/user/profile.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:socket_io_client/socket_io_client.dart';
@@ -30,43 +28,43 @@ class _BottomNavigationState extends State<BottomNavigation>
   ChatController chatUsersListController = ChatController();
 
   final PageStorageBucket _bucket = PageStorageBucket();
-  late AnimationController _popup_animation_controller;
+  late AnimationController _popupAnimationController;
   bool get isForwardAnimation =>
-      _popup_animation_controller.status == AnimationStatus.forward ||
-      _popup_animation_controller.status == AnimationStatus.completed;
+      _popupAnimationController.status == AnimationStatus.forward ||
+      _popupAnimationController.status == AnimationStatus.completed;
   late int _selectedIndex = widget.index ?? 0;
   bool showuploadPopup = false;
 
   @override
   void initState() {
-    _popup_animation_controller = AnimationController(
+    _popupAnimationController = AnimationController(
       value: 0,
-      duration: Duration(milliseconds: 500),
-      reverseDuration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 500),
+      reverseDuration: const Duration(milliseconds: 1000),
       vsync: this,
     )..addStatusListener((status) => {setState(() {})});
   }
 
   @override
   void dispose() {
-    _popup_animation_controller.dispose();
+    _popupAnimationController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     List<Widget> pages = <Widget>[
-      MyHomePage(
+      const MyHomePage(
         title: 'Home',
       ),
       // Purchased(),
-      Library(),
-      Chat(
+      const Library(),
+      const Chat(
           // chatUsersListController: chatUsersListController,
           ),
-      Laboratory(),
-      BooksLibrary(),
-      Profile(),
+      const Laboratory(),
+      const BooksLibrary(),
+      const Profile(),
     ];
     return Scaffold(
         body: PageStorage(
@@ -78,19 +76,19 @@ class _BottomNavigationState extends State<BottomNavigation>
                   ? Positioned(
                       bottom: 40,
                       left: size(context).width * 0.1,
-                      child: uploadPopUp(_popup_animation_controller))
-                  : SizedBox(),
+                      child: uploadPopUp(_popupAnimationController))
+                  : const SizedBox(),
             ],
           ),
         ),
         bottomNavigationBar: GestureDetector(
           child: BottomAppBar(
-              shape: CircularNotchedRectangle(),
+              shape: const CircularNotchedRectangle(),
               notchMargin: 5,
               child: Container(
                   height: 60,
-                  decoration:
-                      BoxDecoration(color: myhomepageBlue.withOpacity(0.07)),
+                  decoration: BoxDecoration(
+                      color: BrainWorldColors.myhomepageBlue.withOpacity(0.07)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -111,7 +109,7 @@ class _BottomNavigationState extends State<BottomNavigation>
                               svgImage: 'assets/svg/chatsbubble.svg'),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       Row(
@@ -138,8 +136,8 @@ class _BottomNavigationState extends State<BottomNavigation>
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             isForwardAnimation
-                ? _popup_animation_controller.reverse()
-                : _popup_animation_controller.forward();
+                ? _popupAnimationController.reverse()
+                : _popupAnimationController.forward();
             setState(() {
               showuploadPopup = !showuploadPopup;
             });
@@ -150,7 +148,7 @@ class _BottomNavigationState extends State<BottomNavigation>
           child: Container(
             width: 60,
             height: 60,
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: SvgPicture.asset(
                 !showuploadPopup
                     ? 'assets/svg/uploadicon.svg'
@@ -184,7 +182,7 @@ class _BottomNavigationState extends State<BottomNavigation>
             child: SvgPicture.asset(svgImage ?? 'assets/svg/homeicon.svg',
                 height: 20,
                 fit: BoxFit.fill,
-                color: iconsColor,
+                color: BrainWorldColors.iconsColors,
                 semanticsLabel: 'A red up arrow'),
           ),
           _selectedIndex == number
@@ -192,11 +190,12 @@ class _BottomNavigationState extends State<BottomNavigation>
                   padding: const EdgeInsets.only(top: 3.0),
                   child: Text(name,
                       style: TextStyle(
-                        color:
-                            _selectedIndex == 0 ? myhomepageBlue : Colors.grey,
+                        color: _selectedIndex == 0
+                            ? BrainWorldColors.myhomepageBlue
+                            : Colors.grey,
                       )),
                 )
-              : SizedBox()
+              : const SizedBox()
         ]));
   }
 }

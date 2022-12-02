@@ -4,14 +4,12 @@ import 'package:brainworld/components/myappbar.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/post_controller.dart';
-import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
 import 'package:brainworld/pages/upload/post_detail.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -27,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool loading = false;
   late Socket socket;
   String commenttoShow = '';
-  List<PostsModel> _post_data = [];
+  // List<PostsModel> _postData = [];
   void setStateIfMounted(f) {
     if (mounted) setState(f);
   }
@@ -83,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // print('users');
     // print(chatUsersListController.allPost.length);
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       appBar: MyAppMenuBar(
         title: widget.title,
       ),
@@ -91,12 +89,12 @@ class _MyHomePageState extends State<MyHomePage> {
       body: RefreshIndicator(
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
         onRefresh: () async {
-          await Future.delayed(Duration(seconds: 2));
+          await Future.delayed(const Duration(seconds: 2));
           getPostList();
           Fluttertoast.showToast(
               gravity: ToastGravity.TOP,
               msg: "Post updated",
-              backgroundColor: myhomepageBlue,
+              backgroundColor: BrainWorldColors.myhomepageBlue,
               textColor: Colors.white,
               fontSize: 16.0);
         },
@@ -108,13 +106,13 @@ class _MyHomePageState extends State<MyHomePage> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Obx(
-                  () => chatUsersListController.allPost.length != 0
+                  () => chatUsersListController.allPost.isNotEmpty
                       ? ListView.builder(
                           itemCount: chatUsersListController.allPost.length,
                           shrinkWrap: true,
                           reverse: true,
-                          padding: EdgeInsets.only(top: 10, bottom: 10),
-                          physics: BouncingScrollPhysics(),
+                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
                             return GestureDetector(
                               onTap: () {
@@ -136,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             );
                           },
                         )
-                      : Loading(),
+                      : const Loading(),
                 ),
               ],
             ),

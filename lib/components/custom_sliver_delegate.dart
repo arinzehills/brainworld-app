@@ -1,7 +1,7 @@
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_users_controller.dart';
 import 'package:brainworld/pages/chats/chat.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconly/iconly.dart';
@@ -60,27 +60,27 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
             child: textField(),
           ),
           Align(
-            alignment: Alignment(1.0, 0.9),
+            alignment: const Alignment(1.0, 0.9),
             child: Opacity(
               opacity: percent,
               child: Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 15,
                   top: 80,
                   right: 1,
                 ),
                 child: Wrap(
                   children: [
-                    Chat().buildText(title: 'Quick Chat'),
-                    Container(
+                    const Chat().buildText(title: 'Quick Chat'),
+                    SizedBox(
                         height: 90,
                         width: double.infinity,
-                        child: chatUsersListController!.chatUsers.length == 0
+                        child: chatUsersListController!.chatUsers.isEmpty
                             ? ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount: 4,
                                 itemBuilder: (context, index) {
-                                  return Skeleton(
+                                  return const Skeleton(
                                     width: 75,
                                   );
                                 })
@@ -94,10 +94,9 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                                     // physics: NeverScrollableScrollPhysics(),
                                     itemBuilder: (context, index) {
                                       return chatUsersListController!
-                                                  .chatUsers.length <
-                                              1
+                                              .chatUsers.isEmpty
                                           ? Center(
-                                              child: Chat().buildText(
+                                              child: const Chat().buildText(
                                                 title:
                                                     "have not started any conversation",
                                               ),
@@ -115,7 +114,8 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                                                     width: size.width * 0.20,
                                                     decoration: BoxDecoration(
                                                         borderRadius:
-                                                            BorderRadius.all(
+                                                            const BorderRadius
+                                                                    .all(
                                                                 Radius.circular(
                                                                     19)),
                                                         color: Colors.white,
@@ -128,7 +128,8 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
                                                               blurRadius: 30,
                                                               spreadRadius: 0,
                                                               offset:
-                                                                  Offset(5, 20))
+                                                                  const Offset(
+                                                                      5, 20))
                                                         ]),
                                                     child: Center(
                                                       child: Column(
@@ -197,12 +198,13 @@ class CustomSliverDelegate extends SliverPersistentHeaderDelegate {
               ),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: myhomepageBlue, width: 0.0),
+              borderSide: const BorderSide(
+                  color: BrainWorldColors.myhomepageBlue, width: 0.0),
               borderRadius: BorderRadius.circular(10.0),
             ),
-            prefixIcon: Icon(
+            prefixIcon: const Icon(
               IconlyBold.search,
-              color: iconsColor,
+              color: BrainWorldColors.iconsColors,
             )),
       ),
     );

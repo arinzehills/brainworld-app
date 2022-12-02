@@ -1,9 +1,9 @@
 import 'package:brainworld/components/my_cachednetwork_image.dart';
-import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/services/auth_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class ProfileUserWidget extends StatefulWidget {
@@ -75,14 +75,14 @@ class _ProfileUserWidgetState extends State<ProfileUserWidget> {
       child: Container(
         // color: Colors.red,
         width: size(context).width * widget.containerWidthRatio,
-        padding: EdgeInsets.all(1),
+        padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           color: loading
               ? null
               : widget.showbgColor
                   ? Colors.black.withOpacity(0.01)
                   : null,
-          borderRadius: BorderRadius.all(Radius.circular(16)),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
         ),
         child: _buildProfile(loading),
       ),
@@ -104,8 +104,8 @@ class _ProfileUserWidgetState extends State<ProfileUserWidget> {
                 width: size(context).width * 0.4,
               ),
               widget.skeltonWidth == null
-                  ? Skeleton(width: 80, height: 12)
-                  : SizedBox(),
+                  ? const Skeleton(width: 80, height: 12)
+                  : const SizedBox(),
             ],
           ),
         ])
@@ -141,7 +141,7 @@ class _ProfileUserWidgetState extends State<ProfileUserWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                widget.comment ?? user.full_name,
+                widget.comment ?? user.fullName,
                 overflow: TextOverflow.fade,
                 maxLines: 2,
                 style: TextStyle(
@@ -153,10 +153,12 @@ class _ProfileUserWidgetState extends State<ProfileUserWidget> {
               SizedBox(height: widget.withGapBwText ? 10 : null),
               Text(
                 (widget.isUserSubtitle
-                    ? '${user.full_name}, ${widget.subTitle}'
+                    ? '${user.fullName}, ${widget.subTitle}'
                     : widget.subTitle ?? 'February 21, 2022'),
                 style: TextStyle(
-                    color: widget.subTitleColor ?? textGreyColor, fontSize: 13),
+                    color:
+                        widget.subTitleColor ?? BrainWorldColors.textGreyColor,
+                    fontSize: 13),
               ),
             ],
           ),

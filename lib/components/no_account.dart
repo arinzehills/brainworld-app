@@ -1,12 +1,13 @@
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class NoAccount extends StatelessWidget {
-  String title;
-  String? subtitle;
-  Function()? pressed;
-  NoAccount({required this.title, this.pressed, this.subtitle});
+  final String title;
+  final String? subtitle;
+  final Function()? pressed;
+  const NoAccount({Key? key, required this.title, this.pressed, this.subtitle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +17,11 @@ class NoAccount extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(title,
-              style: TextStyle(
-                  color: myhomepageBlue,
+              style: const TextStyle(
+                  color: BrainWorldColors.myhomepageBlue,
                   fontSize: 12,
                   fontWeight: FontWeight.bold)),
-          SizedBox(
+         const SizedBox(
             width: 10,
           ),
           GradientText(subtitle ?? '',

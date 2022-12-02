@@ -1,4 +1,4 @@
-import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
@@ -8,20 +8,20 @@ class MyTextFieldDecoration {
   static InputDecoration textFieldDecoration(
       {VoidCallback? clickIcon, icon, hintText}) {
     return InputDecoration(
-      contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       fillColor: Colors.white,
       suffixIcon: clickIcon != null
           ? IconButton(
               icon: Icon(icon ?? IconlyBold.paper_upload),
-              color: myhomepageBlue,
+              color: BrainWorldColors.myhomepageBlue,
               onPressed: clickIcon)
-          : SizedBox(),
+          : const SizedBox(),
       hintText: hintText ?? 'hintTExt',
-      hintStyle: TextStyle(
+      hintStyle: const TextStyle(
         fontSize: 14,
       ),
       border: OutlineInputBorder(
-        borderSide: BorderSide(color: myhomepageLightBlue, width: 0.1),
+        borderSide: const BorderSide(color: BrainWorldColors.myhomepageLightBlue, width: 0.1),
         borderRadius: BorderRadius.circular(10.0),
       ),
     );

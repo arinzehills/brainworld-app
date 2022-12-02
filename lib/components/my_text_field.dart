@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class MyTextField extends StatefulWidget {
-  String hintText;
-  String? initiaiValue;
-  String? value;
-  bool? obscureText;
-  bool? autovalidate;
-  TextInputType? keyboardType;
-  Function()? onTap;
-  Function(String)? onChanged;
+   final String hintText;
+   final String? initiaiValue;
+   final String? value;
+   final bool? obscureText;
+   final bool? autovalidate;
+   final TextInputType? keyboardType;
+  final  Function()? onTap;
+  final Function(String)? onChanged;
   // final VoidCallback pressed;
-  IconButton? suffixIconButton;
-  Icon? prefixIcon;
-  String? Function(String?)? validator;
-  bool isNumberOnly;
+  final IconButton? suffixIconButton;
+ final  Icon? prefixIcon;
+ final  String? Function(String?)? validator;
+  final bool isNumberOnly;
 
   // IconButton(
   //                                             icon: const Icon(Icons.visibility),
@@ -34,7 +34,7 @@ class MyTextField extends StatefulWidget {
   //                                             },
   //                                         ),
 
-  MyTextField({
+  const MyTextField({Key? key, 
     required this.hintText,
     this.initiaiValue,
     // required this.pressed,
@@ -46,8 +46,8 @@ class MyTextField extends StatefulWidget {
     this.isNumberOnly = false,
     this.onTap,
     this.onChanged,
-    this.keyboardType,
-  });
+    this.keyboardType, this.prefixIcon,
+  }) : super(key: key);
 
   @override
   _MyTextFieldState createState() => _MyTextFieldState();

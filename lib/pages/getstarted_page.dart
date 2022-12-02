@@ -1,14 +1,13 @@
-import 'package:brainworld/components/bottomnavigation.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/auth_screens/login.dart';
 import 'package:brainworld/pages/auth_screens/register.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class GetStartedPage extends StatefulWidget {
-  GetStartedPage({
+  const GetStartedPage({
     Key? key,
   }) : super(key: key);
 
@@ -19,7 +18,7 @@ class GetStartedPage extends StatefulWidget {
 class _GetStartedPageState extends State<GetStartedPage> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
@@ -43,7 +42,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                        padding: EdgeInsets.all(0.0),
+                        padding: const EdgeInsets.all(0.0),
                         height: 100,
                         child: Image.asset('assets/images/picture.png')),
                     generalGText(text: 'GET STARTED'),
@@ -51,8 +50,8 @@ class _GetStartedPageState extends State<GetStartedPage> {
                       '...a perfect  place to learn',
                       gradient:
                           LinearGradient(colors: myOrangeGradientTransparent),
-                      style: TextStyle(
-                          color: const Color(0xffffb00b), fontSize: 15),
+                      style: const TextStyle(
+                          color: Color(0xffffb00b), fontSize: 15),
                     ),
                   ],
                 ),
@@ -63,10 +62,13 @@ class _GetStartedPageState extends State<GetStartedPage> {
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [myhomepageBlue, myhomepageLightBlue])),
+                        colors: [
+                          BrainWorldColors.myhomepageBlue,
+                          BrainWorldColors.myhomepageLightBlue
+                        ])),
                 height: MediaQuery.of(context).size.height,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 125.0),
@@ -75,7 +77,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                       MyButton(
                         placeHolder: 'Continue',
                         pressed: () async {
-                          MyNavigate.navigatejustpush(Register(), context);
+                          MyNavigate.navigatejustpush(const Register(), context);
                         },
                       ),
                     ],

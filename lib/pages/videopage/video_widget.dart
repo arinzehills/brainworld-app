@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoWidget extends StatefulWidget {
-  bool? isFileVideo;
-  VideoPlayerController controller;
+final  bool? isFileVideo;
+  final VideoPlayerController controller;
 
-  VideoWidget({Key? key, this.isFileVideo, required this.controller})
+ const VideoWidget({Key? key, this.isFileVideo, required this.controller})
       : super(key: key);
 
   @override
@@ -20,7 +20,7 @@ class _VideoWidgetState extends State<VideoWidget> {
               alignment: Alignment.topCenter,
               child: buildVideo(),
             )
-          : Container(
+          :const SizedBox(
               height: 200,
               child: Center(
                 child: CircularProgressIndicator(),
@@ -57,7 +57,7 @@ class _VideoWidgetState extends State<VideoWidget> {
       : Container(
           alignment: Alignment.center,
           color: Colors.black26,
-          child: Icon(
+          child: const Icon(
             Icons.play_arrow,
             color: Colors.white,
             size: 80,

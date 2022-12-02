@@ -1,7 +1,7 @@
 import 'package:brainworld/components/utilities_widgets/mydate_formatter.dart';
 
 class MessageField {
-  static final String createdAt = 'createdAt';
+  static const String createdAt = 'createdAt';
 }
 
 class UsersMessage {

@@ -1,13 +1,13 @@
-import 'dart:convert';
-
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/upload/course/model/course.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:http/http.dart' as http;
+import 'package:logger/logger.dart';
 
 class CourseService {
+  final logger = Logger();
   addCourse(Course course) async {
-    print('abeg');
+    logger.d('abeg');
     var user = await AuthService().getuserFromStorage();
 
     var request = http.MultipartRequest(
@@ -24,9 +24,9 @@ class CourseService {
         request.files.add(filemultipart);
       }
     }
-    print('course.videos');
+    logger.d('course.videos');
     if (course.videos != []) {
-      print(course.videos);
+      logger.d(course.videos);
       for (var file in course.videos) {
         //loop tru all files
         videosmultipart = await http.MultipartFile.fromPath(
@@ -63,7 +63,7 @@ class CourseService {
     var response = await http.Response.fromStream(streamedResponse);
     // var responseData = json.decode(response.body);
     // print('responseData');
-    print(response.body);
+    logger.d(response.body);
     return response;
   }
 }

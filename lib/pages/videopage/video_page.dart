@@ -1,8 +1,7 @@
 import 'package:brainworld/components/drawer.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/videopage/network_player.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 
 class VideoPage extends StatefulWidget {
   final String videoName;
@@ -20,13 +19,13 @@ class _VideoPageState extends State<VideoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: myhomepageBlue,
+        backgroundColor: BrainWorldColors.myhomepageBlue,
         leading: IconButton(
           onPressed: () => {_scaffoldKey.currentState!.openDrawer()},
-          icon: ImageIcon(
+          icon: const ImageIcon(
             AssetImage('assets/menu_white.png'),
             size: 30,
             color: Colors.white,

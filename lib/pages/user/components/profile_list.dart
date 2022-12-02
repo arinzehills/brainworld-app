@@ -2,25 +2,26 @@ import 'package:brainworld/components/bottomnavigation.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/my_text_field.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
-import 'package:brainworld/components/utilities_widgets/radial-gradient.dart';
+import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/services/auth_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/route_manager.dart';
 
 class ProfileList extends StatefulWidget {
-  String? name;
-  String? nameField;
-  IconData? leading;
-  IconData? suffix;
-  String? imageUrl;
-  ProfileList(
-      {@required this.name,
+  final String? name;
+  final String? nameField;
+  final IconData? leading;
+  final IconData? suffix;
+  final String? imageUrl;
+  const ProfileList(
+      {Key? key,
+      @required this.name,
       this.nameField,
       @required this.leading,
       this.suffix,
-      this.imageUrl});
+      this.imageUrl})
+      : super(key: key);
   @override
   _ProfileListState createState() => _ProfileListState();
 }
@@ -43,7 +44,8 @@ class _ProfileListState extends State<ProfileList> {
         //   }));
       },
       child: Container(
-        padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
+        padding:
+            const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
         child: Row(
           children: <Widget>[
             Expanded(
@@ -60,7 +62,7 @@ class _ProfileListState extends State<ProfileList> {
                     color: Colors.white,
                   )),
 
-                  SizedBox(
+                  const SizedBox(
                     width: 25,
                   ),
                   Expanded(
@@ -68,7 +70,8 @@ class _ProfileListState extends State<ProfileList> {
                         color: Colors.transparent,
                         child: Text(
                           widget.name!,
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
+                          style:
+                              const TextStyle(fontSize: 16, color: Colors.grey),
                         )),
                   ),
                   RadiantGradientMask(
@@ -99,7 +102,7 @@ class _ProfileListState extends State<ProfileList> {
             backgroundColor: Colors.white,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            content: Container(
+            content: SizedBox(
               height: 277,
               // constraints: BoxConstraints(ma),
               // padding: EdgeInsets.all(20),
@@ -113,14 +116,14 @@ class _ProfileListState extends State<ProfileList> {
                       'Edit Profile',
                       gradient:
                           LinearGradient(colors: myOrangeGradientTransparent),
-                      style: TextStyle(
-                          color: myhomepageBlue,
+                      style: const TextStyle(
+                          color: BrainWorldColors.myhomepageBlue,
                           fontWeight: FontWeight.w600,
                           fontSize: 22),
                     ),
                     loading
-                        ? CircularProgressIndicator(
-                            color: myhomepageBlue,
+                        ? const CircularProgressIndicator(
+                            color: BrainWorldColors.myhomepageBlue,
                           )
                         : Image.asset(
                             'assets/images/girlwithpc.png',
@@ -140,7 +143,7 @@ class _ProfileListState extends State<ProfileList> {
                     ),
                     Text(
                       error,
-                      style: TextStyle(color: Colors.red),
+                      style: const TextStyle(color: Colors.red),
                     ),
                     MyButton(
                       placeHolder: 'Update',
@@ -158,7 +161,7 @@ class _ProfileListState extends State<ProfileList> {
                             setState(() => {});
                             Navigator.pop(context);
                             snackBar(
-                                BottomNavigation(
+                                const BottomNavigation(
                                   index: 5,
                                 ),
                                 context,

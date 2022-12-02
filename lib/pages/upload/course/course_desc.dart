@@ -1,27 +1,23 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:brainworld/components/course_tile_page.dart';
 import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/expandable_text_widget.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/profile_user_widget.dart';
-import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
-import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
-import 'package:brainworld/components/utilities_widgets/radial-gradient.dart';
+import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/components/utilities_widgets/url_to_readable.dart';
 import 'package:brainworld/components/video_list_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
-import 'package:brainworld/controllers/course_controller.dart';
 import 'package:brainworld/controllers/post_controller.dart';
 import 'package:brainworld/models/user.dart';
 import 'package:brainworld/pages/chats/chat_detail.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
 import 'package:brainworld/pages/homepage/components/reactionicon.dart';
-import 'package:brainworld/pages/upload/course/model/course.dart';
 import 'package:brainworld/pages/upload/course/model/course_tile.dart';
 import 'package:brainworld/pages/videopage/network_player.dart';
 import 'package:brainworld/services/cart_service.dart';
@@ -32,13 +28,13 @@ import 'package:iconly/iconly.dart';
 import 'package:intl/intl.dart';
 
 class CourseDescPage extends StatefulWidget {
-  CourseDescPage({
+  const CourseDescPage({
     Key? key,
     required this.course,
     required this.socket,
   }) : super(key: key);
   final PostsModel course;
-  Socket socket;
+  final Socket socket;
   @override
   _CourseDescPageState createState() => _CourseDescPageState();
 }
@@ -79,7 +75,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
     widget.socket.emit('postReaction', {
       "postReaction": {
         "reactionType": 'none',
-        "user_id": widget.course.user_id,
+        "user_id": widget.course.userId,
       }
     });
     widget.socket.on('getAllPost', (allPosts) {
@@ -117,7 +113,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
       drawer: MyDrawer(),
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: myhomepageBlue,
+        backgroundColor: BrainWorldColors.myhomepageBlue,
         leading: IconButton(
             onPressed: () => {_scaffoldKey.currentState!.openDrawer()},
             icon: SvgPicture.asset(
@@ -181,7 +177,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                               Row(
                                 children: [
                                   ProfileUserWidget(
-                                    userId: widget.course.user_id!,
+                                    userId: widget.course.userId!,
                                     comment: toBeginningOfSentenceCase(
                                             widget.course.title) ??
                                         '',
@@ -203,7 +199,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                                               child: ChatDetail(
                                                   sendersid: user.id,
                                                   clickeduserid:
-                                                      widget.course.user_id!,
+                                                      widget.course.userId!,
                                                   name: 'widget.name'),
                                             ),
                                           ))
@@ -215,7 +211,8 @@ class _CourseDescPageState extends State<CourseDescPage> {
                                               'assets/svg/chatsbubble.svg',
                                               height: 20,
                                               fit: BoxFit.fill,
-                                              color: iconsColor,
+                                              color:
+                                                  BrainWorldColors.iconsColors,
                                               semanticsLabel: 'A red up arrow'),
                                         ),
                                         Text('Message')
@@ -238,7 +235,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                                 () => Row(
                                   children: [
                                     ProfileUserWidget(
-                                      userId: widget.course.user_id!,
+                                      userId: widget.course.userId!,
                                       isUtilityType: true,
                                       isUserSubtitle: true,
                                       comment: 'Course Instructor',
@@ -257,7 +254,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                               buildText(
                                   text: 'Course materials/files',
                                   isSubHeadline: true),
-                              widget.course.fileUrls!.length == 0
+                              widget.course.fileUrls!.isEmpty
                                   ? buildText(
                                       text: 'No Files for this contents')
                                   : Column(
@@ -272,8 +269,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                                                 NeverScrollableScrollPhysics(),
                                             itemBuilder: (context, index) {
                                               return widget.course.fileUrls!
-                                                          .length !=
-                                                      0
+                                                      .isNotEmpty
                                                   ? buildText(
                                                       text:
                                                           'No Files for this contents')
@@ -339,7 +335,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(16),
               bottomRight: Radius.circular(16)),
-          gradient: LinearGradient(colors: [
+          gradient: LinearGradient(colors: const [
             Color.fromARGB(35, 34, 86, 255),
             Color.fromARGB(65, 20, 118, 255)
           ], begin: Alignment.topCenter)),
@@ -353,7 +349,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                 text: widget.course.likes!.length.toString(),
                 onClick: () async {
                   reactOnPost(
-                      widget.course.post_id, widget.course.user_id, 'like');
+                      widget.course.postId, widget.course.userId, 'like');
                 },
               ),
               ReactionIcon(
@@ -382,7 +378,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                           ? 'Subscribed'
                           : 'Subscribe',
                   pressed: () {
-                    reactOnPost(widget.course.post_id, widget.course.user_id,
+                    reactOnPost(widget.course.postId, widget.course.userId,
                         'subscribe');
                   }),
               SizedBox(
@@ -402,13 +398,13 @@ class _CourseDescPageState extends State<CourseDescPage> {
 
   Future<void> reactOnPost(postid, userid, reactionType) async {
     // FocusScope.of(context).unfocus(); //this unfocusses the keybaord
-    var subscribers_id = Provider.of<User>(context, listen: false).id;
+    var subscribersId = Provider.of<User>(context, listen: false).id;
 
     var postReaction = {
       "reactionType": reactionType ?? 'like',
       "post_id": postid,
       "user_id": userid,
-      "subscribers_id": subscribers_id
+      "subscribers_id": subscribersId
     };
 
     widget.socket.emit('postReaction', {

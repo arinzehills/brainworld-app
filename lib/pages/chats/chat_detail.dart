@@ -4,6 +4,7 @@ import 'package:brainworld/controllers/chat_controller.dart';
 import 'package:brainworld/pages/chats/components/build_message_list.dart';
 import 'package:brainworld/pages/chats/components/chat_icon_gradient.dart';
 import 'package:brainworld/pages/chats/models/message.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +40,7 @@ class _ChatDetailState extends State<ChatDetail> {
   void initState() {
     readLocal();
     socketServer();
-    Future.delayed(Duration(microseconds: 2));
+    Future.delayed(const Duration(microseconds: 2));
 
     socket.emit('sendMessage', {
       {'chatID': groupChatId, "data": null}
@@ -63,7 +64,7 @@ class _ChatDetailState extends State<ChatDetail> {
         backgroundColor: Colors.white,
         flexibleSpace: SafeArea(
           child: Container(
-            padding: EdgeInsets.only(right: 3),
+            padding: const EdgeInsets.only(right: 3),
             child: Row(
               children: <Widget>[
                 IconButton(
@@ -73,11 +74,11 @@ class _ChatDetailState extends State<ChatDetail> {
                   icon: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Color.fromARGB(105, 237, 235, 235)),
-                    child: Center(
+                        color: const Color.fromARGB(105, 237, 235, 235)),
+                    child: const Center(
                       child: Icon(
                         IconlyBold.arrow_left,
-                        color: iconsColor,
+                        color: BrainWorldColors.iconsColors,
                       ),
                     ),
                   ),
@@ -85,20 +86,21 @@ class _ChatDetailState extends State<ChatDetail> {
                 ProfileUserWidget(
                     userId: widget.clickeduserid,
                     subTitle: 'Online now',
-                    subTitleColor: Color(0xff18DE4E),
+                    subTitleColor: const Color(0xff18DE4E),
                     headerFontSize: 16,
                     withGapBwText: true,
                     containerWidthRatio: 0.69,
                     skeltonWidth: 50),
-                Icon(IconlyBold.call, color: iconsColor),
-                SizedBox(
+                const Icon(IconlyBold.call,
+                    color: BrainWorldColors.iconsColors),
+                const SizedBox(
                   width: 10,
                 ),
-                Icon(
+                const Icon(
                   IconlyBold.video,
-                  color: iconsColor,
+                  color: BrainWorldColors.iconsColors,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
               ],
@@ -117,10 +119,10 @@ class _ChatDetailState extends State<ChatDetail> {
         Align(
           alignment: Alignment.bottomLeft,
           child: Container(
-            padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+            padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
             height: 100,
             width: double.infinity,
-            color: Color.fromARGB(255, 224, 230, 250),
+            color: const Color.fromARGB(255, 224, 230, 250),
             child: Row(
               children: <Widget>[
                 ChatIconGradient(
@@ -132,12 +134,12 @@ class _ChatDetailState extends State<ChatDetail> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     IconlyBold.voice,
-                    color: iconsColor,
+                    color: BrainWorldColors.iconsColors,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
                 Expanded(
@@ -146,14 +148,15 @@ class _ChatDetailState extends State<ChatDetail> {
                     textCapitalization: TextCapitalization.sentences,
                     autocorrect: true,
                     enableSuggestions: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         fillColor: Colors.red,
                         hintText: "Write message...",
-                        hintStyle: TextStyle(color: Color(0xffC9C4C4)),
+                        hintStyle:
+                            TextStyle(color: Color(0xffC9C4C4)),
                         border: InputBorder.none),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
                 ChatIconGradient(
@@ -166,7 +169,7 @@ class _ChatDetailState extends State<ChatDetail> {
                     iconSize: 30,
                     bgHeight: 60,
                     bgColor: myOrangeGradientTransparent),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 ),
               ],
@@ -208,7 +211,7 @@ class _ChatDetailState extends State<ChatDetail> {
             .messages
             .where((chat) => chat.id == data['_id']);
         print(list.length);
-        Future.delayed(Duration(microseconds: 2));
+        Future.delayed(const Duration(microseconds: 2));
         if (list.length == 0) {
           Provider.of<ChatController>(context, listen: false)
               .addNewMessage(UsersMessage.fromJson(data));

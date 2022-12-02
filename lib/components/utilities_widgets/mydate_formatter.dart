@@ -17,10 +17,10 @@ class MyDateFormatter {
       if (showHours) {
         final differenceInTime = DateTime.now().difference(datetime).inMinutes;
         if (differenceInTime <= 60) {
-          return '${differenceInTime} min ago';
+          return '$differenceInTime min ago';
         } else {
           final differenceInTime = DateTime.now().difference(datetime).inHours;
-          return '${differenceInTime} hours ago';
+          return '$differenceInTime hours ago';
         }
       }
       return 'Today at ${format('KK:mm a', datetime)}';

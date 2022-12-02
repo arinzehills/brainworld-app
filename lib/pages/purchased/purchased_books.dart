@@ -23,31 +23,31 @@ class _PurchasedBooksState extends State<PurchasedBooks> {
             //when is loading
             return buildLoading(context);
           }
-          if (snapshot.data!.length == 0) {
-            return NoItemsWidget();
+          if (snapshot.data!.isEmpty) {
+            return const NoItemsWidget();
           }
           var categories = [];
           for (var book in snapshot.data!) {
             categories.add(book.category);
           }
           return Padding(
-              padding: EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 20),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     libraryList(list: snapshot.data!),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
+                   const Padding(
+                      padding:  EdgeInsets.only(left: 8.0),
                       child: Text('Your Shelfs/Categories',
                           style: TextStyle(fontWeight: FontWeight.w400)),
                     ),
                     Container(
                       height: 250,
-                      padding: EdgeInsets.only(bottom: 50),
+                      padding: const EdgeInsets.only(bottom: 50),
                       child: ListView.builder(
                           // scrollDirection: Axis.horizontal,
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           itemCount: categories.length,
                           itemBuilder: (context, index) {
                             return libraryList(
@@ -84,13 +84,13 @@ class _PurchasedBooksState extends State<PurchasedBooks> {
                 decoration: BoxDecoration(
                     gradient:
                         LinearGradient(colors: myblueGradientTransparent)),
-                margin: EdgeInsets.only(right: 4),
+                margin: const EdgeInsets.only(right: 4),
                 height: 14,
                 width: 6,
               ),
               Text(
                 category != null ? category : 'All books',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w600),
@@ -98,7 +98,7 @@ class _PurchasedBooksState extends State<PurchasedBooks> {
             ],
           ),
         ),
-        Container(
+        SizedBox(
             height: 175.0,
             // width: size(context).width * 1.1,
             child: HorizontalListView(
@@ -114,45 +114,45 @@ class _PurchasedBooksState extends State<PurchasedBooks> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Skeleton(
+          const Skeleton(
             width: 70,
           ),
           Row(
-            children: [
-              Skeleton(
+            children: const [
+               Skeleton(
                 height: 140,
                 width: 140,
               ),
-              Skeleton(
+               Skeleton(
                 height: 140,
                 width: 140,
               ),
-              Skeleton(
+               Skeleton(
                 height: 140,
                 width: 72,
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
-          Skeleton(
+          const Skeleton(
             width: 70,
           ),
           Row(
-            children: [
-              Skeleton(
+            children:const [
+               Skeleton(
                 height: 140,
                 width: 140,
               ),
-              Skeleton(
+               Skeleton(
                 height: 140,
                 width: 140,
               ),
-              Skeleton(
+               Skeleton(
                 height: 140,
                 width: 72,
               ),

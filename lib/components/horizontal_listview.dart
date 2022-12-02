@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:brainworld/components/my_cachednetwork_image.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
-import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/components/utilities_widgets/url_to_readable.dart';
 import 'package:brainworld/constants/constant.dart';
@@ -10,10 +9,10 @@ import 'package:brainworld/pages/chats/models/books_model.dart';
 import 'package:brainworld/pages/chats/models/cart_model.dart';
 import 'package:brainworld/pages/fullresourcepage/full_pdf_page.dart';
 import 'package:brainworld/services/cart_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:brainworld/utils/pdf_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:iconly/iconly.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -45,13 +44,14 @@ class _HorizontalListViewState extends State<HorizontalListView> {
   Widget build(BuildContext context) {
     // print('widget.categoryStr ' + widget.categoryStr.toString());
 
-    return Container(
+    return SizedBox(
       child: StreamBuilder(
           stream: null,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Center(
-                child: CircularProgressIndicator(color: myhomepageBlue),
+              return const Center(
+                child: CircularProgressIndicator(
+                    color: BrainWorldColors.myhomepageBlue),
               );
             } else {
               return
@@ -60,19 +60,19 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                   //   )
                   // :
                   Padding(
-                padding:
-                    EdgeInsets.only(top: 0, left: 10, right: 10, bottom: 10),
+                padding: const EdgeInsets.only(
+                    top: 0, left: 10, right: 10, bottom: 10),
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemCount: widget.list.length,
                     itemBuilder: (context, index) {
                       print(loading[1]);
                       String filename = widget.list[index].filename!;
                       BookModel book = widget.list[index];
                       CartModel cartModel = CartModel(
-                          user_id: book.usersId!,
-                          post_id: book.id,
+                          userId: book.usersId!,
+                          postId: book.id,
                           title: book.title,
                           price: book.price,
                           imageUrl: book.bookCoverImageURL,
@@ -93,32 +93,33 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                                       widget.list[index].filename, index);
                             },
                             child: Container(
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 maxHeight: 120,
                               ),
                               height: 100,
                               width: widget.size.width * 0.35,
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
                                         color: Colors.black.withOpacity(0.1),
                                         blurRadius: 30,
                                         spreadRadius: 0,
-                                        offset: Offset(5, 20))
+                                        offset: const Offset(5, 20))
                                   ]),
                               child: Center(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     loading[index] == true
-                                        ? SizedBox(
+                                        ? const SizedBox(
                                             height: 90,
                                             width: 90,
                                             child: CircularProgressIndicator(
-                                              color: myhomepageBlue,
+                                              color: BrainWorldColors
+                                                  .myhomepageBlue,
                                             ),
                                           )
                                         : MyCachedNetworkImage(
@@ -135,13 +136,13 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             width: 95,
                                             child: Text(
-                                              widget.list[index].title ?? '',
+                                              widget.list[index].title,
                                               textAlign: TextAlign.left,
                                               maxLines: 2,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   fontWeight: FontWeight.bold),
@@ -158,21 +159,25 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                                                     cartController
                                                         .addCourse(cartModel);
                                                   },
-                                                  child: Icon(
+                                                  child: const Icon(
                                                     Icons.add_shopping_cart,
-                                                    color: myhomepageBlue,
+                                                    color: BrainWorldColors
+                                                        .myhomepageBlue,
                                                     size: 22,
                                                   ),
                                                 )
                                               : Container(
-                                                  padding: EdgeInsets.all(1.6),
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  50)),
-                                                      color: Colors.red),
-                                                  child: Icon(
+                                                  padding:
+                                                      const EdgeInsets.all(1.6),
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          50)),
+                                                          color: Colors.red),
+                                                  child: const Icon(
                                                     IconlyBold.delete,
                                                     color: Colors.white,
                                                     size: 12,
@@ -191,7 +196,7 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                                             'Price: N${widget.list[index].price}',
                                             gradient: LinearGradient(
                                                 colors: myblueGradient),
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w500),
                                           ),
                                         ),
@@ -225,7 +230,7 @@ class _HorizontalListViewState extends State<HorizontalListView> {
     });
 
     MyNavigate.navigatejustpush(
-        FullPDFPage(file: file, filename: filename), context);
+        FullPDFPage(file: file, fileName: filename), context);
     // }
   }
 }

@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,23 +14,25 @@ import 'package:socket_io_client/socket_io_client.dart';
 import '../chat_detail.dart';
 
 class ChatListWidget extends StatefulWidget {
-  String userid;
-  String clickedEmail;
-  Socket socket;
-  String name;
-  String? messageText;
-  String? imageUrl;
-  String? time;
-  bool? isMessageRead;
-  ChatListWidget(
-      {required this.userid,
+  final String userId;
+  final String clickedEmail;
+  final Socket socket;
+  final String name;
+  final String? messageText;
+  final String? imageUrl;
+  final String? time;
+  final bool? isMessageRead;
+  const ChatListWidget(
+      {Key? key,
+      required this.userId,
       required this.name,
       required this.clickedEmail,
       required this.socket,
       @required this.messageText,
       @required this.imageUrl,
       @required this.time,
-      @required this.isMessageRead});
+      @required this.isMessageRead})
+      : super(key: key);
   @override
   _ChatListWidgetState createState() => _ChatListWidgetState();
 }
@@ -72,7 +75,7 @@ class _ChatListWidgetState extends State<ChatListWidget> {
                 create: (context) => ChatController(),
                 child: ChatDetail(
                     sendersid: userData['_id'],
-                    clickeduserid: widget.userid,
+                    clickeduserid: widget.userId,
                     senderEmail: userData['email'],
                     clickedEmail: widget.clickedEmail,
                     name: widget.name),
@@ -113,7 +116,7 @@ class _ChatListWidgetState extends State<ChatListWidget> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               ProfileUserWidget(
-                userId: widget.userid,
+                userId: widget.userId,
                 // isUtilityType: true,
                 containerWidthRatio: 0.73,
                 withGapBwText: true,
@@ -128,7 +131,7 @@ class _ChatListWidgetState extends State<ChatListWidget> {
                   Text(
                     widget.messageText!,
                     style: TextStyle(
-                      fontSize: 13, color: myhomepageBlue,
+                      fontSize: 13, color: BrainWorldColors.myhomepageBlue,
                       // fontWeight: widget.isMessageRead?FontWeight.bold:FontWeight.normal
                     ),
                   ),

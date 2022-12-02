@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:get/get.dart';
 
 class CourseController extends GetxController {
@@ -7,34 +6,34 @@ class CourseController extends GetxController {
 
 class CourseReaction {
   CourseReaction({
-    this.post_id,
-    this.user_id,
-    this.subscribers_id,
+    this.postId,
+    this.userId,
+    this.subscribersId,
     this.comments,
     this.likes,
     this.subscribers,
   });
 
-  String? user_id;
-  String? post_id;
-  String? subscribers_id;
+  String? userId;
+  String? postId;
+  String? subscribersId;
   List<dynamic>? likes = [];
   List<dynamic>? comments = [];
   List<dynamic>? subscribers = [];
 
   factory CourseReaction.fromJson(Map<String, dynamic> json) => CourseReaction(
-        user_id: json["user_id"],
-        subscribers_id: json["subscribers_id"],
-        post_id: json["_id"],
+        userId: json["user_id"],
+        subscribersId: json["subscribers_id"],
+        postId: json["_id"],
         subscribers: json["subscribers"],
         likes: json["likes"],
         comments: json["comments"],
       );
 
   Map<String, dynamic> toJson() => {
-        "user_id": user_id,
-        "post_id": post_id,
-        "subscribers_id": subscribers_id,
+        "user_id": userId,
+        "post_id": postId,
+        "subscribers_id": subscribersId,
         "likes": likes,
         "comments": comments,
         "subscribers": subscribers,

@@ -2,6 +2,7 @@ import 'package:brainworld/components/bottomnavigation.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/pages/cart/cart_page.dart';
 import 'package:brainworld/services/cart_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:brainworld/constants/constant.dart';
@@ -16,11 +17,11 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
   }) : super(key: key);
 
   final String title;
-  bool showRightIcons;
-  String? imageUrl;
+  final bool showRightIcons;
+  final String? imageUrl;
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
   @override
   Widget build(BuildContext context) {
     bool? showDrawer;
@@ -31,7 +32,7 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
       title: title != 'Home'
           ? Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
               ),
             )
@@ -43,7 +44,7 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: Colors.white,
       shadowColor: Colors.transparent,
       leading: Container(
-        padding: EdgeInsets.only(left: 13),
+        padding: const EdgeInsets.only(left: 13),
         height: 10,
         width: 10,
         child: showDrawer == null
@@ -61,18 +62,18 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
                     color: Colors.black,
                     semanticsLabel: 'A red up arrow'),
               )
-            : SizedBox(),
+            : const SizedBox(),
       ),
       actions: !showRightIcons
           ? []
           : [
               Obx(
                 () => Container(
-                  padding: EdgeInsets.only(right: 20),
+                  padding: const EdgeInsets.only(right: 20),
                   height: 33,
                   // width: 33,
                   child: Center(
-                    child: new Stack(
+                    child:  Stack(
                       children: <Widget>[
                         Row(
                           children: [
@@ -82,15 +83,15 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
                                   height: 25,
                                   width: 25,
                                   // fit: BoxFit.fill,
-                                  color: iconsColor,
+                                  color: BrainWorldColors.iconsColors,
                                   semanticsLabel: 'A red up arrow'),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 15,
                             ),
                             GestureDetector(
                               onTap: () => MyNavigate.navigatepushuntil(
-                                  BottomNavigation(
+                                  const BottomNavigation(
                                     index: 5,
                                   ),
                                   context),
@@ -98,7 +99,7 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
                                   'assets/svg/profileicon.svg',
                                   height: 22,
                                   width: 22,
-                                  color: iconsColor,
+                                  color: BrainWorldColors.iconsColors,
                                   semanticsLabel: 'A red up arrow'),
                             ),
                           ],
@@ -119,7 +120,7 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
                                 child: Center(
                                     child: Text(
                                   '${cartController.cartItems.length}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 10,
                                       fontWeight: FontWeight.bold),

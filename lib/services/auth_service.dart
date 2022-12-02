@@ -1,21 +1,20 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/auth_screens/login.dart';
 import 'package:brainworld/pages/chats/models/isnewuser_data_model.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:brainworld/models/user.dart';
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
+  final logger = Logger();
   final liverurl = '$generalUrl/';
   // final liverurl = 'http://10.0.2.2:3000/';
   // final liverurl = 'https://brainworld-api.cyclic.app/';
   postData(data, apiUrl) async {
-    print('dataup' + data.toString());
+    logger.d('dataup' + data.toString());
 
     var fullUrl = liverurl + apiUrl;
     return await http.post(
@@ -56,9 +55,9 @@ class AuthService {
 
   updateUser({required Map<String, String> dataToupdate}) async {
     var response = await AuthService().postData(dataToupdate, 'updateUser');
-    print('dataToupdate body');
+    logger.d('dataToupdate body');
 
-    print(response.body);
+    logger.d(response.body);
     return setUserToStorage(response, false);
   }
 
@@ -76,7 +75,7 @@ class AuthService {
     var streamedResponse = await request.send();
     var response = await http.Response.fromStream(streamedResponse);
 
-    print(response.body);
+    logger.d(response.body);
     return response;
   }
 
@@ -154,6 +153,7 @@ class AuthService {
 
     var userString = localStorage.getString('user');
     // print(userJson);
+    logger.d("this  is the current user: $userString");
     var userJson = json.decode(userString!);
     // print(user['_id']);
     // User user = json.decode(userJson!);

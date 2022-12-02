@@ -1,4 +1,3 @@
-import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/my_cachednetwork_image.dart';
 import 'package:brainworld/components/no_items_widget.dart';
 import 'package:brainworld/components/profile_user_widget.dart';
@@ -7,6 +6,7 @@ import 'package:brainworld/components/utilities_widgets/url_to_readable.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
 import 'package:brainworld/services/order_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class PurchasedCourses extends StatefulWidget {
@@ -28,11 +28,11 @@ class _PurchasedCoursesState extends State<PurchasedCourses> {
             return buildLoading(context);
           }
           if (snapshot.data!.length == 0) {
-            return NoItemsWidget();
+            return const NoItemsWidget();
           }
           return ListView.builder(
               itemCount: snapshot.data!.length,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 var course = snapshot.data![index];
                 print(UrlToReadable.urlToReadableURL(course.videoURL!, '.png'));
@@ -45,8 +45,8 @@ class _PurchasedCoursesState extends State<PurchasedCourses> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            gradient: LinearGradient(
-                                colors: mysocialblueGradient,
+                            gradient: const LinearGradient(
+                                colors: BrainWorldColors.mysocialblueGradient,
                                 begin: Alignment.topCenter)),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(16),
@@ -57,9 +57,9 @@ class _PurchasedCoursesState extends State<PurchasedCourses> {
                       ),
                     ),
                     Align(
-                      alignment: Alignment(-1, 0),
+                      alignment: const Alignment(-1, 0),
                       child: ProfileUserWidget(
-                        userId: course.user_id!,
+                        userId: course.userId!,
                         isUserSubtitle: true,
                         comment: course.title,
                         subTitle: course.postedOn,
@@ -74,12 +74,12 @@ class _PurchasedCoursesState extends State<PurchasedCourses> {
   Column buildLoading(BuildContext context) {
     return Column(
       children: [
-        Skeleton(
+        const Skeleton(
           height: 230,
         ),
         Row(
           children: [
-            Skeleton(
+            const Skeleton(
               height: 50,
               width: 50,
             ),
@@ -89,7 +89,7 @@ class _PurchasedCoursesState extends State<PurchasedCourses> {
                 Skeleton(
                   width: size(context).width * 0.6,
                 ),
-                Skeleton(
+                const Skeleton(
                   width: 70,
                 ),
               ],
