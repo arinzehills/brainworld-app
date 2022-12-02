@@ -2,7 +2,7 @@ import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/constants/api_utils_constants.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/isnewuser_data_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/library/welcome/select_library.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';

@@ -3,11 +3,13 @@ import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/controllers/post_controller.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/upload/course/course_desc.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 import 'package:brainworld/themes/themes.dart';
@@ -115,9 +117,11 @@ void seeDetailsModalBottomSheet(
     PostsController? postsController,
     Socket? socket,
     required cartController}) {
+  final _logger = Logger();
+
   PostsModel course = postsController!.allPost[courseIndex!];
   CartModel cartModel = CartModel.fromJson(course.toJson());
-  print(cartModel.userId);
+  _logger.d(cartModel.userId);
   showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(

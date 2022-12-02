@@ -4,17 +4,21 @@ import 'dart:io';
 
 import 'package:brainworld/constants/api_utils_constants.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/books_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:http/http.dart' as http;
+import 'package:logger/logger.dart';
+
 typedef void OnDownloadProgressCallback(int receivedBytes, int totalBytes);
 typedef void OnUploadProgressCallback(int sentBytes, int totalBytes);
 
 class UploadService {
+  final _logger = Logger();
+
   static bool trustSelfSigned = true;
 
   static HttpClient getHttpClient() {
-    HttpClient httpClient =  HttpClient()
+    HttpClient httpClient = HttpClient()
       ..connectionTimeout = const Duration(seconds: 10)
       ..badCertificateCallback =
           ((X509Certificate cert, String host, int port) => trustSelfSigned);
@@ -27,6 +31,8 @@ class UploadService {
     required OnUploadProgressCallback onUploadProgress,
     required BookModel bookModel,
   }) async {
+    final _logger = Logger();
+
     final url = '$generalUrl/upload/uploadBook';
     var user = await getuserFromStorage();
     final httpClient = getHttpClient();
@@ -75,8 +81,8 @@ class UploadService {
       var streamedResponse = await requestMultipart.send();
 
       var response = await http.Response.fromStream(streamedResponse);
-      print(response.body);
-      print(response.statusCode);
+      _logger.d(response.body);
+      _logger.d(response.statusCode);
       if (statusCode ~/ 100 != 2) {
         throw Exception(
             'Error uploading file, Status code: ${httpResponse.statusCode}');
@@ -84,7 +90,7 @@ class UploadService {
         return await readResponseAsString(httpResponse);
       }
     } catch (e) {
-      print(e.toString());
+      _logger.d(e.toString());
       throw Exception('Error uploading file, Status code: ${e.toString()}');
     }
 
@@ -113,8 +119,8 @@ class UploadService {
     var streamedResponse = await request.send();
 
     var response = await http.Response.fromStream(streamedResponse);
-    print(response.body);
-    // print(response.statusCode);
+    _logger.d(response.body);
+    // _logger.d(response.statusCode);
     return response;
   }
 
@@ -142,8 +148,8 @@ class UploadService {
     var streamedResponse = await request.send();
 
     var response = await http.Response.fromStream(streamedResponse);
-    // print(response.body);
-    // print(response.statusCode);
+    // _logger.d(response.body);
+    // _logger.d(response.statusCode);
     return response;
   }
 
@@ -156,8 +162,8 @@ class UploadService {
     //var datar=jsonDecode(response);
     var responseData = json.decode(response.body);
     var postMap = responseData['books'];
-    // print('responseData');
-    print(responseData);
+    // _logger.d('responseData');
+    _logger.d(responseData);
     List<BookModel> books = [];
     for (var data in postMap) {
       books.add(BookModel.fromJson(data));
@@ -177,8 +183,8 @@ class UploadService {
     //var datar=jsonDecode(response);
     var responseData = json.decode(response.body);
     var postMap = responseData['books'];
-    // print('responseData');
-    // print(responseData);
+    // _logger.d('responseData');
+    // _logger.d(responseData);
     List<BookModel> books = [];
     for (var data in postMap) {
       books.add(BookModel.fromJson(data));
@@ -190,8 +196,8 @@ class UploadService {
   }
 
   static Future<String> readResponseAsString(HttpClientResponse response) {
-    var completer =  Completer<String>();
-    var contents =  StringBuffer();
+    var completer = Completer<String>();
+    var contents = StringBuffer();
     response.transform(utf8.decoder).listen((String data) {
       contents.write(data);
     }, onDone: () => completer.complete(contents.toString()));

@@ -1,4 +1,4 @@
-import 'package:brainworld/pages/chats/models/message.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:flutter/material.dart';
 
 class BuildMessageList extends StatefulWidget {
@@ -18,7 +18,7 @@ class BuildMessageList extends StatefulWidget {
 
 class _BuildMessageListState extends State<BuildMessageList> {
   late int _limit = 20;
-  late int _limitIncrement = 20;
+  late final int _limitIncrement = 20;
   Map<int, bool> showTime = {};
 
   final ScrollController listScrollController = ScrollController();

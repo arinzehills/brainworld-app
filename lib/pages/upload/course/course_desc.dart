@@ -10,10 +10,10 @@ import 'package:brainworld/components/video_list_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
 import 'package:brainworld/controllers/post_controller.dart';
-import 'package:brainworld/models/user_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/chats/chat_detail.dart';
-import 'package:brainworld/pages/chats/models/posts_model.dart';
 import 'package:brainworld/themes/themes.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
@@ -46,6 +46,8 @@ class UserData {
 }
 
 class _CourseDescPageState extends State<CourseDescPage> {
+  final _logger = Logger();
+
   List<UserData> title = [
     UserData(title: 'title', leading: Icons.person),
     UserData(title: 'phone', leading: Icons.mobile_friendly),
@@ -70,7 +72,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
   }
 
   void getPostList() {
-    print('allPosts[]');
+    _logger.d('allPosts[]');
 
     widget.socket.emit('postReaction', {
       "postReaction": {
@@ -79,8 +81,8 @@ class _CourseDescPageState extends State<CourseDescPage> {
       }
     });
     widget.socket.on('getAllPost', (allPosts) {
-      print('oga why now, why');
-      print(allPosts['subscribers']);
+      _logger.d('oga why now, why');
+      _logger.d(allPosts['subscribers']);
       // for (var post in allPosts['subscribers']) {
       var sub = allPosts['subscribers'] as List;
       setStateIfMounted(() {
@@ -95,8 +97,8 @@ class _CourseDescPageState extends State<CourseDescPage> {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
 
-    print('subscribers');
-    print(chatUsersListController.subscribers.value);
+    _logger.d('subscribers');
+    _logger.d(chatUsersListController.subscribers.value);
     Size size = MediaQuery.of(context).size;
     final courseTile2 = <CourseTile>[];
 
@@ -107,8 +109,9 @@ class _CourseDescPageState extends State<CourseDescPage> {
 
     //   return courseTile2;
     // });
-    print(widget.course.videoURL);
-    print(UrlToReadable.videoUrlToReadableURL(widget.course.videoURL!, '.mp4'));
+    _logger.d(widget.course.videoURL);
+    _logger.d(
+        UrlToReadable.videoUrlToReadableURL(widget.course.videoURL!, '.mp4'));
     return Scaffold(
       drawer: MyDrawer(),
       key: _scaffoldKey,
@@ -188,7 +191,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                                   ),
                                   GestureDetector(
                                     onTap: () => {
-                                      print('guy'),
+                                      _logger.d('guy'),
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(

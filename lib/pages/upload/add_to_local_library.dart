@@ -3,12 +3,13 @@ import 'dart:io';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/books_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/services/upload_service.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:brainworld/utils/util.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:iconly/iconly.dart';
+import 'package:logger/logger.dart';
 import 'package:path/path.dart' as Path;
 import 'package:flutter/material.dart';
 
@@ -182,14 +183,17 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
 
     __progressValue = double.parse(__progressValue.toStringAsFixed(2));
 
-    if (__progressValue != _progressValue)
+    if (__progressValue != _progressValue) {
       setState(() {
         _progressValue = __progressValue;
         _progressPercentValue = (_progressValue * 100.0).toInt();
       });
+    }
   }
 
   Future selectFile() async {
+    final _logger = Logger();
+
     final result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowMultiple: false,
@@ -199,11 +203,11 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
 
     setState(() => file = File(path));
 
-    print('file ' + file!.toString());
+    _logger.d('file ' + file!.toString());
     final fileName = Path.basename(file!.path);
     setState(() => filename = fileName);
 
-    print('filenames ' + fileName);
+    _logger.d('filenames ' + fileName);
   }
 
   InputDecoration textfielddecoration(

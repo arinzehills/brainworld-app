@@ -2,9 +2,10 @@ import 'package:brainworld/components/horizontal_listview.dart';
 import 'package:brainworld/components/no_items_widget.dart';
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/books_model.dart';
 import 'package:brainworld/services/order_service.dart';
 import 'package:flutter/material.dart';
+
+import '../../models/books_model.dart';
 
 class PurchasedBooks extends StatefulWidget {
   const PurchasedBooks({Key? key}) : super(key: key);
@@ -37,8 +38,8 @@ class _PurchasedBooksState extends State<PurchasedBooks> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     libraryList(list: snapshot.data!),
-                   const Padding(
-                      padding:  EdgeInsets.only(left: 8.0),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 8.0),
                       child: Text('Your Shelfs/Categories',
                           style: TextStyle(fontWeight: FontWeight.w400)),
                     ),
@@ -122,15 +123,15 @@ class _PurchasedBooksState extends State<PurchasedBooks> {
           ),
           Row(
             children: const [
-               Skeleton(
+              Skeleton(
                 height: 140,
                 width: 140,
               ),
-               Skeleton(
+              Skeleton(
                 height: 140,
                 width: 140,
               ),
-               Skeleton(
+              Skeleton(
                 height: 140,
                 width: 72,
               ),
@@ -143,16 +144,16 @@ class _PurchasedBooksState extends State<PurchasedBooks> {
             width: 70,
           ),
           Row(
-            children:const [
-               Skeleton(
+            children: const [
+              Skeleton(
                 height: 140,
                 width: 140,
               ),
-               Skeleton(
+              Skeleton(
                 height: 140,
                 width: 140,
               ),
-               Skeleton(
+              Skeleton(
                 height: 140,
                 width: 72,
               ),

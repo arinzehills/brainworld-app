@@ -1,7 +1,6 @@
 import 'package:brainworld/constants/api_utils_constants.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/cart_model.dart';
-import 'package:brainworld/pages/chats/models/order_info.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';

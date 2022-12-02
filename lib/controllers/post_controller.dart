@@ -1,4 +1,4 @@
-import 'package:brainworld/pages/chats/models/posts_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:get/get.dart';
 
 class PostsController extends GetxController {

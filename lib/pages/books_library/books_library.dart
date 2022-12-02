@@ -5,19 +5,18 @@ import 'package:brainworld/components/nothing_yet_widget.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/books_library/add_to_books.dart';
-import 'package:brainworld/pages/chats/models/books_model.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:brainworld/services/upload_service.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/api_utils_constants.dart';
-import '../chats/models/isnewuser_data_model.dart';
 
 class BooksLibrary extends StatefulWidget {
   const BooksLibrary({Key? key}) : super(key: key);
@@ -27,6 +26,8 @@ class BooksLibrary extends StatefulWidget {
 }
 
 class _BooksLibraryState extends State<BooksLibrary> {
+  final _logger = Logger();
+
   bool loading = false;
   late IsNewUserModel userInfoData;
   late Future booksData;
@@ -56,11 +57,11 @@ class _BooksLibraryState extends State<BooksLibrary> {
     //this.students = await TransactionService.
     //              transactionInstance.getUserTransactions(1);
     booksData = UploadService().getAllBooks();
-    print('books_data');
+    _logger.d('books_data');
     // var books_data2 = books_data as Map;
     booksData.then((value) => {
-          print('value'),
-          print(value['categories']),
+          _logger.d('value'),
+          _logger.d(value['categories']),
           setState(() => categoryLength = value['categories'].length),
           setState(() => bookLength = value['books'].length)
         });
@@ -70,7 +71,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-    print('userInfoData');
+    _logger.d('userInfoData');
     // print(userInfoData?.bookLib);
     return Scaffold(
       drawer: const MyDrawer(),
@@ -107,7 +108,6 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                 classRoom: true,
                                 chat: userInfoData.chat == false ? false : true,
                                 regAt: 'regAt');
-                            ;
                             AuthService.setIsNewUser(userModel);
                             MyNavigate.navigatejustpush(
                                 const AddToBooks(), context);
@@ -324,7 +324,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
                 width: 6,
               ),
               Text(
-                category != null ? category : 'All books',
+                category ?? 'All books',
                 style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,

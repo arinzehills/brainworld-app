@@ -4,11 +4,12 @@ import 'package:brainworld/components/myappbar.dart';
 import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/order_info.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/services/order_service.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:logger/logger.dart';
 
 class Orders extends StatefulWidget {
   const Orders({Key? key}) : super(key: key);
@@ -20,10 +21,12 @@ class Orders extends StatefulWidget {
 class _OrdersState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
+    final _logger = Logger();
+
     return FutureBuilder(
         future: OrderService.getUserOrders(),
         builder: (context, snapshot) {
-          print('snapshot.data');
+          _logger.d('snapshot.data');
           var dataAsMap = snapshot.data as Map;
           return Scaffold(
             appBar: MyAppMenuBar(title: 'Your Orders'),

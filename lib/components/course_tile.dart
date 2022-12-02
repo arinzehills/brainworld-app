@@ -3,14 +3,14 @@ import 'package:brainworld/components/my_cachednetwork_image.dart';
 import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/post_controller.dart';
-import 'package:brainworld/models/user_model.dart';
-import 'package:brainworld/pages/chats/models/posts_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/homepage/components/reactionicon.dart';
 import 'package:brainworld/services/cart_service.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
@@ -45,7 +45,8 @@ class _CoursesTileState extends State<CoursesTile> {
   bool showCommentBox = false;
   @override
   Widget build(BuildContext context) {
-    print(comment);
+    final _logger = Logger();
+    _logger.d(comment);
     final user = Provider.of<User>(context);
     int commentlength = widget.post.comments!.length;
 
@@ -82,7 +83,7 @@ class _CoursesTileState extends State<CoursesTile> {
                           : 'assets/svg/posticon.svg'),
                   IconButton(
                       onPressed: () {
-                        print(widget.post.videoUrls);
+                        _logger.d(widget.post.videoUrls);
                         widget.post.postType == 'course'
                             ? seeDetailsModalBottomSheet(
                                 context: context,
@@ -137,7 +138,8 @@ class _CoursesTileState extends State<CoursesTile> {
             child: Text(
               widget.post.caption ?? '',
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(color: BrainWorldColors.textGreyColor, fontSize: 13),
+              style: const TextStyle(
+                  color: BrainWorldColors.textGreyColor, fontSize: 13),
             ),
           ),
           reactionRow(user, commentlength),
@@ -165,7 +167,8 @@ class _CoursesTileState extends State<CoursesTile> {
                   onPressed: null,
                   child: Text(
                     'View all $commentlength comments',
-                    style: const TextStyle(color: BrainWorldColors.myhomepageBlue),
+                    style:
+                        const TextStyle(color: BrainWorldColors.myhomepageBlue),
                   ),
                 )
               : const SizedBox(),

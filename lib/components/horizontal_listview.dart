@@ -5,8 +5,7 @@ import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/components/utilities_widgets/url_to_readable.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/chats/models/books_model.dart';
-import 'package:brainworld/pages/chats/models/cart_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/fullresourcepage/full_pdf_page.dart';
 import 'package:brainworld/services/cart_service.dart';
 import 'package:brainworld/themes/themes.dart';
@@ -14,6 +13,7 @@ import 'package:brainworld/utils/pdf_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
+import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 class HorizontalListView extends StatefulWidget {
@@ -35,6 +35,7 @@ class HorizontalListView extends StatefulWidget {
 }
 
 class _HorizontalListViewState extends State<HorizontalListView> {
+  final _logger = Logger();
   final cartController = Get.put(CartService());
 
   // bool loading = false;
@@ -67,7 +68,7 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                     physics: const BouncingScrollPhysics(),
                     itemCount: widget.list.length,
                     itemBuilder: (context, index) {
-                      print(loading[1]);
+                      _logger.d(loading[1]);
                       String filename = widget.list[index].filename!;
                       BookModel book = widget.list[index];
                       CartModel cartModel = CartModel(
