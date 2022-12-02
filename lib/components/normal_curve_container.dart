@@ -1,4 +1,4 @@
-import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -32,10 +32,10 @@ class NormalCurveContainer extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(containerRadius ?? 110)),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: myblueGradient)),
+              colors: BrainWorldColors.myblueGradient)),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,

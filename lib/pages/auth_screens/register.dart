@@ -72,10 +72,10 @@ class _RegisterState extends State<Register> {
                   children: [
                     const Padding(
                         padding: EdgeInsets.only(top: 139.0, left: 11),
-                        child:  Text(
+                        child: Text(
                           'Register',
                           style: TextStyle(
-                              color:  Color.fromARGB(255, 0, 21, 255),
+                              color: Color.fromARGB(255, 0, 21, 255),
                               fontSize: 43,
                               fontWeight: FontWeight.bold),
                         )),
@@ -186,7 +186,7 @@ class _RegisterState extends State<Register> {
                               error,
                               style: const TextStyle(color: Colors.red),
                             ),
-                           const SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             Align(
@@ -195,7 +195,8 @@ class _RegisterState extends State<Register> {
                                 placeHolder: 'SIGN IN',
                                 isGradientButton: true,
                                 isOval: true,
-                                gradientColors: myOrangeGradientTransparent,
+                                gradientColors: BrainWorldColors
+                                    .myOrangeGradientTransparent,
                                 widthRatio: 0.45,
                                 pressed: () async {
                                   if (_formKey.currentState!.validate()) {
@@ -205,7 +206,9 @@ class _RegisterState extends State<Register> {
                                     // var body = json.decode(response.body);
                                     print(response['success']);
                                     if (response['success'] == true) {
-                                      snackBar(const BottomNavigation(), context,
+                                      snackBar(
+                                          const BottomNavigation(),
+                                          context,
                                           'Registered in successfully');
                                     } else {
                                       setState(() => loading = false);
@@ -216,7 +219,7 @@ class _RegisterState extends State<Register> {
                                 },
                               ),
                             ),
-                          const  SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             NoAccount(

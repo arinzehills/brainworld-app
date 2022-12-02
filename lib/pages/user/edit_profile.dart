@@ -5,7 +5,6 @@ import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/my_networkimage.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/user/profile.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:brainworld/themes/themes.dart';
@@ -133,12 +132,15 @@ class _EditProfileState extends State<EditProfile> {
                                         Container(
                                   height: 2,
                                   decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.vertical(
-                                          bottom: Radius.circular(50)),
-                                      gradient: LinearGradient(
-                                          begin: Alignment.topLeft,
-                                          end: Alignment.bottomRight,
-                                          colors: myOrangeGradientTransparent)),
+                                    borderRadius: const BorderRadius.vertical(
+                                        bottom: Radius.circular(50)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: BrainWorldColors
+                                          .myOrangeGradientTransparent,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -207,7 +209,8 @@ class _EditProfileState extends State<EditProfile> {
                           placeHolder: 'Back',
                           pressed: () => {Navigator.pop(context)},
                           isGradientButton: true,
-                          gradientColors: myblueGradientTransparent,
+                          gradientColors:
+                              BrainWorldColors.myblueGradientTransparent,
                         )),
                       ))
                     ]),

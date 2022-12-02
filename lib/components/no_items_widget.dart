@@ -1,5 +1,5 @@
 import 'package:brainworld/components/my_button.dart';
-import 'package:brainworld/constants/constant.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class NoItemsWidget extends StatelessWidget {
@@ -32,7 +32,7 @@ class NoItemsWidget extends StatelessWidget {
               isOval: true,
               widthRatio: 0.5,
               isGradientButton: true,
-              gradientColors: myOrangeGradientTransparent)
+              gradientColors: BrainWorldColors.myOrangeGradientTransparent)
         ],
       ),
     );

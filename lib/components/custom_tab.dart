@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomTab extends StatefulWidget {
-   CustomTab({Key? key, required this.items, required this.widgetsItems})
+  CustomTab({Key? key, required this.items, required this.widgetsItems})
       : super(key: key);
-   List<String> items = const ['a', 'b'];
+  List<String> items = const ['a', 'b'];
   final List<Widget> widgetsItems;
   @override
   State<CustomTab> createState() => _CustomTabState();
@@ -44,7 +44,7 @@ class _CustomTabState extends State<CustomTab> {
                               borderRadius: BorderRadius.circular(10),
                               gradient: LinearGradient(
                                   colors: currentIndex == index
-                                      ? myblueGradient
+                                      ? BrainWorldColors.myblueGradient
                                       : [
                                           const Color.fromARGB(35, 34, 86, 255),
                                           const Color.fromARGB(65, 20, 118, 255)

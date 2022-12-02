@@ -159,7 +159,7 @@ class _BottomNavigationState extends State<BottomNavigation>
                 semanticsLabel: 'A red up arrow'),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                gradient: LinearGradient(colors: myblueGradientTransparent)),
+                gradient: LinearGradient(colors: BrainWorldColors.myblueGradientTransparent)),
           ),
         ));
   }

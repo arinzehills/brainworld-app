@@ -114,8 +114,8 @@ class _ProfileListState extends State<ProfileList> {
                   children: [
                     GradientText(
                       'Edit Profile',
-                      gradient:
-                          LinearGradient(colors: myOrangeGradientTransparent),
+                      gradient: LinearGradient(
+                          colors: BrainWorldColors.myOrangeGradientTransparent),
                       style: const TextStyle(
                           color: BrainWorldColors.myhomepageBlue,
                           fontWeight: FontWeight.w600,
@@ -173,7 +173,8 @@ class _ProfileListState extends State<ProfileList> {
                         }
                       },
                       isGradientButton: true,
-                      gradientColors: myblueGradientTransparent,
+                      gradientColors:
+                          BrainWorldColors.myblueGradientTransparent,
                     )
                   ],
                 ),

@@ -5,7 +5,6 @@ import 'package:brainworld/components/my_networkimage.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/auth_screens/login.dart';
 import 'package:brainworld/pages/user/components/profile_list.dart';
@@ -156,7 +155,8 @@ class _ProfileState extends State<Profile> {
                             widthRatio: 0.4,
                             height: 50,
                             isGradientButton: true,
-                            gradientColors: myOrangeGradientTransparent,
+                            gradientColors:
+                                BrainWorldColors.myOrangeGradientTransparent,
                             pressed: () async {
                               var response = await AuthService().logout();
                               MyNavigate.navigatepushuntil(
@@ -254,7 +254,8 @@ class _ProfileState extends State<Profile> {
                         // isOval: true,
                         withBorder: true,
                         height: 50,
-                        gradientColors: myblueGradientTransparent,
+                        gradientColors:
+                            BrainWorldColors.myblueGradientTransparent,
                         isGradientButton: true,
                         pressed: () {
                           MyNavigate.navigatejustpush(

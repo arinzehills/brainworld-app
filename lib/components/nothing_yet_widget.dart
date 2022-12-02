@@ -1,6 +1,5 @@
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/upload/add_to_local_library.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +87,7 @@ class NothingYetWidget extends StatelessWidget {
                 height: 55,
                 isGradientButton: true,
                 isOval: true,
-                gradientColors: myblueGradientTransparent,
+                gradientColors: BrainWorldColors.myblueGradientTransparent,
                 widthRatio: 0.80,
                 pressed: onClick ??
                     () async {

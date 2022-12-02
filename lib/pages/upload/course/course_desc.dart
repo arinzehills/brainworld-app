@@ -375,7 +375,7 @@ class _CourseDescPageState extends State<CourseDescPage> {
                           ? false
                           : true,
                   isGradientButton: true,
-                  gradientColors: myOrangeGradientTransparent,
+                  gradientColors: BrainWorldColors.myOrangeGradientTransparent,
                   placeHolder:
                       chatUsersListController.subscribers.contains(user.id)
                           ? 'Subscribed'
