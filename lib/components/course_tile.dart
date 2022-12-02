@@ -3,7 +3,7 @@ import 'package:brainworld/components/my_cachednetwork_image.dart';
 import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/post_controller.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
 import 'package:brainworld/pages/homepage/components/reactionicon.dart';
 import 'package:brainworld/services/cart_service.dart';

@@ -6,7 +6,7 @@ import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/auth_screens/login.dart';
 import 'package:brainworld/pages/user/components/profile_list.dart';
 import 'package:brainworld/pages/user/edit_profile.dart';

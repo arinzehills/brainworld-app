@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/chats/models/isnewuser_data_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:http/http.dart' as http;

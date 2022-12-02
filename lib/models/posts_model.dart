@@ -4,10 +4,10 @@ import 'dart:io';
 
 import 'package:brainworld/components/utilities_widgets/mydate_formatter.dart';
 
-PostsModel chatModelFromJson(String str) =>
+PostsModel postModelFromJson(String str) =>
     PostsModel.fromJson(json.decode(str));
 
-String chatModelToJson(PostsModel data) => json.encode(data.toJson());
+String postModelToJson(PostsModel data) => json.encode(data.toJson());
 
 class PostsModel {
   PostsModel({

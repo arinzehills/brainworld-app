@@ -4,7 +4,7 @@ import 'package:brainworld/components/myappbar.dart';
 import 'package:brainworld/components/nothing_yet_widget.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/constants/api_utils_constants.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/chats/models/isnewuser_data_model.dart';
 import 'package:brainworld/pages/library/user_library.dart';
 import 'package:brainworld/pages/library/welcome/library_welcome.dart';

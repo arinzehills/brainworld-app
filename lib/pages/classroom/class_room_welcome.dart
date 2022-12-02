@@ -4,7 +4,7 @@ import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/nothing_yet_widget.dart';
 import 'package:brainworld/constants/api_utils_constants.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/chats/models/isnewuser_data_model.dart';
 import 'package:brainworld/pages/classroom/start_new_class.dart';
 import 'package:brainworld/services/auth_service.dart';

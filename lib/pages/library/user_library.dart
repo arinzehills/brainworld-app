@@ -3,7 +3,7 @@ import 'package:brainworld/components/horizontal_listview.dart';
 import 'package:brainworld/components/nothing_yet_widget.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/chats/models/books_model.dart';
 import 'package:brainworld/pages/upload/add_to_local_library.dart';
 import 'package:brainworld/services/upload_service.dart';

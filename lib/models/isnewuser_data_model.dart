@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-IsNewUserModel chatModelFromJson(String str) =>
+IsNewUserModel newUserModelFromJson(String str) =>
     IsNewUserModel.fromJson(json.decode(str));
 
-String chatModelToJson(IsNewUserModel data) => json.encode(data.toJson());
+String newUserModelToJson(IsNewUserModel data) => json.encode(data.toJson());
 
 class IsNewUserModel {
   IsNewUserModel(

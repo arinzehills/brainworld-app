@@ -10,7 +10,7 @@ import 'package:brainworld/components/video_list_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
 import 'package:brainworld/controllers/post_controller.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/chats/chat_detail.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
 import 'package:brainworld/themes/themes.dart';

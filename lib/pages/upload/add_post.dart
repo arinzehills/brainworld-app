@@ -8,7 +8,7 @@ import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/chats/models/posts_model.dart';
 import 'package:brainworld/services/post_service.dart';
 import 'package:file_picker/file_picker.dart';

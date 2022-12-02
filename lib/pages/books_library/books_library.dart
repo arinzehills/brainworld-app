@@ -5,7 +5,7 @@ import 'package:brainworld/components/nothing_yet_widget.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/books_library/add_to_books.dart';
 import 'package:brainworld/pages/chats/models/books_model.dart';
 import 'package:brainworld/services/auth_service.dart';

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:brainworld/components/bottomnavigation.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/auth_screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

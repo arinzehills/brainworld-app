@@ -4,7 +4,7 @@ import 'package:brainworld/components/myappbar.dart';
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_users_controller.dart';
-import 'package:brainworld/models/user.dart';
+import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/chats/components/chat_list_widget.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
