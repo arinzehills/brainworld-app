@@ -2,7 +2,6 @@ import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/myappbar.dart';
 import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/polls/add_poll.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -65,8 +64,11 @@ class _PollsState extends State<Polls> {
             padding: const EdgeInsets.all(15),
             child: const Icon(IconlyBold.paper_plus),
             decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(colors: myblueGradientTransparent)),
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: BrainWorldColors.myblueGradientTransparent,
+              ),
+            ),
           ),
         ));
   }

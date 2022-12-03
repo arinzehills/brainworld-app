@@ -3,6 +3,7 @@ import 'package:brainworld/components/no_items_widget.dart';
 import 'package:brainworld/components/utilities_widgets/skeleton.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/services/order_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/books_model.dart';
@@ -83,8 +84,10 @@ class _PurchasedBooksState extends State<PurchasedBooks> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    gradient:
-                        LinearGradient(colors: myblueGradientTransparent)),
+                  gradient: LinearGradient(
+                    colors: BrainWorldColors.myblueGradientTransparent,
+                  ),
+                ),
                 margin: const EdgeInsets.only(right: 4),
                 height: 14,
                 width: 6,

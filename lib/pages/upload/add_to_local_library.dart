@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/models.dart';
 import 'package:brainworld/services/upload_service.dart';
 import 'package:brainworld/themes/themes.dart';
@@ -133,7 +132,8 @@ class _AddToLocalLibrayState extends State<AddToLocalLibray> {
                         height: 55,
                         isGradientButton: true,
                         isOval: true,
-                        gradientColors: myOrangeGradientTransparent,
+                        gradientColors:
+                            BrainWorldColors.myOrangeGradientTransparent,
                         widthRatio: 0.40,
                         pressed: () async {
                           if (_formKey.currentState!.validate()) {

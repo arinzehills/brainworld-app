@@ -48,8 +48,8 @@ class _GetStartedPageState extends State<GetStartedPage> {
                     generalGText(text: 'GET STARTED'),
                     GradientText(
                       '...a perfect  place to learn',
-                      gradient:
-                          LinearGradient(colors: myOrangeGradientTransparent),
+                      gradient: LinearGradient(
+                          colors: BrainWorldColors.myOrangeGradientTransparent),
                       style: const TextStyle(
                           color: Color(0xffffb00b), fontSize: 15),
                     ),
@@ -77,7 +77,8 @@ class _GetStartedPageState extends State<GetStartedPage> {
                       MyButton(
                         placeHolder: 'Continue',
                         pressed: () async {
-                          MyNavigate.navigatejustpush(const Register(), context);
+                          MyNavigate.navigatejustpush(
+                              const Register(), context);
                         },
                       ),
                     ],

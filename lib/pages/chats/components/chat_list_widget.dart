@@ -3,7 +3,6 @@
 import 'dart:convert';
 
 import 'package:brainworld/components/profile_user_widget.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -140,8 +139,9 @@ class _ChatListWidgetState extends State<ChatListWidget> {
                     width: 17,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        gradient:
-                            LinearGradient(colors: myblueGradientTransparent)),
+                        gradient: LinearGradient(
+                            colors:
+                                BrainWorldColors.myblueGradientTransparent)),
                     child: Center(
                       child: Text(
                         '2',

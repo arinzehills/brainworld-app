@@ -129,7 +129,7 @@ class _ChatDetailState extends State<ChatDetail> {
                 ChatIconGradient(
                   pressed: () {},
                   iconName: Icons.add,
-                  bgColor: myblueGradientTransparent,
+                  bgColor: BrainWorldColors.myblueGradientTransparent,
                 ),
                 IconButton(
                   onPressed: () {
@@ -160,15 +160,16 @@ class _ChatDetailState extends State<ChatDetail> {
                   width: 15,
                 ),
                 ChatIconGradient(
-                    pressed: () {
-                      if (_controller.text.trim().isNotEmpty) {
-                        sendMessage();
-                      }
-                    },
-                    iconName: IconlyBold.send,
-                    iconSize: 30,
-                    bgHeight: 60,
-                    bgColor: myOrangeGradientTransparent),
+                  pressed: () {
+                    if (_controller.text.trim().isNotEmpty) {
+                      sendMessage();
+                    }
+                  },
+                  iconName: IconlyBold.send,
+                  iconSize: 30,
+                  bgHeight: 60,
+                  bgColor: BrainWorldColors.myOrangeGradientTransparent,
+                ),
                 const SizedBox(
                   width: 15,
                 ),

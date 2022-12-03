@@ -3,7 +3,6 @@ import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/nothing_yet_widget.dart';
 import 'package:brainworld/constants/api_utils_constants.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/classroom/start_new_class.dart';
 import 'package:brainworld/services/auth_service.dart';
@@ -124,7 +123,7 @@ class _ClassRoomWelcomeState extends State<ClassRoomWelcome> {
                   height: 55,
                   isGradientButton: true,
                   isOval: true,
-                  gradientColors: myblueGradientTransparent,
+                  gradientColors: BrainWorldColors.myblueGradientTransparent,
                   widthRatio: 0.80,
                   pressed: () async {
                     Get.to(const StartNewClass());
