@@ -15,10 +15,9 @@ class NoItemsWidget extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          gradient: const LinearGradient(colors: [
-            Color.fromARGB(35, 34, 86, 255),
-            Color.fromARGB(65, 20, 118, 255)
-          ], begin: Alignment.topCenter)),
+          gradient: const LinearGradient(
+              colors: BrainWorldColors.mysocialblueGradient,
+              begin: Alignment.topCenter)),
       child: Column(
         children: [
           Image.asset('assets/images/dullbaby.png'),

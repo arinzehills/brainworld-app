@@ -33,9 +33,8 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
 
     return Container(
       padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-      color: widget.isCommentDetail
-          ? const Color.fromARGB(255, 233, 238, 251)
-          : null,
+      color:
+          widget.isCommentDetail ? BrainWorldColors.commentDetailColor : null,
       child: Row(
         children: [
           ChatIconGradient(
@@ -57,7 +56,7 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
               decoration: const InputDecoration(
                   fillColor: Colors.red,
                   hintText: "Add a comment...",
-                  hintStyle: TextStyle(color: Color(0xffC9C4C4)),
+                  hintStyle: TextStyle(color: BrainWorldColors.addCommentColor),
                   border: InputBorder.none),
               onTap: () {},
               onChanged: (value) => setState(() {

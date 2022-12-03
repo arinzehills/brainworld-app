@@ -102,7 +102,7 @@ class _CoursesTileState extends State<CoursesTile> {
                       icon: const Icon(
                         Icons.more_vert_sharp,
                         size: 25,
-                        color: Color.fromARGB(255, 45, 45, 45),
+                        color: BrainWorldColors.darkIconColor,
                       )),
                 ],
               ),
@@ -196,10 +196,9 @@ class _CoursesTileState extends State<CoursesTile> {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(16),
               bottomRight: Radius.circular(16)),
-          gradient: LinearGradient(colors: [
-            Color.fromARGB(35, 34, 86, 255),
-            Color.fromARGB(65, 20, 118, 255)
-          ], begin: Alignment.topCenter)),
+          gradient: LinearGradient(
+              colors: BrainWorldColors.mysocialblueGradient,
+              begin: Alignment.topCenter)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

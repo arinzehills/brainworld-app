@@ -45,10 +45,7 @@ class _CustomTabState extends State<CustomTab> {
                               gradient: LinearGradient(
                                   colors: currentIndex == index
                                       ? BrainWorldColors.myblueGradient
-                                      : [
-                                          const Color.fromARGB(35, 34, 86, 255),
-                                          const Color.fromARGB(65, 20, 118, 255)
-                                        ],
+                                      : BrainWorldColors.mysocialblueGradient,
                                   begin: Alignment.topCenter)),
                           margin: const EdgeInsets.all(5),
                           child: Center(

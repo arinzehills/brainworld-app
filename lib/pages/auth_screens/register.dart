@@ -49,7 +49,10 @@ class _RegisterState extends State<Register> {
         ? const Loading()
         : Scaffold(
             body: SingleChildScrollView(
-              child: Stack(overflow: Overflow.visible, children: [
+              child: Stack(
+                clipBehavior: Clip.hardEdge,
+            
+                children: [
                 Positioned(
                   top: -13,
                   right: 0,
@@ -75,9 +78,10 @@ class _RegisterState extends State<Register> {
                         child: Text(
                           'Register',
                           style: TextStyle(
-                              color: Color.fromARGB(255, 0, 21, 255),
-                              fontSize: 43,
-                              fontWeight: FontWeight.bold),
+                            color: BrainWorldColors.texColor,
+                            fontSize: 43,
+                            fontWeight: FontWeight.bold,
+                          ),
                         )),
                     Padding(
                       padding: const EdgeInsets.only(

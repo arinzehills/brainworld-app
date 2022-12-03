@@ -82,7 +82,7 @@ Widget iconAndCourse({title, icon, double? iconHeight, VoidCallback? onclick}) {
           height: 79,
           width: 86,
           decoration: BoxDecoration(
-              border: Border.all(color: const Color.fromARGB(13, 0, 0, 0)),
+              border: Border.all(color: BrainWorldColors.borderColor),
               borderRadius: const BorderRadius.all(Radius.circular(20)),
               color: const Color(0xffEAEAEA).withOpacity(0.3)),
           padding: const EdgeInsets.all(8.0),

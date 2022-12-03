@@ -338,10 +338,9 @@ class _CourseDescPageState extends State<CourseDescPage> {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(16),
               bottomRight: Radius.circular(16)),
-          gradient: LinearGradient(colors: const [
-            Color.fromARGB(35, 34, 86, 255),
-            Color.fromARGB(65, 20, 118, 255)
-          ], begin: Alignment.topCenter)),
+          gradient: LinearGradient(
+              colors: BrainWorldColors.mysocialblueGradient,
+              begin: Alignment.topCenter)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
