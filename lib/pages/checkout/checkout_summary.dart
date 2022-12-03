@@ -111,7 +111,8 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
                             child: Center(
                               child: MyButton(
                                 isGradientButton: true,
-                                gradientColors: myOrangeGradientTransparent,
+                                gradientColors: BrainWorldColors
+                                    .myOrangeGradientTransparent,
                                 widthRatio: 0.6,
                                 isOval: true,
                                 placeHolder: 'Pay ',
@@ -170,7 +171,7 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
                   isGradientButton: true,
                   widthRatio: 0.37,
                   fontSize: 16,
-                  gradientColors: myOrangeGradientTransparent,
+                  gradientColors: BrainWorldColors.myOrangeGradientTransparent,
                   pressed: () {
                     MyNavigate.navigatepushuntil(
                         const BottomNavigation(), context);
@@ -178,7 +179,7 @@ class _CheckoutSummaryState extends State<CheckoutSummary> {
                 ),
                 MyButton(
                   placeHolder: 'Check orders',
-                  gradientColors: myblueGradient,
+                  gradientColors: BrainWorldColors.myblueGradient,
                   isGradientButton: true,
                   isOval: true,
                   widthRatio: 0.4,

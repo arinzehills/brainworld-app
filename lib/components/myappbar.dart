@@ -5,7 +5,6 @@ import 'package:brainworld/services/cart_service.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:get/get.dart';
 
 class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
@@ -73,7 +72,7 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
                   height: 33,
                   // width: 33,
                   child: Center(
-                    child:  Stack(
+                    child: Stack(
                       children: <Widget>[
                         Row(
                           children: [
@@ -116,7 +115,8 @@ class MyAppMenuBar extends StatelessWidget with PreferredSizeWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(50),
                                     gradient: LinearGradient(
-                                        colors: myOrangeGradientTransparent)),
+                                        colors: BrainWorldColors
+                                            .myOrangeGradientTransparent)),
                                 child: Center(
                                     child: Text(
                                   '${cartController.cartItems.length}',

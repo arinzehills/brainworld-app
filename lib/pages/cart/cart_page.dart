@@ -3,7 +3,6 @@ import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/checkout/checkout.dart';
 import 'package:brainworld/services/cart_service.dart';
 import 'package:brainworld/themes/themes.dart';
@@ -153,8 +152,8 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                   height: 85,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      borderRadius:
-                          const BorderRadius.vertical(top: const Radius.circular(20)),
+                      borderRadius: const BorderRadius.vertical(
+                          top: const Radius.circular(20)),
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
@@ -209,7 +208,8 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                                 const Checkout(), context);
                           },
                           isGradientButton: true,
-                          gradientColors: myOrangeGradientTransparent,
+                          gradientColors:
+                              BrainWorldColors.myOrangeGradientTransparent,
                         ),
                       ),
                     ],
@@ -278,7 +278,8 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         gradient: LinearGradient(
-                            colors: myOrangeGradientTransparent)),
+                            colors:
+                                BrainWorldColors.myOrangeGradientTransparent)),
                     child: const Center(
                         child: Icon(
                       IconlyBold.delete,

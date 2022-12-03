@@ -7,10 +7,10 @@ import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/my_text_field_decoration.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/upload/course/future_drop_down.dart';
 import 'package:brainworld/pages/upload/course/model/course.dart';
 import 'package:brainworld/pages/upload/course/upload_course.dart';
+import 'package:brainworld/themes/themes.dart';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -112,7 +112,7 @@ class _UploadCourseInfoState extends State<UploadCourseInfo> {
                       padding: const EdgeInsets.only(top: 0.0),
                       child: Center(
                         child: Column(
-                          children: [
+                          children: const [
                             ImageIcon(
                               AssetImage('assets/images/uploads_blue.png'),
                               size: 50,
@@ -266,7 +266,7 @@ class _UploadCourseInfoState extends State<UploadCourseInfo> {
                     child: MyButton(
                   placeHolder: 'CONTINUE',
                   isGradientButton: true,
-                  gradientColors: myblueGradient,
+                  gradientColors: BrainWorldColors.myblueGradient,
                   pressed: () {
                     var totalError = dropdownError + packageError + error;
                     if (_formKey.currentState!.validate()) {

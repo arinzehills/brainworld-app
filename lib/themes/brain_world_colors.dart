@@ -14,5 +14,21 @@ class BrainWorldColors {
   ];
   static const welcomepageBlue = Color(0xff0837ff);
   static const welcomepageLightBlue = Color(0xff00dcff);
+  static const myblueGradient = [
+    BrainWorldColors.myhomepageBlue,
+    BrainWorldColors.myhomepageLightBlue
+  ];
+  static final myblueGradientTransparent = [
+    BrainWorldColors.myhomepageBlue.withOpacity(0.73),
+    BrainWorldColors.myhomepageLightBlue
+  ];
+  static const myOrangeGradient = [
+    BrainWorldColors.myhomepageOrange,
+    BrainWorldColors.myhomepageLightOrange
+  ];
+  static final myOrangeGradientTransparent = [
+    BrainWorldColors.myhomepageOrange.withOpacity(0.59),
+    BrainWorldColors.myhomepageLightOrange.withOpacity(0.38)
+  ];
   //TODO: ADD APP TEXT COLOR
 }

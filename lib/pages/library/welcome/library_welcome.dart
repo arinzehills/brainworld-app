@@ -1,7 +1,6 @@
 import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/constants/api_utils_constants.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/library/welcome/select_library.dart';
 import 'package:brainworld/themes/themes.dart';
@@ -57,7 +56,7 @@ class _LibraryWelcomeState extends State<LibraryWelcome> {
             height: 55,
             isGradientButton: true,
             isOval: true,
-            gradientColors: myOrangeGradientTransparent,
+            gradientColors: BrainWorldColors.myOrangeGradientTransparent,
             widthRatio: 0.80,
             pressed: () async {
               // Get.to(StartNewClass());
@@ -99,7 +98,7 @@ Future comingSoon(context) {
               height: 55,
               isGradientButton: true,
               isOval: true,
-              gradientColors: myOrangeGradientTransparent,
+              gradientColors: BrainWorldColors.myOrangeGradientTransparent,
               widthRatio: 0.70,
               pressed: () async {
                 // Get.to(StartNewClass());

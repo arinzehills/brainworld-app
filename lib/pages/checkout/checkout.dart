@@ -7,6 +7,7 @@ import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/pages/checkout/checkout_summary.dart';
 import 'package:brainworld/services/cart_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
@@ -150,7 +151,7 @@ class _CheckoutState extends State<Checkout> {
                       Center(
                         child: MyButton(
                           isGradientButton: true,
-                          gradientColors: myblueGradient,
+                          gradientColors: BrainWorldColors.myblueGradient,
                           placeHolder: 'Continue',
                           pressed: () {
                             if (_formKey.currentState!.validate()) {

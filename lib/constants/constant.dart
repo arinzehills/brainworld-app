@@ -4,7 +4,6 @@ import 'package:brainworld/components/utilities_widgets/my_navigate.dart';
 import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/controllers/post_controller.dart';
 import 'package:brainworld/models/models.dart';
-import 'package:brainworld/models/user_model.dart';
 import 'package:brainworld/pages/upload/course/course_desc.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,22 +20,6 @@ const generalUrl = "https://brainworld-api.cyclic.app";
 // final welcomepageBlue= const Color(0xff0837ff);
 // final welcomepageLightBlue= const Color(0xff00dcff);
 
-final myblueGradient = [
-  BrainWorldColors.myhomepageBlue,
-  BrainWorldColors.myhomepageLightBlue
-];
-final myblueGradientTransparent = [
-  BrainWorldColors.myhomepageBlue.withOpacity(0.73),
-  BrainWorldColors.myhomepageLightBlue
-];
-final myOrangeGradient = [
-  BrainWorldColors.myhomepageOrange,
-  BrainWorldColors.myhomepageLightOrange
-];
-final myOrangeGradientTransparent = [
-  BrainWorldColors.myhomepageOrange.withOpacity(0.59),
-  BrainWorldColors.myhomepageLightOrange.withOpacity(0.38)
-];
 var textFieldDecoration = InputDecoration(
   hintStyle: const TextStyle(color: Color(0xff626262)),
   filled: true,
@@ -171,7 +154,8 @@ void seeDetailsModalBottomSheet(
                       placeHolder: 'See details',
                       widthRatio: 0.39,
                       isGradientButton: true,
-                      gradientColors: myOrangeGradientTransparent,
+                      gradientColors:
+                          BrainWorldColors.myOrangeGradientTransparent,
                       pressed: () {
                         Get.to(Obx(
                           () => CourseDescPage(
@@ -185,7 +169,8 @@ void seeDetailsModalBottomSheet(
                       placeHolder: 'Add to cart',
                       widthRatio: 0.42,
                       isGradientButton: true,
-                      gradientColors: myblueGradientTransparent,
+                      gradientColors:
+                          BrainWorldColors.myblueGradientTransparent,
                       pressed: () {
                         cartController.addCourse(cartModel);
                       },
@@ -245,7 +230,8 @@ void showPurchaseBottomSheet(
                     MyButton(
                       widthRatio: 0.6,
                       withBorder: true,
-                      gradientColors: myOrangeGradientTransparent,
+                      gradientColors:
+                          BrainWorldColors.myOrangeGradientTransparent,
                       isGradientButton: true,
                       placeHolder: course.price == '0' ? 'Add' : 'Add to Cart',
                       pressed: () {

@@ -195,8 +195,9 @@ class _HorizontalListViewState extends State<HorizontalListView> {
                                               const EdgeInsets.only(left: 8.0),
                                           child: GradientText(
                                             'Price: N${widget.list[index].price}',
-                                            gradient: LinearGradient(
-                                                colors: myblueGradient),
+                                            gradient: const LinearGradient(
+                                                colors: BrainWorldColors
+                                                    .myblueGradient),
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.w500),
                                           ),

@@ -119,7 +119,7 @@ class _MyDrawerState extends State<MyDrawer> {
               placeHolder: 'Logout',
               // isOval: true,
               isGradientButton: true,
-              gradientColors: myOrangeGradientTransparent,
+              gradientColors: BrainWorldColors.myOrangeGradientTransparent,
               pressed: () async {
                 await AuthService().logout();
                 var response = await AuthService().logout();

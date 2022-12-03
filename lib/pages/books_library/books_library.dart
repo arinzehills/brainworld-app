@@ -120,7 +120,8 @@ class _BooksLibraryState extends State<BooksLibrary> {
                                 // color: Color.fromARGB(255, 13, 39, 127),
                                 decoration: BoxDecoration(
                                     gradient: LinearGradient(
-                                        colors: myOrangeGradientTransparent)),
+                                        colors: BrainWorldColors
+                                            .myOrangeGradientTransparent)),
                                 height: size(context).height * 0.22,
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -317,8 +318,10 @@ class _BooksLibraryState extends State<BooksLibrary> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    gradient:
-                        LinearGradient(colors: myblueGradientTransparent)),
+                  gradient: LinearGradient(
+                    colors: BrainWorldColors.myblueGradientTransparent,
+                  ),
+                ),
                 margin: const EdgeInsets.only(right: 4),
                 height: 14,
                 width: 6,

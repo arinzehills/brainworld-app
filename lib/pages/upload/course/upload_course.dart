@@ -160,7 +160,7 @@ class _UploadCourseState extends State<UploadCourse> {
                     child: Center(
                         child: MyButton(
                       isGradientButton: true,
-                      gradientColors: myOrangeGradientTransparent,
+                      gradientColors: BrainWorldColors.myOrangeGradientTransparent,
                       placeHolder: 'UPLOAD',
                       pressed: () async {
                         setState(() => {loading = true});
@@ -297,7 +297,7 @@ class _UploadCourseState extends State<UploadCourse> {
                           placeHolder: 'Add',
                           isOval: true,
                           widthRatio: 0.4,
-                          gradientColors: myblueGradientTransparent,
+                          gradientColors: BrainWorldColors.myblueGradientTransparent,
                           isGradientButton: true,
                           pressed: () {
                             if (_formKey.currentState!.validate()) {

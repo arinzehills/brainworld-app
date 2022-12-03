@@ -77,8 +77,10 @@ class _UserLibraryState extends State<UserLibrary> {
                       padding: const EdgeInsets.only(top: 15),
                       // color: Color.fromARGB(255, 13, 39, 127),
                       decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: myOrangeGradientTransparent)),
+                        gradient: LinearGradient(
+                          colors: BrainWorldColors.myOrangeGradientTransparent,
+                        ),
+                      ),
                       height: size(context).height * 0.18,
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.start,
@@ -99,7 +101,7 @@ class _UserLibraryState extends State<UserLibrary> {
                             children: [
                               ClipRRect(
                                   borderRadius: const BorderRadius.all(
-                                       Radius.circular(50)),
+                                      Radius.circular(50)),
                                   child: Image.asset(
                                     "assets/images/glory.png",
                                     height: 80,
@@ -123,7 +125,8 @@ class _UserLibraryState extends State<UserLibrary> {
                           future: booksData,
                           builder: (context, snapshot) {
                             if (snapshot.hasError) {
-                              _logger.d('sdhasdfbgu ' + snapshot.error.toString());
+                              _logger
+                                  .d('sdhasdfbgu ' + snapshot.error.toString());
                               return Text(snapshot.error.toString());
                             } else if (snapshot.data == null) {
                               return const Loading();
@@ -153,8 +156,7 @@ class _UserLibraryState extends State<UserLibrary> {
                                           physics:
                                               const BouncingScrollPhysics(),
                                           itemCount:
-                                              bookItemsMap['categories']
-                                                  .length,
+                                              bookItemsMap['categories'].length,
                                           itemBuilder: (context, index) {
                                             return libraryList(
                                                 list: books,
@@ -185,8 +187,11 @@ class _UserLibraryState extends State<UserLibrary> {
             padding: const EdgeInsets.all(15),
             child: const Icon(IconlyBold.paper_plus),
             decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(colors: myblueGradientTransparent)),
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: BrainWorldColors.myblueGradientTransparent,
+              ),
+            ),
           ),
         ));
   }
@@ -278,8 +283,8 @@ class _UserLibraryState extends State<UserLibrary> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    gradient:
-                        LinearGradient(colors: myblueGradientTransparent)),
+                    gradient: LinearGradient(
+                        colors: BrainWorldColors.myblueGradientTransparent)),
                 margin: const EdgeInsets.only(right: 4),
                 height: 14,
                 width: 6,

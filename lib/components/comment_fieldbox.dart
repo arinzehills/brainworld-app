@@ -1,6 +1,6 @@
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/chats/components/chat_icon_gradient.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +43,7 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
             bgHeight: 20,
             iconSize: 15,
             iconName: Icons.add,
-            bgColor: myblueGradientTransparent,
+            bgColor: BrainWorldColors.myblueGradientTransparent,
           ),
           const SizedBox(
             width: 8,
@@ -76,7 +76,7 @@ class _CommentFieldBoxState extends State<CommentFieldBox> {
               iconName: IconlyBold.send,
               iconSize: 20,
               bgHeight: 35,
-              bgColor: myOrangeGradientTransparent),
+              bgColor: BrainWorldColors.myOrangeGradientTransparent),
           const SizedBox(
             width: 15,
           ),

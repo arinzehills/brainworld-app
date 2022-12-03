@@ -263,7 +263,7 @@ class _AddPostState extends State<AddPost> {
                         isGradientButton: true,
                         loadingState: loading,
                         isOval: true,
-                        gradientColors: myOrangeGradientTransparent,
+                        gradientColors: BrainWorldColors.myOrangeGradientTransparent,
                         widthRatio: 0.40,
                         pressed: () async {
                           if (_formKey.currentState!.validate()) {

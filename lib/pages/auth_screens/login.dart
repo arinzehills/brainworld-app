@@ -13,7 +13,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 class Login extends StatefulWidget {
- const Login({
+  const Login({
     Key? key,
   }) : super(key: key);
 
@@ -72,9 +72,8 @@ class _LoginState extends State<Login> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                       const Padding(
-                            padding:
-                                 EdgeInsets.only(top: 139.0, left: 11),
+                        const Padding(
+                            padding: EdgeInsets.only(top: 139.0, left: 11),
                             child: Text(
                               'LOGIN',
                               style: TextStyle(
@@ -91,7 +90,7 @@ class _LoginState extends State<Login> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 buildText(text: 'Email'),
-                            const    SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 MyTextField(
@@ -120,7 +119,7 @@ class _LoginState extends State<Login> {
                                         errorText: "Enter a Valid Email")
                                   ]),
                                 ),
-                              const  SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 buildText(text: 'Password'),
@@ -171,7 +170,7 @@ class _LoginState extends State<Login> {
                                   error,
                                   style: const TextStyle(color: Colors.red),
                                 ),
-                               const SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Align(
@@ -180,7 +179,8 @@ class _LoginState extends State<Login> {
                                     placeHolder: 'SIGN IN',
                                     isGradientButton: true,
                                     isOval: true,
-                                    gradientColors: myOrangeGradientTransparent,
+                                    gradientColors: BrainWorldColors
+                                        .myOrangeGradientTransparent,
                                     widthRatio: 0.45,
                                     pressed: () async {
                                       if (_formKey.currentState!.validate()) {
@@ -190,7 +190,9 @@ class _LoginState extends State<Login> {
                                         // print(response['success']);
                                         if (response['success'] == true) {
                                           setState(() => {});
-                                          snackBar(const BottomNavigation(), context,
+                                          snackBar(
+                                              const BottomNavigation(),
+                                              context,
                                               'Logged in successfully');
                                         } else {
                                           setState(() => loading = false);
