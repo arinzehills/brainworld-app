@@ -30,5 +30,12 @@ class BrainWorldColors {
     BrainWorldColors.myhomepageOrange.withOpacity(0.59),
     BrainWorldColors.myhomepageLightOrange.withOpacity(0.38)
   ];
+  static const texColor = Color.fromARGB(255, 0, 21, 255);
+  static const commentDetailColor = Color.fromARGB(255, 233, 238, 251);
+  static const addCommentColor = Color(0xffC9C4C4);
+  static const borderColor = Color.fromARGB(13, 0, 0, 0);
+  //Icons colors
+  static const darkIconColor = Color.fromARGB(255, 45, 45, 45);
   //TODO: ADD APP TEXT COLOR
+
 }
