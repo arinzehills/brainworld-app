@@ -1,0 +1,16 @@
+name: Basic workflow that attempts to build app to confirm that nothing breaks
+on: [push]
+jobs:
+  run:
+    run-on: ubuntu-latest 
+    env: 
+      FIREBASE_TOKEN: ${{secret.FIREBASE_TOKEN}}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          flutter-version: "2.10.x"
+          channel: "any" # or: 'beta' or 'master'
+      - run: flutter clean
+      - run: flutter pub get
+      - run: flutter build apk 
