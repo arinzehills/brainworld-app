@@ -3,8 +3,8 @@ on: [push]
 jobs:
   run:
     run-on: ubuntu-latest 
-    env: 
-      FIREBASE_TOKEN: ${{secret.FIREBASE_TOKEN}}
+    # env: 
+    #   FIREBASE_TOKEN: ${{secret.FIREBASE_TOKEN}}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v2
