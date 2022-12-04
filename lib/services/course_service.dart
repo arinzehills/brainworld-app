@@ -1,5 +1,5 @@
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/upload/course/model/course.dart';
+import 'package:brainworld/models/course_model.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';

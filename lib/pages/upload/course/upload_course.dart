@@ -8,7 +8,7 @@ import 'package:brainworld/components/normal_curve_container.dart';
 import 'package:brainworld/components/utilities_widgets/gradient_text.dart';
 
 import 'package:brainworld/constants/constant.dart';
-import 'package:brainworld/pages/upload/course/model/course.dart';
+import 'package:brainworld/models/course_model.dart';
 import 'package:brainworld/pages/upload/course/model/course_tile.dart';
 import 'package:brainworld/services/course_service.dart';
 import 'package:brainworld/themes/themes.dart';
