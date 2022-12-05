@@ -4,7 +4,7 @@ import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/post_controller.dart';
 import 'package:brainworld/models/models.dart';
-import 'package:brainworld/pages/homepage/components/reactionicon.dart';
+import 'package:brainworld/pages/homepage/widgets/reactionicon.dart';
 import 'package:brainworld/services/cart_service.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';

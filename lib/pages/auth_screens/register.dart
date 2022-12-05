@@ -49,10 +49,7 @@ class _RegisterState extends State<Register> {
         ? const Loading()
         : Scaffold(
             body: SingleChildScrollView(
-              child: Stack(
-                clipBehavior: Clip.hardEdge,
-            
-                children: [
+              child: Stack(clipBehavior: Clip.hardEdge, children: [
                 Positioned(
                   top: -13,
                   right: 0,
@@ -196,7 +193,7 @@ class _RegisterState extends State<Register> {
                             Align(
                               alignment: Alignment.bottomRight,
                               child: MyButton(
-                                placeHolder: 'SIGN IN',
+                                placeHolder: 'SIGN UP',
                                 isGradientButton: true,
                                 isOval: true,
                                 gradientColors: BrainWorldColors

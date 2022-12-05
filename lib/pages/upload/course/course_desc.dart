@@ -7,17 +7,16 @@ import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/components/utilities_widgets/radial_gradient.dart';
 import 'package:brainworld/components/utilities_widgets/url_to_readable.dart';
 import 'package:brainworld/components/video_list_widget.dart';
-import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
 import 'package:brainworld/controllers/post_controller.dart';
 import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/chats/chat_detail.dart';
+import 'package:brainworld/pages/homepage/widgets/reactionicon.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
-import 'package:brainworld/pages/homepage/components/reactionicon.dart';
 import 'package:brainworld/pages/upload/course/model/course_tile.dart';
 import 'package:brainworld/pages/videopage/network_player.dart';
 import 'package:brainworld/services/cart_service.dart';

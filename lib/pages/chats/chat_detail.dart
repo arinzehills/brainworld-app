@@ -2,14 +2,15 @@ import 'package:brainworld/components/profile_user_widget.dart';
 import 'package:brainworld/constants/constant.dart';
 import 'package:brainworld/controllers/chat_controller.dart';
 import 'package:brainworld/models/models.dart';
-import 'package:brainworld/pages/chats/components/build_message_list.dart';
-import 'package:brainworld/pages/chats/components/chat_icon_gradient.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
+
+import 'widgets/build_message_list.dart';
+import 'widgets/chat_icon_gradient.dart';
 
 class ChatDetail extends StatefulWidget {
   final String sendersid;
