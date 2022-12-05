@@ -1,5 +1,5 @@
 import 'package:brainworld/models/models.dart';
-import 'package:brainworld/pages/chats/components/chat_icon_gradient.dart';
+import 'package:brainworld/pages/chats/widgets/chat_icon_gradient.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';

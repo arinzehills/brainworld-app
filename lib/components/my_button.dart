@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
- final  String placeHolder;
+  final String placeHolder;
   final double? widthRatio;
   final double? height;
-   final bool isOval;
+  final bool isOval;
   final bool withBorder;
   final bool isGradientButton;
- final  bool loadingState;
- final  List<Color>? gradientColors;
+  final bool loadingState;
+  final List<Color>? gradientColors;
   final VoidCallback pressed;
- final  Widget? child;
+  final Widget? child;
 
- final double? fontSize;
+  final double? fontSize;
 
- const MyButton({Key? key, 
+  const MyButton({
+    Key? key,
     required this.placeHolder,
     this.child,
     this.isOval = false,
@@ -39,7 +40,7 @@ class MyButton extends StatelessWidget {
       padding: const EdgeInsets.all(0.0),
       child: Ink(
         width: MediaQuery.of(context).size.width * (widthRatio ?? 0.9),
-        height: height ?? 62,
+        height: height ?? 52,
         decoration: BoxDecoration(
           border: withBorder ? Border.all(color: Colors.white) : null,
           gradient: isGradientButton
