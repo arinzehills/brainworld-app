@@ -32,9 +32,7 @@ class CustomButton extends StatelessWidget {
     return TextButton(
       onPressed: loadingState ? null : pressed,
       style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.resolveWith(
-          (states) => states.contains(MaterialState.disabled)? ,
-        ),
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.orange),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(isOval ? 80 : 0.0),
