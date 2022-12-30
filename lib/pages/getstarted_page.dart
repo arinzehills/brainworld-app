@@ -7,7 +7,7 @@ import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class GetStartedPage extends StatefulWidget {
-  const GetStartedPage({
+  const  GetStartedPage({
     Key? key,
   }) : super(key: key);
 

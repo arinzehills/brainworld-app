@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'package:brainworld/components/bottomnavigation.dart';
-import 'package:brainworld/models/user_model.dart';
+import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/auth_screens/login.dart';
+import 'package:brainworld/pages/getstarted_page.dart';
+import 'package:brainworld/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,6 +23,8 @@ class _SplashScreenState extends State<SplashScreen> {
       color: Colors.white,
       alignment: Alignment.center,
       child: const Image(
+        height: 180,
+        width: 180,
         image: AssetImage(
           'assets/images/brainworld-logo.png',
         ),
@@ -30,17 +35,28 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _timer = Timer(const Duration(microseconds: 500), () {
+    _timer = Timer(const Duration(milliseconds: 500), () {
       _completeSplash();
     });
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
+  }
+
   _completeSplash() async {
-    final _user = Provider.of<User?>(context);
-    if (_user == null) {
-      return const  Login();
-    } else {
+    final user = Provider.of<User?>(context, listen: false);
+
+    String? hasAccessToken = (user?.token);
+    final logger = Logger();
+
+    logger.d("this toke: $hasAccessToken");
+    if (hasAccessToken != null) {
       return const BottomNavigation();
+    } else {
+      const Login();
     }
   }
 }
