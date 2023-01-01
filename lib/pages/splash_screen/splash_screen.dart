@@ -5,6 +5,7 @@ import 'package:brainworld/pages/auth_screens/login.dart';
 import 'package:brainworld/pages/getstarted_page.dart';
 import 'package:brainworld/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _timer = Timer(const Duration(milliseconds: 500), () {
+    _timer = Timer(const Duration(microseconds: 500), () {
       _completeSplash();
     });
   }
@@ -54,9 +55,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
     logger.d("this toke: $hasAccessToken");
     if (hasAccessToken != null) {
-      return const BottomNavigation();
+      Get.offAll(() => const BottomNavigation());
     } else {
-      const Login();
+      Get.to(() => const GetStartedPage());
     }
   }
 }
