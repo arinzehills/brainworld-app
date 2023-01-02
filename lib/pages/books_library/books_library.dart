@@ -1,5 +1,6 @@
 import 'package:brainworld/components/drawer.dart';
 import 'package:brainworld/components/horizontal_listview.dart';
+import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/myappbar.dart';
 import 'package:brainworld/components/nothing_yet_widget.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
@@ -76,225 +77,252 @@ class _BooksLibraryState extends State<BooksLibrary> {
     return Scaffold(
       drawer: const MyDrawer(),
       appBar: bookLength == 0 ? null : MyAppMenuBar(title: 'Books'),
-      body: FutureBuilder(
-          future: booksData,
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Text(snapshot.error.toString());
-            } else if (snapshot.data == null) {
-              return const Loading();
-            } else {
-              var bookItemsMap = snapshot.data! as Map;
+      body: SafeArea(
+        child: FutureBuilder(
+            future: booksData,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              } else if (snapshot.data == null) {
+                return const Loading();
+              } else {
+                var bookItemsMap = snapshot.data! as Map;
 
-              return
-                  // book_items_map['books'].length == 0
-                  userInfoData.bookLib == true
-                      ? NothingYetWidget(
-                          pageTitle: 'UPLOAD TO BOOKS LIBRARY',
-                          pageHeader: "My Books Library",
-                          pageContentText:
-                              'Welcome to Brain world books you can buy books here with ease,\n'
-                              'You can also sell your own books here\n at any price u want',
-                          onClick: () async {
-                            var userModel = IsNewUserModel(
-                                id: user.id,
-                                username: user.fullName,
-                                newlyRegistered: true,
-                                bookLib: false,
-                                library: userInfoData.library == false
-                                    ? false
-                                    : true,
-                                lab: userInfoData.lab == false ? false : true,
-                                classRoom: true,
-                                chat: userInfoData.chat == false ? false : true,
-                                regAt: 'regAt');
-                            AuthService.setIsNewUser(userModel);
-                            MyNavigate.navigatejustpush(
-                                const AddToBooks(), context);
-                          },
-                        )
-                      : Stack(
-                          children: [
-                            Container(
-                                padding: const EdgeInsets.only(top: 5),
-                                // color: Color.fromARGB(255, 13, 39, 127),
-                                decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                        colors: BrainWorldColors
-                                            .myOrangeGradientTransparent)),
-                                height: size(context).height * 0.22,
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(50)),
-                                        child: Image.asset(
-                                          "assets/images/brainworld-logo.png",
-                                          height: 80,
-                                        )),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        const Text(
-                                          'Brain World',
-                                          style: TextStyle(
-                                              color: BrainWorldColors
-                                                  .myhomepageBlue,
-                                              fontSize: 23,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        const SizedBox(
-                                          height: 3,
-                                        ),
-                                        const Text(
-                                          'Buy books at ease here on brain world',
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                        const SizedBox(
-                                          height: 8,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                SvgPicture.asset(
-                                                    'assets/svg/booksicon.svg',
-                                                    height: 12,
-                                                    fit: BoxFit.fill,
-                                                    color: Colors.white,
-                                                    semanticsLabel:
-                                                        'A red up arrow'),
-                                                const SizedBox(
-                                                  width: 5,
-                                                ),
-                                                Text(
-                                                  '$bookLength books in your library',
-                                                  style: const TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 12),
-                                                ),
-                                              ],
-                                            ),
-                                            const SizedBox(
-                                              width: 8,
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Icon(
-                                                  IconlyBold.scan,
-                                                  size: 15,
-                                                  color: Colors.white,
-                                                ),
-                                                const SizedBox(
-                                                  width: 5,
-                                                ),
-                                                Text(
-                                                  '$categoryLength shelfs',
-                                                  style: const TextStyle(
-                                                      color: Colors.white),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                )),
-                            Align(
-                                // top: 1,
-                                alignment: Alignment(
-                                    0, -size(context).height * 0.00081),
-                                child: Padding(
-                                    padding: const EdgeInsets.all(20),
-                                    child: textField())),
-                            bookItemsMap['books'].length == 0
-                                ? NothingYetWidget(
-                                    pageTitle: '',
-                                    pageHeader: "No Books Yet",
-                                    isFullPage: false,
-                                    pageContentText:
-                                        'Welcome to Brain world books you can buy books here with ease,\n'
-                                        'You can also sell your own books here\n at any price u want',
-                                    onClick: () async {
-                                      MyNavigate.navigatejustpush(
-                                          const AddToBooks(), context);
-                                    },
-                                  )
-                                : Padding(
-                                    // alignment: Alignment(0, size(context).height * 0.00069),
-                                    padding: EdgeInsets.only(
-                                        top: size(context).height * 0.3),
-                                    child: FutureBuilder(
-                                        future: booksData,
-                                        builder: (context, snapshot) {
-                                          if (snapshot.hasError) {
-                                            return Text(
-                                                snapshot.error.toString());
-                                          } else if (snapshot.data == null) {
-                                            return const Loading();
-                                          } else {
-                                            var bookItemsMap =
-                                                snapshot.data! as Map;
-                                            List<BookModel> books = [];
-                                            for (var data
-                                                in bookItemsMap['books']) {
-                                              books.add(
-                                                  BookModel.fromJson(data));
-                                            }
-                                            return SingleChildScrollView(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                return
+                    // book_items_map['books'].length == 0
+                    userInfoData.bookLib == true
+                        ? NothingYetWidget(
+                            pageTitle: 'UPLOAD TO BOOKS LIBRARY',
+                            pageHeader: "My Books Library",
+                            pageContentText:
+                                'Welcome to Brain world books you can buy books here with ease,\n'
+                                'You can also sell your own books here\n at any price u want',
+                            widget: MyButton(
+                              placeHolder: 'Start',
+                              height: 55,
+                              isGradientButton: true,
+                              isOval: true,
+                              gradientColors:
+                                  BrainWorldColors.myblueGradientTransparent,
+                              widthRatio: 0.80,
+                              pressed: () async {
+                                var userModel = IsNewUserModel(
+                                    id: user.id,
+                                    username: user.fullName,
+                                    newlyRegistered: true,
+                                    bookLib: false,
+                                    library: userInfoData.library == false
+                                        ? false
+                                        : true,
+                                    lab: userInfoData.lab == false
+                                        ? false
+                                        : true,
+                                    classRoom: true,
+                                    chat: userInfoData.chat == false
+                                        ? false
+                                        : true,
+                                    regAt: 'regAt');
+                                AuthService.setIsNewUser(userModel);
+                                MyNavigate.navigatejustpush(
+                                    const AddToBooks(), context);
+                              },
+                            ),
+                          )
+                        : Stack(
+                            children: [
+                              Container(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  // color: Color.fromARGB(255, 13, 39, 127),
+                                  decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                          colors: BrainWorldColors
+                                              .myOrangeGradientTransparent)),
+                                  height: size(context).height * 0.22,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ClipRRect(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(50)),
+                                          child: Image.asset(
+                                            "assets/images/brainworld-logo.png",
+                                            height: 80,
+                                          )),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          const Text(
+                                            'Brain World',
+                                            style: TextStyle(
+                                                color: BrainWorldColors
+                                                    .myhomepageBlue,
+                                                fontSize: 23,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          const SizedBox(
+                                            height: 3,
+                                          ),
+                                          const Text(
+                                            'Buy books at ease here on brain world',
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                          const SizedBox(
+                                            height: 8,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Row(
                                                 children: [
-                                                  libraryList(list: books),
-                                                  const Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 8.0),
-                                                    child: Text(
-                                                        'Your Shelfs/Categories',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400)),
+                                                  SvgPicture.asset(
+                                                      'assets/svg/booksicon.svg',
+                                                      height: 12,
+                                                      fit: BoxFit.fill,
+                                                      color: Colors.white,
+                                                      semanticsLabel:
+                                                          'A red up arrow'),
+                                                  const SizedBox(
+                                                    width: 5,
                                                   ),
-                                                  Container(
-                                                    height: 250,
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            bottom: 50),
-                                                    child: ListView.builder(
-                                                        // scrollDirection: Axis.horizontal,
-                                                        physics:
-                                                            const BouncingScrollPhysics(),
-                                                        itemCount: bookItemsMap[
-                                                                'categories']
-                                                            .length,
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          return libraryList(
-                                                              list: books,
-                                                              category:
-                                                                  bookItemsMap[
-                                                                          'categories']
-                                                                      [index]);
-                                                        }),
-                                                  )
-                                                  // libraryList(context),
+                                                  Text(
+                                                    '$bookLength books in your library',
+                                                    style: const TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 12),
+                                                  ),
                                                 ],
                                               ),
-                                            );
-                                          }
-                                        })),
-                          ],
-                        );
-            }
-          }),
+                                              const SizedBox(
+                                                width: 8,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Icon(
+                                                    IconlyBold.scan,
+                                                    size: 15,
+                                                    color: Colors.white,
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    '$categoryLength shelfs',
+                                                    style: const TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  )),
+                              Align(
+                                  // top: 1,
+                                  alignment: Alignment(
+                                      0, -size(context).height * 0.00081),
+                                  child: Padding(
+                                      padding: const EdgeInsets.all(20),
+                                      child: textField())),
+                              bookItemsMap['books'].length == 0
+                                  ? NothingYetWidget(
+                                      pageTitle: '',
+                                      pageHeader: "No Books Yet",
+                                      isFullPage: false,
+                                      pageContentText:
+                                          'Welcome to Brain world books you can buy books here with ease,\n'
+                                          'You can also sell your own books here\n at any price u want',
+                                      widget: MyButton(
+                                        placeHolder: 'Start',
+                                        height: 55,
+                                        isGradientButton: true,
+                                        isOval: true,
+                                        gradientColors: BrainWorldColors
+                                            .myblueGradientTransparent,
+                                        widthRatio: 0.80,
+                                        pressed: () async {
+                                          MyNavigate.navigatejustpush(
+                                              const AddToBooks(), context);
+                                        },
+                                      ),
+                                    )
+                                  : Padding(
+                                      // alignment: Alignment(0, size(context).height * 0.00069),
+                                      padding: EdgeInsets.only(
+                                          top: size(context).height * 0.3),
+                                      child: FutureBuilder(
+                                          future: booksData,
+                                          builder: (context, snapshot) {
+                                            if (snapshot.hasError) {
+                                              return Text(
+                                                  snapshot.error.toString());
+                                            } else if (snapshot.data == null) {
+                                              return const Loading();
+                                            } else {
+                                              var bookItemsMap =
+                                                  snapshot.data! as Map;
+                                              List<BookModel> books = [];
+                                              for (var data
+                                                  in bookItemsMap['books']) {
+                                                books.add(
+                                                    BookModel.fromJson(data));
+                                              }
+                                              return SingleChildScrollView(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    libraryList(list: books),
+                                                    const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 8.0),
+                                                      child: Text(
+                                                          'Your Shelfs/Categories',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400)),
+                                                    ),
+                                                    Container(
+                                                      height: 250,
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              bottom: 50),
+                                                      child: ListView.builder(
+                                                          // scrollDirection: Axis.horizontal,
+                                                          physics:
+                                                              const BouncingScrollPhysics(),
+                                                          itemCount: bookItemsMap[
+                                                                  'categories']
+                                                              .length,
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            return libraryList(
+                                                                list: books,
+                                                                category:
+                                                                    bookItemsMap[
+                                                                            'categories']
+                                                                        [
+                                                                        index]);
+                                                          }),
+                                                    )
+                                                    // libraryList(context),
+                                                  ],
+                                                ),
+                                              );
+                                            }
+                                          })),
+                            ],
+                          );
+              }
+            }),
+      ),
     );
   }
 

@@ -1,9 +1,6 @@
-import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/normal_curve_container.dart';
-import 'package:brainworld/pages/upload/add_to_local_library.dart';
 import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class NothingYetWidget extends StatelessWidget {
   const NothingYetWidget(
@@ -12,7 +9,7 @@ class NothingYetWidget extends StatelessWidget {
       required this.pageHeader,
       this.imageURL,
       this.isFullPage = true,
-      this.onClick,
+      // this.onClick,
       this.pageContentText,
       this.widget})
       : super(key: key);
@@ -22,7 +19,7 @@ class NothingYetWidget extends StatelessWidget {
   final String pageHeader;
   final bool isFullPage;
   final String? pageContentText;
-  final VoidCallback? onClick;
+  // final VoidCallback? onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +75,6 @@ class NothingYetWidget extends StatelessWidget {
                 pageContentText ?? '',
                 textAlign: TextAlign.center,
               ),
-
               // ExpandableTextWidget(
               //     text: (pageContentText! + pageContentText!) ?? ''),
               const SizedBox(
@@ -86,18 +82,6 @@ class NothingYetWidget extends StatelessWidget {
               ),
               SizedBox(
                 child: widget,
-              ),
-              MyButton(
-                placeHolder: 'Start',
-                height: 55,
-                isGradientButton: true,
-                isOval: true,
-                gradientColors: BrainWorldColors.myblueGradientTransparent,
-                widthRatio: 0.80,
-                pressed: onClick ??
-                    () async {
-                      Get.to(const AddToLocalLibray());
-                    },
               ),
             ],
           ),

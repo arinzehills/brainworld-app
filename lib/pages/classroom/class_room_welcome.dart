@@ -55,21 +55,29 @@ class _ClassRoomWelcomeState extends State<ClassRoomWelcome> {
               pageContentText:
                   'Welcome to Brain world class room you can fix \n'
                   'class dicussions,lectures,virtual meetings, group discussion and conferences here.\n',
-              onClick: () async {
-                var userModel = IsNewUserModel(
-                    id: user.id,
-                    username: user.fullName,
-                    newlyRegistered: true,
-                    bookLib: userInfoData.bookLib == false ? false : true,
-                    library: userInfoData.library == false ? false : true,
-                    lab: userInfoData.lab == false ? false : true,
-                    classRoom: true,
-                    chat: userInfoData.chat == false ? false : true,
-                    regAt: 'regAt');
-                AuthService.setIsNewUser(userModel);
-                setState(() => {showIntroPage = false});
-                // MyNavigate.navigatejustpush(AddToBooks(), context);
-              },
+              widget: MyButton(
+                placeHolder: 'Start',
+                height: 55,
+                isGradientButton: true,
+                isOval: true,
+                gradientColors: BrainWorldColors.myblueGradientTransparent,
+                widthRatio: 0.80,
+                pressed: () async {
+                  var userModel = IsNewUserModel(
+                      id: user.id,
+                      username: user.fullName,
+                      newlyRegistered: true,
+                      bookLib: userInfoData.bookLib == false ? false : true,
+                      library: userInfoData.library == false ? false : true,
+                      lab: userInfoData.lab == false ? false : true,
+                      classRoom: true,
+                      chat: userInfoData.chat == false ? false : true,
+                      regAt: 'regAt');
+                  AuthService.setIsNewUser(userModel);
+                  setState(() => {showIntroPage = false});
+                  // MyNavigate.navigatejustpush(AddToBooks(), context);
+                },
+              ),
             )
           : Column(
               children: [

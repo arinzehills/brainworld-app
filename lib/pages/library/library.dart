@@ -1,5 +1,6 @@
 import 'package:brainworld/components/custom_tab.dart';
 import 'package:brainworld/components/drawer.dart';
+import 'package:brainworld/components/my_button.dart';
 import 'package:brainworld/components/myappbar.dart';
 import 'package:brainworld/components/nothing_yet_widget.dart';
 import 'package:brainworld/components/utilities_widgets/loading.dart';
@@ -8,6 +9,7 @@ import 'package:brainworld/models/models.dart';
 import 'package:brainworld/pages/library/user_library.dart';
 import 'package:brainworld/pages/library/welcome/library_welcome.dart';
 import 'package:brainworld/services/auth_service.dart';
+import 'package:brainworld/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -52,21 +54,29 @@ class _LibraryState extends State<Library> {
                 pageContentText:
                     'Welcome to Brain world merged library you can have access \n'
                     'to any university e-resources with ease here,with just a small access fee,and also have your own personal library\n',
-                onClick: () async {
-                  var userModel = IsNewUserModel(
-                      id: user.id,
-                      username: user.fullName,
-                      newlyRegistered: true,
-                      bookLib: userInfoData.classRoom == false ? false : true,
-                      library: false,
-                      lab: userInfoData.lab == false ? false : true,
-                      classRoom: true,
-                      chat: userInfoData.chat == false ? false : true,
-                      regAt: 'regAt');
-                  AuthService.setIsNewUser(userModel);
-                  setState(() => {showIntroPage = false});
-                  // MyNavigate.navigatejustpush(AddToBooks(), context);
-                },
+                widget: MyButton(
+                  placeHolder: 'Start',
+                  height: 55,
+                  isGradientButton: true,
+                  isOval: true,
+                  gradientColors: BrainWorldColors.myblueGradientTransparent,
+                  widthRatio: 0.80,
+                  pressed: () async {
+                    var userModel = IsNewUserModel(
+                        id: user.id,
+                        username: user.fullName,
+                        newlyRegistered: true,
+                        bookLib: userInfoData.classRoom == false ? false : true,
+                        library: false,
+                        lab: userInfoData.lab == false ? false : true,
+                        classRoom: true,
+                        chat: userInfoData.chat == false ? false : true,
+                        regAt: 'regAt');
+                    AuthService.setIsNewUser(userModel);
+                    setState(() => {showIntroPage = false});
+                    // MyNavigate.navigatejustpush(AddToBooks(), context);
+                  },
+                ),
               )
             : Scaffold(
                 drawer: const MyDrawer(),
