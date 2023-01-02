@@ -6,15 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class NothingYetWidget extends StatelessWidget {
-  const NothingYetWidget({
-    Key? key,
-    required this.pageTitle,
-    required this.pageHeader,
-    this.imageURL,
-    this.isFullPage = true,
-    this.onClick,
-    this.pageContentText,
-  }) : super(key: key);
+  const NothingYetWidget(
+      {Key? key,
+      required this.pageTitle,
+      required this.pageHeader,
+      this.imageURL,
+      this.isFullPage = true,
+      this.onClick,
+      this.pageContentText,
+      this.widget})
+      : super(key: key);
+  final Widget? widget;
   final String pageTitle;
   final String? imageURL;
   final String pageHeader;
@@ -81,6 +83,9 @@ class NothingYetWidget extends StatelessWidget {
               //     text: (pageContentText! + pageContentText!) ?? ''),
               const SizedBox(
                 height: 10,
+              ),
+              SizedBox(
+                child: widget,
               ),
               MyButton(
                 placeHolder: 'Start',
